@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://Devgupta0.github.io/dev-blog/sitemap.xml

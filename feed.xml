@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Dev Notes by Devgupta</title>
+  <link>https://Devgupta0.github.io/dev-blog</link>
+  <description>Real-world developer stories, debugging tales, and engineering lessons.</description>
+  <language>en-us</language>
+  <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
+  
+  <item>
+    <title><![CDATA[Optimizing Database Deadlocks in a High-Concurrency E-commerce Platform by Implementing Custom Locking Mechanisms with PostgreSQL Advisory Locks]]></title>
+    <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</link>
+    <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</guid>
+    <pubDate>2026-04-10</pubDate>
+    <description><![CDATA[In this post, I'll share my experience with optimizing database deadlocks in a high-concurrency e-commerce platform. I'll explain how I implemented custom locking mechanisms using PostgreSQL Advisory Locks to reduce deadlocks and improve overall system performance. You'll learn how to identify and resolve deadlocks, and how to implement a custom locking mechanism to improve your system's concurrency and scalability.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Cicd Pipeline Setup From Scratch]]></title>
+    <link>https://Devgupta0.github.io/dev-blog/posts/cicd-pipeline-setup-from-scratch.html</link>
+    <guid>https://Devgupta0.github.io/dev-blog/posts/cicd-pipeline-setup-from-scratch.html</guid>
+    <pubDate>2026-04-10</pubDate>
+    <description><![CDATA[I still remember the first time I had to set up a CI/CD pipeline from scratch - it was a daunting task, to say the least. I was working on a personal project, a small web application, and I wanted to ]]></description>
+  </item>
+</channel>
+</rss>
