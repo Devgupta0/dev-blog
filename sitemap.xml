@@ -2,5 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://Devgupta0.github.io/dev-blog/</loc></url>
   <url><loc>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</loc><lastmod>2026-04-10</lastmod></url>
+  <url><loc>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-500ms-latency-spike-by-.html</loc><lastmod>2026-04-10</lastmod></url>
   <url><loc>https://Devgupta0.github.io/dev-blog/posts/cicd-pipeline-setup-from-scratch.html</loc><lastmod>2026-04-10</lastmod></url>
 </urlset>
