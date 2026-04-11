@@ -7,11 +7,11 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
-  <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform]]></title>
+  <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform: A Postmortem on Migrating from MySQL to PostgreSQL with TimescaleDB]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
   <pubDate>2026-04-11</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database query performance in a high-traffic e-commerce platform by replacing JOINs with Elasticsearch indices and graph DB traversal. You'll learn how to identify performance bottlenecks, design efficient data models, and implement scalable query solutions. By the end of this post, you'll be equipped with the knowledge to tackle similar challenges in your own projects.]]></description>
+  <description><![CDATA[In this post, I'll share my experience of migrating our e-commerce platform's database from MySQL to PostgreSQL with TimescaleDB, and the significant performance improvements we achieved. I'll cover the challenges we faced, the solutions we implemented, and the lessons we learned along the way. By the end of this post, you'll have a clear understanding of how to optimize database query performance in your own high-traffic e-commerce platform.]]></description>
 </item><item>
   <title><![CDATA[Optimizing Database Deadlocks in a High-Concurrency E-commerce Platform by Implementing Custom Locking Mechanisms with PostgreSQL Advisory Locks]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</link>

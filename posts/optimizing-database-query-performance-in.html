@@ -4,20 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Optimizing Database Query Performance | Dev Notes by Devgupta</title>
-<meta name="description" content="Learn how to optimize database query performance in high-traffic e-commerce platforms using Elasticsearch and graph DB traversal">
+<meta name="description" content="Learn how to optimize database query performance in high-traffic e-commerce platforms by migrating from MySQL to PostgreSQL with TimescaleDB">
 <meta name="author" content="Devgupta">
 <link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Optimizing Database Query Performance | Dev Notes by Devgupta">
-<meta property="og:description" content="Learn how to optimize database query performance in high-traffic e-commerce platforms using Elasticsearch and graph DB traversal">
+<meta property="og:description" content="Learn how to optimize database query performance in high-traffic e-commerce platforms by migrating from MySQL to PostgreSQL with TimescaleDB">
 <meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html">
 <meta property="og:site_name" content="Dev Notes by Devgupta">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@Devgupta0">
 <meta name="twitter:title" content="Optimizing Database Query Performance | Dev Notes by Devgupta">
-<meta name="twitter:description" content="Learn how to optimize database query performance in high-traffic e-commerce platforms using Elasticsearch and graph DB traversal">
+<meta name="twitter:description" content="Learn how to optimize database query performance in high-traffic e-commerce platforms by migrating from MySQL to PostgreSQL with TimescaleDB">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","headline":"Optimizing Database Query Performance | Dev Notes by Devgupta","description":"Learn how to optimize database query performance in high-traffic e-commerce platforms using Elasticsearch and graph DB traversal","url":"https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-04-11"}
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Optimizing Database Query Performance | Dev Notes by Devgupta","description":"Learn how to optimize database query performance in high-traffic e-commerce platforms by migrating from MySQL to PostgreSQL with TimescaleDB","url":"https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-04-11"}
 </script>
 <link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
@@ -87,80 +87,35 @@ footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid va
 </nav>
 <main>
   <div class="article-header">
-    <h1 class="article-title">Optimizing Database Query Performance in a High-Traffic E-commerce Platform</h1>
-    <div class="article-meta"><span>2026-04-11</span><span>Devgupta</span><span class="post-tag">database optimization</span> <span class="post-tag">Elasticsearch</span> <span class="post-tag">graph DB</span> <span class="post-tag">e-commerce platform</span></div>
+    <h1 class="article-title">Optimizing Database Query Performance in a High-Traffic E-commerce Platform: A Postmortem on Migrating from MySQL to PostgreSQL with TimescaleDB</h1>
+    <div class="article-meta"><span>2026-04-11</span><span>Devgupta</span><span class="post-tag">PostgreSQL</span> <span class="post-tag">TimescaleDB</span> <span class="post-tag">MySQL</span> <span class="post-tag">Database Optimization</span> <span class="post-tag">E-commerce</span></div>
   </div>
-  <div class="article-body"><p>I still remember the day our e-commerce platform went live and started receiving a massive influx of traffic. As the developer responsible for the backend, I was thrilled to see our hard work paying off, but I was also aware of the potential challenges that came with it. One of the biggest concerns was the performance of our database queries, which were starting to show signs of strain under the heavy load.</p>
-<p>As I dug deeper into the issue, I realized that our reliance on JOINs was the main culprit behind the slow query performance. We were using a traditional relational database management system, and the complex JOINs were causing the database to spend a lot of time querying and joining tables. I knew that I had to find a more efficient way to query our data, and that's when I started exploring alternative solutions.</p>
-<h2>Introduction to Elasticsearch</h2>
-My research led me to Elasticsearch, a powerful search and analytics engine that's designed to handle large volumes of data. I was impressed by its ability to index and query data in near real-time, making it an ideal solution for our e-commerce platform. By creating Elasticsearch indices for our product and customer data, we could significantly reduce the load on our relational database and improve query performance.
-<p>To get started with Elasticsearch, I created an index for our product data using the following code:
-<pre><code class="language-python">from elasticsearch import Elasticsearch</p>
-<p>es = Elasticsearch()</p>
-<h1>Create an index for product data</h1>
-product_index = {
-    "settings": {
-        "index": {
-            "number_of_shards": 5,
-            "number_of_replicas": 1
-        }
-    },
-    "mappings": {
-        "properties": {
-            "product_id": {"type": "integer"},
-            "name": {"type": "text"},
-            "description": {"type": "text"},
-            "price": {"type": "float"}
-        }
-    }
-}
-<p>es.indices.create(index="products", body=product_index)
+  <div class="article-body"><p>I still remember the day our e-commerce platform's database started to show signs of strain. We had been using MySQL for years, and it had served us well, but as our traffic and sales continued to grow, our database began to buckle under the pressure. Queries were taking longer to execute, and our users were starting to notice. It was then that I knew we had to make a change.</p>
+<h2>The Problem with MySQL</h2>
+We had been using MySQL as our primary database for years, and it had been a good choice at the time. However, as our platform grew, we started to notice some significant performance issues. Our database was handling thousands of queries per second, and MySQL was struggling to keep up. We tried optimizing our queries, indexing our tables, and even sharding our database, but nothing seemed to make a significant difference.
+<p>It wasn't until we started to look into other database options that we realized the true extent of our problem. MySQL is a great database for many use cases, but it's not designed to handle the kind of high-traffic, high-transactional workload that our e-commerce platform was generating. We needed a database that could handle our traffic, and also provide us with the tools and features we needed to optimize our queries and improve performance.</p>
+<h2>Enter PostgreSQL and TimescaleDB</h2>
+After doing some research, we decided to migrate our database to PostgreSQL with TimescaleDB. PostgreSQL is a powerful, open-source database that's known for its ability to handle high-traffic workloads, and TimescaleDB is a time-series database that's built on top of PostgreSQL. TimescaleDB provides a number of features that are specifically designed for handling time-series data, including automatic partitioning, efficient compression, and support for advanced querying and analytics.
+<p>The migration process was not without its challenges. We had to rewrite many of our queries to take advantage of PostgreSQL's more advanced features, and we had to re-index many of our tables to optimize performance. However, the end result was well worth the effort. Our database performance improved significantly, and we were able to handle our high-traffic workload with ease.</p>
+<h2>Optimizing Queries with PostgreSQL</h2>
+One of the things that really stood out to me about PostgreSQL was its ability to optimize queries. With MySQL, we had to rely on manual indexing and query optimization techniques, but PostgreSQL has a number of built-in features that make it easy to optimize queries.
+<p>For example, PostgreSQL has a feature called "EXPLAIN" that allows you to analyze the execution plan of a query. This can be incredibly useful for identifying performance bottlenecks and optimizing queries. Here's an example of how you might use EXPLAIN to analyze a query:
+<pre><code class="language-sql">EXPLAIN (ANALYZE, VERBOSE) SELECT * FROM orders WHERE created_at &gt; NOW() - INTERVAL '1 day';
 </code></pre>
-This code creates an index called "products" with five shards and one replica. The mapping defines the structure of the product data, including the product ID, name, description, and price.</p>
-<h2>Replacing JOINs with Elasticsearch Queries</h2>
-Once the index was created, I started replacing our traditional JOINs with Elasticsearch queries. For example, instead of using a JOIN to retrieve the product name and description for a given product ID, I could use an Elasticsearch query to retrieve the data directly from the index.
-<p>Here's an example of how I replaced a traditional JOIN with an Elasticsearch query:
-<pre><code class="language-python"># Traditional JOIN
-query = """
-    SELECT p.name, p.description
-    FROM products p
-    JOIN orders o ON p.product_id = o.product_id
-    WHERE o.order_id = 123
-"""</p>
-<h1>Elasticsearch query</h1>
-query = {
-    "query": {
-        "match": {
-            "product_id": 123
-        }
-    },
-    "_source": ["name", "description"]
-}
-<p>response = es.search(index="products", body=query)
+This query will return a detailed analysis of the execution plan, including the estimated cost of each step, the number of rows that need to be scanned, and the indexes that are being used.</p>
+<h2>Using TimescaleDB for Time-Series Data</h2>
+TimescaleDB is a time-series database that's built on top of PostgreSQL. It provides a number of features that are specifically designed for handling time-series data, including automatic partitioning, efficient compression, and support for advanced querying and analytics.
+<p>One of the things that I really like about TimescaleDB is its ability to automatically partition data based on time. This makes it easy to manage large datasets and optimize query performance. Here's an example of how you might create a table in TimescaleDB:
+<pre><code class="language-sql">CREATE TABLE metrics (
+    time TIMESTAMPTZ NOT NULL,
+    value DOUBLE PRECISION NOT NULL
+);</p>
+<p>SELECT create_hypertable('metrics', 'time');
 </code></pre>
-This code retrieves the product name and description for a given product ID using an Elasticsearch query. The <code>_source</code> parameter specifies that we only want to retrieve the name and description fields.</p>
-<h2>Introduction to Graph DB Traversal</h2>
-While Elasticsearch was a great solution for querying our product and customer data, I realized that we still had a complex graph of relationships between our data entities. For example, a customer could have multiple orders, and each order could have multiple products. To query these relationships efficiently, I started exploring graph databases.
-<p>I chose a graph database called Neo4j, which is designed to store and query complex relationships between data entities. By creating a graph data model, I could traverse the relationships between our data entities using Cypher queries.</p>
-<p>Here's an example of how I created a graph data model for our customer and order data:
-<pre><code class="language-cypher">// Create a customer node
-CREATE (c:Customer {id: 1, name: "John Doe"})</p>
-<p>// Create an order node
-CREATE (o:Order {id: 123, total: 100.0})</p>
-<p>// Create a relationship between the customer and order
-CREATE (c)-[:PLACED_ORDER {date: "2022-01-01"}]-&gt;(o)
-</code></pre>
-This code creates a customer node, an order node, and a relationship between the customer and order.</p>
-<h2>Graph DB Traversal</h2>
-Once the graph data model was created, I started using Cypher queries to traverse the relationships between our data entities. For example, I could use a Cypher query to retrieve all the orders placed by a customer:
-<pre><code class="language-cypher">// Retrieve all orders placed by a customer
-MATCH (c:Customer {id: 1})-[:PLACED_ORDER]-&gt;(o:Order)
-RETURN o
-</code></pre>
-This code retrieves all the orders placed by a customer with ID 1.
+This will create a table called "metrics" with a timestamp column and a value column. The <code>create_hypertable</code> function will automatically partition the data based on time, making it easy to manage and query large datasets.</p>
 <h2>Takeaway</h2>
-In this post, I shared my experience of optimizing database query performance in a high-traffic e-commerce platform by replacing JOINs with Elasticsearch indices and graph DB traversal. By using Elasticsearch to query our product and customer data, and graph DB traversal to query complex relationships between our data entities, we were able to significantly improve the performance of our database queries.
-<p>The key takeaway from this experience is that there's no one-size-fits-all solution to database query optimization. Depending on the specific requirements of your project, you may need to use a combination of different technologies and techniques to achieve optimal performance. By being open to exploring alternative solutions and being willing to experiment with different approaches, you can overcome even the most challenging database query performance issues.</p></div>
+Migrating our database from MySQL to PostgreSQL with TimescaleDB was a complex and challenging process, but it was well worth the effort. By taking advantage of PostgreSQL's advanced features and TimescaleDB's time-series capabilities, we were able to significantly improve our database performance and handle our high-traffic workload with ease.
+<p>If you're struggling with database performance issues, I would highly recommend considering a migration to PostgreSQL with TimescaleDB. It's not a decision that should be taken lightly, but the benefits can be significant. With the right tools and expertise, you can optimize your database performance and improve the overall user experience of your e-commerce platform.</p></div>
   <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
 </main>
 <footer>
