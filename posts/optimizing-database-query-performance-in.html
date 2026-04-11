@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimizing Database Query Performance | Dev Notes by Devgupta</title>
+<meta name="description" content="Learn how to optimize database query performance in high-traffic e-commerce platforms using Elasticsearch and graph DB traversal">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optimizing Database Query Performance | Dev Notes by Devgupta">
+<meta property="og:description" content="Learn how to optimize database query performance in high-traffic e-commerce platforms using Elasticsearch and graph DB traversal">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="Optimizing Database Query Performance | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Learn how to optimize database query performance in high-traffic e-commerce platforms using Elasticsearch and graph DB traversal">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Optimizing Database Query Performance | Dev Notes by Devgupta","description":"Learn how to optimize database query performance in high-traffic e-commerce platforms using Elasticsearch and graph DB traversal","url":"https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-04-11"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">Optimizing Database Query Performance in a High-Traffic E-commerce Platform</h1>
+    <div class="article-meta"><span>2026-04-11</span><span>Devgupta</span><span class="post-tag">database optimization</span> <span class="post-tag">Elasticsearch</span> <span class="post-tag">graph DB</span> <span class="post-tag">e-commerce platform</span></div>
+  </div>
+  <div class="article-body"><p>I still remember the day our e-commerce platform went live and started receiving a massive influx of traffic. As the developer responsible for the backend, I was thrilled to see our hard work paying off, but I was also aware of the potential challenges that came with it. One of the biggest concerns was the performance of our database queries, which were starting to show signs of strain under the heavy load.</p>
+<p>As I dug deeper into the issue, I realized that our reliance on JOINs was the main culprit behind the slow query performance. We were using a traditional relational database management system, and the complex JOINs were causing the database to spend a lot of time querying and joining tables. I knew that I had to find a more efficient way to query our data, and that's when I started exploring alternative solutions.</p>
+<h2>Introduction to Elasticsearch</h2>
+My research led me to Elasticsearch, a powerful search and analytics engine that's designed to handle large volumes of data. I was impressed by its ability to index and query data in near real-time, making it an ideal solution for our e-commerce platform. By creating Elasticsearch indices for our product and customer data, we could significantly reduce the load on our relational database and improve query performance.
+<p>To get started with Elasticsearch, I created an index for our product data using the following code:
+<pre><code class="language-python">from elasticsearch import Elasticsearch</p>
+<p>es = Elasticsearch()</p>
+<h1>Create an index for product data</h1>
+product_index = {
+    "settings": {
+        "index": {
+            "number_of_shards": 5,
+            "number_of_replicas": 1
+        }
+    },
+    "mappings": {
+        "properties": {
+            "product_id": {"type": "integer"},
+            "name": {"type": "text"},
+            "description": {"type": "text"},
+            "price": {"type": "float"}
+        }
+    }
+}
+<p>es.indices.create(index="products", body=product_index)
+</code></pre>
+This code creates an index called "products" with five shards and one replica. The mapping defines the structure of the product data, including the product ID, name, description, and price.</p>
+<h2>Replacing JOINs with Elasticsearch Queries</h2>
+Once the index was created, I started replacing our traditional JOINs with Elasticsearch queries. For example, instead of using a JOIN to retrieve the product name and description for a given product ID, I could use an Elasticsearch query to retrieve the data directly from the index.
+<p>Here's an example of how I replaced a traditional JOIN with an Elasticsearch query:
+<pre><code class="language-python"># Traditional JOIN
+query = """
+    SELECT p.name, p.description
+    FROM products p
+    JOIN orders o ON p.product_id = o.product_id
+    WHERE o.order_id = 123
+"""</p>
+<h1>Elasticsearch query</h1>
+query = {
+    "query": {
+        "match": {
+            "product_id": 123
+        }
+    },
+    "_source": ["name", "description"]
+}
+<p>response = es.search(index="products", body=query)
+</code></pre>
+This code retrieves the product name and description for a given product ID using an Elasticsearch query. The <code>_source</code> parameter specifies that we only want to retrieve the name and description fields.</p>
+<h2>Introduction to Graph DB Traversal</h2>
+While Elasticsearch was a great solution for querying our product and customer data, I realized that we still had a complex graph of relationships between our data entities. For example, a customer could have multiple orders, and each order could have multiple products. To query these relationships efficiently, I started exploring graph databases.
+<p>I chose a graph database called Neo4j, which is designed to store and query complex relationships between data entities. By creating a graph data model, I could traverse the relationships between our data entities using Cypher queries.</p>
+<p>Here's an example of how I created a graph data model for our customer and order data:
+<pre><code class="language-cypher">// Create a customer node
+CREATE (c:Customer {id: 1, name: "John Doe"})</p>
+<p>// Create an order node
+CREATE (o:Order {id: 123, total: 100.0})</p>
+<p>// Create a relationship between the customer and order
+CREATE (c)-[:PLACED_ORDER {date: "2022-01-01"}]-&gt;(o)
+</code></pre>
+This code creates a customer node, an order node, and a relationship between the customer and order.</p>
+<h2>Graph DB Traversal</h2>
+Once the graph data model was created, I started using Cypher queries to traverse the relationships between our data entities. For example, I could use a Cypher query to retrieve all the orders placed by a customer:
+<pre><code class="language-cypher">// Retrieve all orders placed by a customer
+MATCH (c:Customer {id: 1})-[:PLACED_ORDER]-&gt;(o:Order)
+RETURN o
+</code></pre>
+This code retrieves all the orders placed by a customer with ID 1.
+<h2>Takeaway</h2>
+In this post, I shared my experience of optimizing database query performance in a high-traffic e-commerce platform by replacing JOINs with Elasticsearch indices and graph DB traversal. By using Elasticsearch to query our product and customer data, and graph DB traversal to query complex relationships between our data entities, we were able to significantly improve the performance of our database queries.
+<p>The key takeaway from this experience is that there's no one-size-fits-all solution to database query optimization. Depending on the specific requirements of your project, you may need to use a combination of different technologies and techniques to achieve optimal performance. By being open to exploring alternative solutions and being willing to experiment with different approaches, you can overcome even the most challenging database query performance issues.</p></div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>
