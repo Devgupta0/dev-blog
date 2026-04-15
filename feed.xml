@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform by Replacing MongoDB with PostgreSQL for Product Catalog Management]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
+  <pubDate>2026-04-15</pubDate>
+  <description><![CDATA[Learn how to optimize database query performance in a high-traffic e-commerce platform by migrating from MongoDB to PostgreSQL for product catalog management. Discover the benefits of using PostgreSQL and how to implement it in your application. Get tips on handling large datasets and improving query performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with Query Store: How I Reduced Latency by 30% in Our High-Traffic E-commerce Platform by Migrating from Oracle to PostgreSQL]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
