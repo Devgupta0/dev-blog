@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with pg_stat_statements: A Postmortem of Our Largest Production Bottleneck]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pg_stat.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pg_stat.html</guid>
+  <pubDate>2026-04-20</pubDate>
+  <description><![CDATA[In this post, I'll share a personal story of how I identified and resolved our largest production bottleneck using pg_stat_statements. You'll learn how to analyze database query performance, identify bottlenecks, and optimize queries for better performance. By the end of this post, you'll have a clear understanding of how to use pg_stat_statements to optimize your database queries and improve overall system performance.]]></description>
+</item><item>
   <title><![CDATA[Debugging a Mysterious N+1 Query Issue in Our E-commerce Platform After Migrating from Hibernate to Spring Data JPA]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-n+1-query-issue-i.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-n+1-query-issue-i.html</guid>

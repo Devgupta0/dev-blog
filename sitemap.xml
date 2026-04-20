@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://Devgupta0.github.io/dev-blog/</loc></url>
+  <url><loc>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pg_stat.html</loc><lastmod>2026-04-20</lastmod></url>
   <url><loc>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-n+1-query-issue-i.html</loc><lastmod>2026-04-19</lastmod></url>
   <url><loc>https://Devgupta0.github.io/dev-blog/posts/debugging-a-3am-elasticsearch-cluster-fa.html</loc><lastmod>2026-04-18</lastmod></url>
   <url><loc>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</loc><lastmod>2026-04-17</lastmod></url>
