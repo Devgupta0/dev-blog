@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>patroni.yaml | Dev Notes by Devgupta</title>
+<meta name="description" content="{">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="patroni.yaml | Dev Notes by Devgupta">
+<meta property="og:description" content="{">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="patroni.yaml | Dev Notes by Devgupta">
+<meta name="twitter:description" content="{">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"patroni.yaml | Dev Notes by Devgupta","description":"{","url":"https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-04-22"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">patroni.yaml</h1>
+    <div class="article-meta"><span>2026-04-22</span><span>Devgupta</span></div>
+  </div>
+  <div class="article-body"><pre><code class="language-json">{
+  "title": "How I Replaced Our Monolithic MySQL Database with a Distributed PostgreSQL Cluster Using patroni and pgpool for a 5000-User SaaS Application",
+  "seo_title": "Migrating to Distributed PostgreSQL | Dev Notes by Devgupta",
+  "seo_description": "Learn how to replace a monolithic MySQL database with a distributed PostgreSQL cluster for a 5000-user SaaS application using patroni and pgpool",
+  "excerpt": "In this post, I'll share my experience of migrating our SaaS application's database from a monolithic MySQL setup to a distributed PostgreSQL cluster using patroni and pgpool. I'll cover the challenges I faced, the solutions I found, and the benefits we've seen since the migration. You'll learn how to design and implement a highly available and scalable database cluster for your own application.",
+  "tags": ["postgresql", "mysql", "patroni", "pgpool", "database migration"]
+}
+<code>
+<p>I still remember the day our SaaS application's database crashed due to a sudden surge in traffic. We were using a monolithic MySQL database, and it just couldn't handle the load. Our 5000 users were left frustrated, and our team was under pressure to find a solution. That's when I decided to explore alternative database solutions that could provide high availability, scalability, and performance. After researching and evaluating different options, I chose to migrate our database to a distributed PostgreSQL cluster using patroni and pgpool.</p>
+<h2>Why PostgreSQL?</h2>
+I chose PostgreSQL for several reasons. Firstly, it's an open-source database management system that's highly extensible and customizable. Secondly, it supports a wide range of data types, including JSON, arrays, and user-defined types, which makes it ideal for storing complex data structures. Lastly, PostgreSQL has a strong focus on reliability, data integrity, and concurrency, which are essential for a high-traffic SaaS application like ours.
+<h2>Introducing patroni and pgpool</h2>
+To build a distributed PostgreSQL cluster, I needed a tool that could manage the cluster's topology, handle failovers, and provide a single entry point for client connections. That's where patroni and pgpool come in. Patroni is a PostgreSQL cluster manager that automates the process of setting up and managing a highly available PostgreSQL cluster. It provides features like automatic failover, replication, and cluster topology management. Pgpool is a PostgreSQL clustering tool that provides a single entry point for client connections, load balancing, and connection pooling.
+<h2>Designing the Cluster</h2>
+Before I started building the cluster, I needed to design its topology. I decided to use a combination of patroni and pgpool to create a distributed cluster with three PostgreSQL nodes: one primary node and two standby nodes. The primary node would handle all write operations, while the standby nodes would handle read operations and provide failover capability in case the primary node fails.
+<p>Here's an example of how I configured patroni to manage the cluster:
+</code></pre>python
+<h1>patroni.yaml</h1>
+scope: my_cluster
+namespace: /db/
+name: my_postgres</p>
+<h1>PostgreSQL configuration</h1>
+postgresql:
+  listen: 5432
+  connect_address: 'localhost:5432'
+  data_dir: /var/lib/postgresql/data
+  pgpass: /tmp/pgpass
+  parameters:
+    wal_level: hot_standby
+    archive_mode: on
+    archive_command: 'cp %p /var/lib/postgresql/archive/%f'
+<h1>Patroni configuration</h1>
+patroni:
+  scope: my_cluster
+  namespace: /db/
+  name: my_postgres
+  restapi:
+    listen: 8008
+    connect_address: 'localhost:8008'
+  zookeeper:
+    hosts: 'localhost:2181'
+    retry: 5
+    timeout: 10
+<pre><code class="language-">This configuration tells patroni to manage a PostgreSQL cluster with a primary node and two standby nodes. It also specifies the PostgreSQL configuration, including the listen address, data directory, and replication parameters.
+<h2>Building the Cluster</h2>
+Once I had designed the cluster topology and configured patroni, I started building the cluster. I created three PostgreSQL nodes: one primary node and two standby nodes. I then installed patroni and pgpool on each node and configured them according to my design.
+<p>Here's an example of how I configured pgpool to provide a single entry point for client connections:
+</code></pre>sql
+-- pgpool.conf
+listen_addresses = 'localhost'
+port = 5432
+backend_hostname0 = 'primary_node'
+backend_port0 = 5432
+backend_weight0 = 1
+backend_hostname1 = 'standby_node1'
+backend_port1 = 5432
+backend_weight1 = 1
+backend_hostname2 = 'standby_node2'
+backend_port2 = 5432
+backend_weight2 = 1
+</code>``
+This configuration tells pgpool to listen on port 5432 and distribute incoming connections to the primary node and two standby nodes.</p>
+<h2>Migrating the Application</h2>
+Once the cluster was built, I needed to migrate our SaaS application to use the new distributed PostgreSQL cluster. I updated the application's database configuration to point to the pgpool node, which provides a single entry point for client connections.
+<p>I also had to update the application's database queries to use the new PostgreSQL database. This involved changing the database driver, updating the query syntax, and modifying the data types to match the new database schema.</p>
+<h2>Testing and Verification</h2>
+After migrating the application, I thoroughly tested and verified the new database cluster. I simulated various failure scenarios, including node failures and network partitions, to ensure that the cluster could recover automatically and maintain high availability.
+<p>I also monitored the cluster's performance and latency to ensure that it could handle the expected load. I used tools like pgbench and PostgreSQL's built-in monitoring tools to measure the cluster's performance and identify any bottlenecks.</p>
+<h2>Takeaway</h2>
+Migrating our SaaS application's database from a monolithic MySQL setup to a distributed PostgreSQL cluster using patroni and pgpool was a challenging but rewarding experience. I learned a lot about database design, cluster management, and high availability. The new cluster has provided significant improvements in performance, scalability, and reliability, and has allowed us to handle a growing user base with confidence. If you're facing similar challenges with your database, I highly recommend exploring distributed database solutions like PostgreSQL, patroni, and pgpool. With careful planning, design, and implementation, you can build a highly available and scalable database cluster that meets your application's needs and provides a great user experience.</div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>

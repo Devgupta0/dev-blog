@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[patroni.yaml]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</guid>
+  <pubDate>2026-04-22</pubDate>
+  <description><![CDATA[{]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with Index Hints After Migrating from PostgreSQL to MySQL on a High-Traffic E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-index-h.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-index-h.html</guid>
