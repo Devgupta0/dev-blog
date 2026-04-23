@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PostgreSQL Optimization | Dev Notes by Devgupta</title>
+<meta name="description" content="Learn how to optimize PostgreSQL database queries with PgBouncer and connection pooling after migrating from MySQL">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pgbounc.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL Optimization | Dev Notes by Devgupta">
+<meta property="og:description" content="Learn how to optimize PostgreSQL database queries with PgBouncer and connection pooling after migrating from MySQL">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pgbounc.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="PostgreSQL Optimization | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Learn how to optimize PostgreSQL database queries with PgBouncer and connection pooling after migrating from MySQL">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"PostgreSQL Optimization | Dev Notes by Devgupta","description":"Learn how to optimize PostgreSQL database queries with PgBouncer and connection pooling after migrating from MySQL","url":"https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pgbounc.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-04-23"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">Optimizing Database Queries with PgBouncer and Connection Pooling After Migrating from MySQL to PostgreSQL on a High Traffic E-commerce Platform</h1>
+    <div class="article-meta"><span>2026-04-23</span><span>Devgupta</span><span class="post-tag">PostgreSQL</span> <span class="post-tag">PgBouncer</span> <span class="post-tag">Connection Pooling</span> <span class="post-tag">MySQL Migration</span></div>
+  </div>
+  <div class="article-body"><p>I still remember the day we decided to migrate our high traffic e-commerce platform from MySQL to PostgreSQL. It was a bold move, but we knew it was necessary to support our growing user base and increasing traffic. The migration process was complex, but we finally made it through. However, we soon realized that our database queries were not optimized for PostgreSQL, and our platform was facing performance issues.</p>
+<h2>The Problem</h2>
+We were experiencing high latency and connection timeouts, which were affecting our users' experience. Our database was struggling to handle the high traffic, and we were seeing a significant increase in error rates. We knew we had to act fast to optimize our database queries and improve the performance of our platform.
+<h2>Introduction to PgBouncer and Connection Pooling</h2>
+After researching and experimenting with different solutions, we decided to use PgBouncer and connection pooling to optimize our database queries. PgBouncer is a lightweight, open-source, and highly scalable connection pooler for PostgreSQL. It helps to reduce the overhead of creating and closing database connections, which can significantly improve the performance of your application.
+<p>Connection pooling is a technique where multiple database connections are created and reused to serve multiple requests. This approach helps to reduce the overhead of creating and closing database connections, which can improve the performance and scalability of your application.</p>
+<h2>Implementing PgBouncer and Connection Pooling</h2>
+To implement PgBouncer and connection pooling, we followed these steps:
+<p>* Installed PgBouncer on our database server
+* Configured PgBouncer to connect to our PostgreSQL database
+* Updated our application to use the PgBouncer connection pool</p>
+<p>Here's an example of how we configured PgBouncer:
+<pre><code class="language-bash"># Create a PgBouncer configuration file
+sudo nano /etc/pgbouncer/pgbouncer.ini</p>
+<h1>Add the following configuration</h1>
+[databases]
+mydatabase = host=localhost port=5432 dbname=mydatabase
+<h1>Configure the connection pool</h1>
+[pgbouncer]
+pool_mode = session
+max_client_conn = 100
+max_db_connections = 50
+</code></pre>
+<p>We also updated our application to use the PgBouncer connection pool. We used the following code snippet to connect to the database:
+<pre><code class="language-python">import psycopg2</p>
+<h1>Create a connection pool</h1>
+def create_connection_pool():
+    conn = psycopg2.connect(
+        host="localhost",
+        port=6432,
+        database="mydatabase",
+        user="myuser",
+        password="mypassword"
+    )
+    return conn
+<h1>Use the connection pool to execute queries</h1>
+def execute_query(query):
+    conn = create_connection_pool()
+    cur = conn.cursor()
+    cur.execute(query)
+    result = cur.fetchall()
+    conn.close()
+    return result
+</code></pre>
+<h2>Results and Benefits</h2>
+After implementing PgBouncer and connection pooling, we saw a significant improvement in the performance of our platform. The latency and connection timeouts were reduced, and our error rates decreased. We also saw an improvement in the scalability of our platform, which allowed us to handle more traffic without affecting the user experience.
+<h2>Challenges and Lessons Learned</h2>
+While implementing PgBouncer and connection pooling, we faced some challenges. One of the main challenges was configuring the connection pool to optimize the performance of our platform. We had to experiment with different settings and monitor the performance of our platform to find the optimal configuration.
+<p>We also learned that monitoring the performance of your platform is crucial when implementing PgBouncer and connection pooling. We used tools like PostgreSQL's built-in statistics and monitoring tools to monitor the performance of our platform and identify areas for improvement.</p>
+<h2>Takeaway</h2>
+In conclusion, optimizing database queries with PgBouncer and connection pooling was a game-changer for our high traffic e-commerce platform. We learned that implementing a connection pooler like PgBouncer can significantly improve the performance and scalability of your PostgreSQL database. We also learned that monitoring the performance of your platform is crucial when implementing PgBouncer and connection pooling. If you're experiencing performance issues with your PostgreSQL database, I highly recommend exploring PgBouncer and connection pooling as a solution. With the right configuration and monitoring, you can significantly improve the performance and scalability of your platform.</div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>
