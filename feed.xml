@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Cautionary Tale of Avoiding Over-Indexing in a High-Traffic E-commerce Application]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-04-24</pubDate>
+  <description><![CDATA[In this post, I'll share my experience with optimizing database queries using PostgreSQL indexes in a high-traffic e-commerce application. I'll cover the importance of indexing, how to create effective indexes, and the dangers of over-indexing. By the end of this post, you'll know how to strike the right balance between query performance and index maintenance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PgBouncer and Connection Pooling After Migrating from MySQL to PostgreSQL on a High Traffic E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pgbounc.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pgbounc.html</guid>
