@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries in a High-Traffic E-commerce Platform: A Tale of PostgreSQL Indexes, Connection Pooling, and Query Rewriting]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</guid>
+  <pubDate>2026-04-26</pubDate>
+  <description><![CDATA[In this post, I'll share my experience optimizing database queries in a high-traffic e-commerce platform, reducing latency by 70%. You'll learn how to identify bottlenecks, leverage PostgreSQL indexes, implement connection pooling, and rewrite queries for better performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with Query Store: How We Reduced Latency by 30% in Our High-Traffic E-commerce Platform by Replacing Manual Index Tuning with Automated Recommendations]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
