@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with Materialized Views: How We Reduced Our API Latency by 75% in a High-Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-materia.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-materia.html</guid>
+  <pubDate>2026-04-27</pubDate>
+  <description><![CDATA[In this post, we'll explore how materialized views can significantly reduce API latency in high-traffic e-commerce platforms. We'll dive into the details of our own experience with optimizing database queries and share a step-by-step guide on implementing materialized views. By the end of this post, you'll have a clear understanding of how to improve the performance of your own e-commerce platform.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries in a High-Traffic E-commerce Platform: A Tale of PostgreSQL Indexes, Connection Pooling, and Query Rewriting]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</guid>
