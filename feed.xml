@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Migrating Our Legacy Monolith to a Kubernetes-Based Microservices Architecture Using Istio and Envoy for Service Mesh Management and Observability]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-kuber.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-kuber.html</guid>
+  <pubDate>2026-04-28</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of migrating our legacy monolith to a Kubernetes-based microservices architecture using Istio and Envoy for service mesh management and observability. I'll cover the challenges we faced, the solutions we implemented, and the benefits we gained. You'll learn how to apply these lessons to your own migration journey.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with Materialized Views: How We Reduced Our API Latency by 75% in a High-Traffic E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-materia.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-materia.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-500ms-latency-spike-by-.html</guid>
   <pubDate>2026-04-10</pubDate>
   <description><![CDATA[I'll share my experience of replacing a MySQL database cluster with a sharded PostgreSQL setup on AWS Aurora to resolve a 500ms latency spike, including the challenges and benefits of this approach. By the end of this post, you'll understand the key considerations and implementation details for migrating to a scalable and performant database solution. You'll also learn how to apply this knowledge to your own database performance issues.]]></description>
-</item><item>
-  <title><![CDATA[Cicd Pipeline Setup From Scratch]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/cicd-pipeline-setup-from-scratch.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/cicd-pipeline-setup-from-scratch.html</guid>
-  <pubDate>2026-04-10</pubDate>
-  <description><![CDATA[I still remember the first time I had to set up a CI/CD pipeline from scratch - it was a daunting task, to say the least. I was working on a personal project, a small web application, and I wanted to ]]></description>
 </item>
 </channel>
 </rss>
