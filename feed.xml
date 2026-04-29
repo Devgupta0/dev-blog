@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries in a High-Traffic E-commerce Platform: Migrating from MySQL to PostgreSQL with TimescaleDB for Analytical Workloads]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</guid>
+  <pubDate>2026-04-29</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries in a high-traffic e-commerce platform by migrating from MySQL to PostgreSQL with TimescaleDB. I'll cover the challenges we faced, the migration process, and the benefits we gained from using TimescaleDB for analytical workloads. You'll learn how to improve the performance and scalability of your database queries and make data-driven decisions with ease.]]></description>
+</item><item>
   <title><![CDATA[Migrating Our Legacy Monolith to a Kubernetes-Based Microservices Architecture Using Istio and Envoy for Service Mesh Management and Observability]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-kuber.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-kuber.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</guid>
   <pubDate>2026-04-10</pubDate>
   <description><![CDATA[In this post, I'll share my experience with optimizing database deadlocks in a high-concurrency e-commerce platform. I'll explain how I implemented custom locking mechanisms using PostgreSQL Advisory Locks to reduce deadlocks and improve overall system performance. You'll learn how to identify and resolve deadlocks, and how to implement a custom locking mechanism to improve your system's concurrency and scalability.]]></description>
-</item><item>
-  <title><![CDATA[How I Survived a 500ms Latency Spike by Replacing Our MySQL Database Cluster with a Sharded PostgreSQL Setup on AWS Aurora]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-500ms-latency-spike-by-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-500ms-latency-spike-by-.html</guid>
-  <pubDate>2026-04-10</pubDate>
-  <description><![CDATA[I'll share my experience of replacing a MySQL database cluster with a sharded PostgreSQL setup on AWS Aurora to resolve a 500ms latency spike, including the challenges and benefits of this approach. By the end of this post, you'll understand the key considerations and implementation details for migrating to a scalable and performant database solution. You'll also learn how to apply this knowledge to your own database performance issues.]]></description>
 </item>
 </channel>
 </rss>
