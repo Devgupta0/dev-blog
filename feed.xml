@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with Index Hints After a Surprise PostgreSQL Upgrade from 10 to 13 Exposed a 5x Performance Regression in Our Most Critical API Endpoint]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-index-h.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-index-h.html</guid>
+  <pubDate>2026-04-30</pubDate>
+  <description><![CDATA[I recently faced a surprise PostgreSQL upgrade that exposed a 5x performance regression in our most critical API endpoint. In this post, I'll share how I used index hints to optimize database queries and regain performance. You'll learn how to identify and fix similar issues in your own applications.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries in a High-Traffic E-commerce Platform: Migrating from MySQL to PostgreSQL with TimescaleDB for Analytical Workloads]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
   <pubDate>2026-04-11</pubDate>
   <description><![CDATA[In this post, I'll share my experience of migrating our e-commerce platform's database from MySQL to PostgreSQL with TimescaleDB, and the significant performance improvements we achieved. I'll cover the challenges we faced, the solutions we implemented, and the lessons we learned along the way. By the end of this post, you'll have a clear understanding of how to optimize database query performance in your own high-traffic e-commerce platform.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Deadlocks in a High-Concurrency E-commerce Platform by Implementing Custom Locking Mechanisms with PostgreSQL Advisory Locks]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</guid>
-  <pubDate>2026-04-10</pubDate>
-  <description><![CDATA[In this post, I'll share my experience with optimizing database deadlocks in a high-concurrency e-commerce platform. I'll explain how I implemented custom locking mechanisms using PostgreSQL Advisory Locks to reduce deadlocks and improve overall system performance. You'll learn how to identify and resolve deadlocks, and how to implement a custom locking mechanism to improve your system's concurrency and scalability.]]></description>
 </item>
 </channel>
 </rss>
