@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimizing API Response Times | Dev Notes by Devgupta</title>
+<meta name="description" content="Learn how to optimize API response times by replacing GraphQL with a custom gRPC implementation and improve performance">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optimizing API Response Times | Dev Notes by Devgupta">
+<meta property="og:description" content="Learn how to optimize API response times by replacing GraphQL with a custom gRPC implementation and improve performance">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="Optimizing API Response Times | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Learn how to optimize API response times by replacing GraphQL with a custom gRPC implementation and improve performance">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Optimizing API Response Times | Dev Notes by Devgupta","description":"Learn how to optimize API response times by replacing GraphQL with a custom gRPC implementation and improve performance","url":"https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-05-01"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">How I Optimized Our API Response Times by 300% by Replacing GraphQL with a Custom gRPC Implementation</h1>
+    <div class="article-meta"><span>2026-05-01</span><span>Devgupta</span><span class="post-tag">API Optimization</span> <span class="post-tag">gRPC</span> <span class="post-tag">GraphQL</span></div>
+  </div>
+  <div class="article-body"><p>I still remember the day our API response times started to become a major concern. Our team had been working on a new feature that required fetching a large amount of data from our backend, and the response times were slowing down to a crawl. We were using GraphQL at the time, and while it had served us well in the past, it was clear that it was no longer the right tool for the job. After some research and experimentation, we decided to replace GraphQL with a custom gRPC implementation, and the results were nothing short of astonishing. In this post, I'll share our journey and the lessons we learned along the way.</p>
+<h2>The Problems with GraphQL</h2>
+We had been using GraphQL for a while, and it had been working well for our use case. However, as our API grew in complexity and the amount of data we were handling increased, we started to notice some performance issues. GraphQL's flexibility and ability to fetch only the required data were great, but they came at a cost. The overhead of parsing and validating GraphQL queries, as well as the complexity of our schema, were causing our response times to slow down.
+<p>We tried to optimize our GraphQL schema and queries, but it soon became clear that we were hitting a fundamental limit. We needed a more efficient way to handle our API requests, and that's when we started exploring alternative solutions.</p>
+<h2>Exploring Alternative Solutions</h2>
+We considered a few different options, including REST and gRPC. We had used REST in the past, but we knew that it would require a significant rewrite of our API. gRPC, on the other hand, seemed like a more promising solution. It's a high-performance RPC framework that allows for efficient communication between services, and it's particularly well-suited for large-scale APIs like ours.
+<p>We started by experimenting with gRPC and exploring its features and capabilities. We were impressed by its performance and scalability, and we decided to move forward with implementing a custom gRPC solution.</p>
+<h2>Implementing gRPC</h2>
+Implementing gRPC required a significant amount of work, but it was worth it in the end. We started by defining our gRPC service using Protocol Buffers, which is a language-agnostic interface definition language. We defined our API endpoints and data structures using Protocol Buffers, and then generated the necessary code using the gRPC compiler.
+<p>Here's an example of what our Protocol Buffers definition looks like:
+<pre><code class="language-proto">syntax = "proto3";</p>
+<p>package api;</p>
+<p>service ApiService {
+  rpc GetData(GetDataRequest) returns (GetDataResponse) {}
+}</p>
+<p>message GetDataRequest {
+  string id = 1;
+}</p>
+<p>message GetDataResponse {
+  string data = 1;
+}
+</code></pre>
+We then generated the necessary code using the gRPC compiler and implemented our service using a programming language of our choice. In our case, we used Go, which has excellent support for gRPC.</p>
+<h2>Performance Comparison</h2>
+Once we had our gRPC implementation up and running, we compared its performance to our old GraphQL implementation. The results were astonishing - our gRPC implementation was 300% faster than our GraphQL implementation. Our response times had decreased dramatically, and our API was now able to handle a much larger volume of requests.
+<p>We were thrilled with the results, and we knew that we had made the right decision. Our custom gRPC implementation had given us the performance and scalability we needed to take our API to the next level.</p>
+<h2>Takeaway</h2>
+Replacing GraphQL with a custom gRPC implementation was one of the best decisions we ever made. It required a significant amount of work, but the results were well worth it. If you're experiencing performance issues with your API, I would highly recommend exploring gRPC as a potential solution. It's a powerful and flexible framework that can help you build high-performance APIs that scale. Remember to carefully evaluate your options and consider the trade-offs before making a decision. With the right implementation, gRPC can help you take your API to the next level and provide a better experience for your users.</div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>

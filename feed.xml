@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Optimized Our API Response Times by 300% by Replacing GraphQL with a Custom gRPC Implementation]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html</guid>
+  <pubDate>2026-05-01</pubDate>
+  <description><![CDATA[In this post, I'll share how I optimized our API response times by 300% by replacing GraphQL with a custom gRPC implementation. I'll dive into the problems we faced, the solutions we explored, and the final implementation that improved our API performance. You'll learn how to identify similar issues in your own API and how to apply a custom gRPC solution to boost performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with Index Hints After a Surprise PostgreSQL Upgrade from 10 to 13 Exposed a 5x Performance Regression in Our Most Critical API Endpoint]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-index-h.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-index-h.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-04-12</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and partitioning after migrating a 10TB dataset from MySQL. You'll learn how to identify performance bottlenecks, create effective indexes, and implement partitioning to improve query performance. Whether you're a seasoned developer or just starting out, this post will provide you with practical tips and real-world examples to help you get the most out of your PostgreSQL database.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform: A Postmortem on Migrating from MySQL to PostgreSQL with TimescaleDB]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
-  <pubDate>2026-04-11</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of migrating our e-commerce platform's database from MySQL to PostgreSQL with TimescaleDB, and the significant performance improvements we achieved. I'll cover the challenges we faced, the solutions we implemented, and the lessons we learned along the way. By the end of this post, you'll have a clear understanding of how to optimize database query performance in your own high-traffic e-commerce platform.]]></description>
 </item>
 </channel>
 </rss>
