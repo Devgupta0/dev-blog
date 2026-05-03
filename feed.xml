@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After a Nightmare Migration from MySQL to PostgreSQL]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-03</pubDate>
+  <description><![CDATA[In this post, I'll share my experience migrating a database from MySQL to PostgreSQL and how I optimized queries using indexes and partitioning. You'll learn how to identify slow queries, create effective indexes, and implement partitioning to improve database performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with a Homegrown Query Analyzer Led to a 300% Reduction in Latency on Our High-Traffic Ecommerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-homeg.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-homeg.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
   <pubDate>2026-04-14</pubDate>
   <description><![CDATA[In this post, I'll share my experience of migrating our e-commerce platform from Oracle to PostgreSQL and reducing latency by 30% using Query Store. I'll cover the challenges we faced, the benefits of Query Store, and provide a step-by-step guide on how to implement it. Whether you're a seasoned developer or just starting out, this post will provide valuable insights into optimizing database queries for high-traffic applications.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform by Replacing ORM with Raw SQL and Connection Pooling]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
-  <pubDate>2026-04-13</pubDate>
-  <description><![CDATA[Learn how to optimize database query performance in a high-traffic e-commerce platform by replacing ORM with raw SQL and implementing connection pooling. Discover the benefits and trade-offs of this approach and how it can significantly improve the performance of your application. Get a step-by-step guide on how to implement this optimization technique.]]></description>
 </item>
 </channel>
 </rss>
