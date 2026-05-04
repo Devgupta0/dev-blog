@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I replaced Apache Kafka with Amazon Kinesis to reduce our serverless data processing latency by 30%]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
+  <pubDate>2026-05-04</pubDate>
+  <description><![CDATA[Learn how to replace Apache Kafka with Amazon Kinesis to reduce serverless data processing latency. I'll share my personal experience and the technical details of the migration. By the end of this post, you'll know how to integrate Amazon Kinesis with your serverless application and improve its performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After a Nightmare Migration from MySQL to PostgreSQL]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
   <pubDate>2026-04-15</pubDate>
   <description><![CDATA[Learn how to optimize database query performance in a high-traffic e-commerce platform by migrating from MongoDB to PostgreSQL for product catalog management. Discover the benefits of using PostgreSQL and how to implement it in your application. Get tips on handling large datasets and improving query performance.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with Query Store: How I Reduced Latency by 30% in Our High-Traffic E-commerce Platform by Migrating from Oracle to PostgreSQL]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
-  <pubDate>2026-04-14</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of migrating our e-commerce platform from Oracle to PostgreSQL and reducing latency by 30% using Query Store. I'll cover the challenges we faced, the benefits of Query Store, and provide a step-by-step guide on how to implement it. Whether you're a seasoned developer or just starting out, this post will provide valuable insights into optimizing database queries for high-traffic applications.]]></description>
 </item>
 </channel>
 </rss>
