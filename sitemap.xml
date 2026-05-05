@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://Devgupta0.github.io/dev-blog/</loc></url>
+  <url><loc>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</loc><lastmod>2026-05-05</lastmod></url>
   <url><loc>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</loc><lastmod>2026-05-04</lastmod></url>
   <url><loc>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</loc><lastmod>2026-05-03</lastmod></url>
   <url><loc>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-homeg.html</loc><lastmod>2026-05-02</lastmod></url>

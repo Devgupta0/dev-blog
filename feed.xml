@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After Migrating from MongoDB to a Relational Database]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-05</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and partitioning after migrating from MongoDB to a relational database. You'll learn how to identify performance bottlenecks, create effective indexes, and implement partitioning to improve query performance. By the end of this post, you'll be able to apply these techniques to your own PostgreSQL database to achieve significant performance gains.]]></description>
+</item><item>
   <title><![CDATA[How I replaced Apache Kafka with Amazon Kinesis to reduce our serverless data processing latency by 30%]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-04-16</pubDate>
   <description><![CDATA[In this post, I'll share a case study on optimizing database queries using PostgreSQL partitioning, which reduced latency by 90% in our high-traffic e-commerce application. You'll learn how to identify the need for partitioning, choose the right partitioning strategy, and implement it in your own application. By the end of this post, you'll have a solid understanding of how to improve the performance and scalability of your database-driven application.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform by Replacing MongoDB with PostgreSQL for Product Catalog Management]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
-  <pubDate>2026-04-15</pubDate>
-  <description><![CDATA[Learn how to optimize database query performance in a high-traffic e-commerce platform by migrating from MongoDB to PostgreSQL for product catalog management. Discover the benefits of using PostgreSQL and how to implement it in your application. Get tips on handling large datasets and improving query performance.]]></description>
 </item>
 </channel>
 </rss>
