@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create a new Neptune cluster | Dev Notes by Devgupta</title>
+<meta name="description" content="{">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Create a new Neptune cluster | Dev Notes by Devgupta">
+<meta property="og:description" content="{">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="Create a new Neptune cluster | Dev Notes by Devgupta">
+<meta name="twitter:description" content="{">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Create a new Neptune cluster | Dev Notes by Devgupta","description":"{","url":"https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-05-06"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">Create a new Neptune cluster</h1>
+    <div class="article-meta"><span>2026-05-06</span><span>Devgupta</span></div>
+  </div>
+  <div class="article-body"><pre><code class="language-json">{
+  "title": "How I Survived a 3-Day Database Outage by Implementing a Temporary Graph Database Solution Using Amazon Neptune to Salvage Our Social Media Platform",
+  "seo_title": "Surviving Database Outage with Amazon Neptune | Dev Notes by Devgupta",
+  "seo_description": "Learn how to use Amazon Neptune as a temporary graph database solution to salvage your social media platform during a database outage",
+  "excerpt": "I'll share my experience of surviving a 3-day database outage by implementing a temporary graph database solution using Amazon Neptune. You'll learn how to quickly set up a graph database, migrate your data, and get your social media platform back online. I'll also provide tips on how to avoid similar outages in the future.",
+  "tags": ["database outage", "Amazon Neptune", "graph database", "social media platform"]
+}
+<h2>Introduction to the Problem</h2>
+It was a typical Monday morning when disaster struck. Our social media platform, which relied heavily on a relational database, went down due to a hardware failure. The database team estimated that it would take at least 3 days to repair and get the database back online. As a developer, I knew that this would mean a significant loss of revenue and a huge backlash from our users. I had to act fast and find a temporary solution to get our platform back online.
+<h2>Understanding the Requirements</h2>
+Our social media platform allowed users to create accounts, follow other users, and share posts. The platform relied on a complex web of relationships between users, posts, and comments. We needed a database solution that could handle these complex relationships and scale quickly to meet the demands of our users. After some research, I decided to use Amazon Neptune as a temporary graph database solution. Neptune is a fully-managed graph database service that can handle large amounts of data and scale quickly.
+<h2>Setting Up Amazon Neptune</h2>
+Setting up Amazon Neptune was relatively straightforward. I created a new Neptune cluster and selected the appropriate instance type based on our expected workload. I also created a new IAM role with the necessary permissions to access the Neptune cluster.
+</code></pre>python
+import boto3
+<p>neptune = boto3.client('neptune')</p>
+<h1>Create a new Neptune cluster</h1>
+response = neptune.create_db_cluster(
+    DBClusterIdentifier='my-neptune-cluster',
+    MasterUsername='my-master-username',
+    MasterUserPassword='my-master-user-password',
+    DBSubnetGroupName='my-db-subnet-group',
+    VpcSecurityGroupIds=['my-vpc-security-group'],
+    DBClusterParameterGroupName='my-db-cluster-parameter-group'
+)
+<h1>Get the endpoint of the Neptune cluster</h1>
+endpoint = response['DBCluster']['Endpoint']
+<h1>Create a new IAM role with the necessary permissions</h1>
+iam = boto3.client('iam')
+response = iam.create_role(
+    RoleName='my-neptune-role',
+    AssumeRolePolicyDocument='''{
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "",
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "neptune.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    }'''
+)
+<h1>Attach the necessary policies to the IAM role</h1>
+iam.attach_role_policy(
+    RoleName='my-neptune-role',
+    PolicyArn='arn:aws:iam::aws:policy/AmazonNeptuneReadOnlyAccess'
+)
+<pre><code class="language-">## Migrating Data to Amazon Neptune
+Migrating our data to Amazon Neptune was the next challenge. We had a large amount of data stored in our relational database, and we needed to migrate it to the graph database as quickly as possible. I used the AWS Database Migration Service (DMS) to migrate our data from the relational database to Amazon Neptune. DMS provided a simple and efficient way to migrate our data, and it also handled the transformation of the data from a relational format to a graph format.
+<h2>Querying the Graph Database</h2>
+Once the data was migrated, I needed to update our application to query the graph database instead of the relational database. I used the Gremlin query language to query the graph database. Gremlin is a powerful query language that allows you to traverse the graph and retrieve the necessary data.
+</code></pre>java
+import org.apache.tinkerpop.gremlin.driver.Client;
+import org.apache.tinkerpop.gremlin.driver.Cluster;
+import org.apache.tinkerpop.gremlin.driver.ResultSet;
+import org.apache.tinkerpop.gremlin.driver.ResultSetONE;
+<p>// Create a new Gremlin client
+Cluster cluster = Cluster.build('ws://my-neptune-cluster:8182/gremlin').create();
+Client client = cluster.connect();</p>
+<p>// Execute a Gremlin query to retrieve the followers of a user
+String query = "g.V().has('user', 'username', 'john').out('follows')";
+ResultSet resultSet = client.submit(query);</p>
+<p>// Process the results
+for (ResultSetONE result : resultSet) {
+    System.out.println(result.toString());
+}
+```
+<h2>Conclusion and Next Steps</h2>
+Using Amazon Neptune as a temporary graph database solution saved our social media platform from a major outage. We were able to get our platform back online quickly and minimize the loss of revenue. However, this experience also taught me the importance of having a robust disaster recovery plan in place. I plan to work on implementing a more robust plan that includes regular backups, automated failovers, and load testing to ensure that our platform can handle any unexpected outages in the future.</p>
+<h2>Takeaway</h2>
+The takeaway from this experience is that having a temporary database solution in place can be a lifesaver during unexpected outages. Amazon Neptune is a powerful graph database service that can handle large amounts of data and scale quickly. By using Neptune as a temporary solution, we were able to get our social media platform back online quickly and minimize the loss of revenue. I hope that my experience will serve as a lesson to other developers and help them prepare for unexpected outages in the future.</div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>

@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Create a new Neptune cluster]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</guid>
+  <pubDate>2026-05-06</pubDate>
+  <description><![CDATA[{]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After Migrating from MongoDB to a Relational Database]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-04-17</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and partitioning after migrating from MongoDB to a relational database. I'll cover the challenges I faced, the solutions I found, and the results I achieved. By the end of this post, you'll learn how to improve the performance of your database queries using indexes and partitioning.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Partitioning: A Case Study of Reducing Latency by 90% in a High-Traffic E-commerce Application]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-04-16</pubDate>
-  <description><![CDATA[In this post, I'll share a case study on optimizing database queries using PostgreSQL partitioning, which reduced latency by 90% in our high-traffic e-commerce application. You'll learn how to identify the need for partitioning, choose the right partitioning strategy, and implement it in your own application. By the end of this post, you'll have a solid understanding of how to improve the performance and scalability of your database-driven application.]]></description>
 </item>
 </channel>
 </rss>
