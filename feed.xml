@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Cautionary Tale of How I Accidentally Doubled Our Server Load by Misusing GIN Indices]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-07</pubDate>
+  <description><![CDATA[In this post, I'll share a personal story of how I accidentally doubled our server load by misusing GIN indices in PostgreSQL, and provide tips on how to optimize database queries using indexes. You'll learn how to identify and fix common indexing mistakes, and how to use PostgreSQL's built-in tools to analyze and improve query performance.]]></description>
+</item><item>
   <title><![CDATA[Create a new Neptune cluster]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-3am-elasticsearch-cluster-fa.html</guid>
   <pubDate>2026-04-18</pubDate>
   <description><![CDATA[In this post, I'll share my experience of debugging a 3AM Elasticsearch cluster failure, caused by a misconfigured JVM heap size, and how we implemented a custom monitoring solution using Prometheus and Grafana to prevent it from happening again. You'll learn how to identify and fix similar issues in your own Elasticsearch cluster. We'll also cover the implementation of a custom monitoring solution to ensure the health and performance of your cluster.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After Migrating from MongoDB to Relational Database]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-04-17</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and partitioning after migrating from MongoDB to a relational database. I'll cover the challenges I faced, the solutions I found, and the results I achieved. By the end of this post, you'll learn how to improve the performance of your database queries using indexes and partitioning.]]></description>
 </item>
 </channel>
 </rss>
