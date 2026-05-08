@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Partitioning: A 5x Performance Boost in Our High-Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-08</pubDate>
+  <description><![CDATA[In this post, we'll explore how we optimized our database queries using PostgreSQL partitioning, resulting in a 5x performance boost. We'll dive into the challenges we faced, the solution we implemented, and the benefits we gained. You'll learn how to apply this technique to your own high-traffic e-commerce platform.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Cautionary Tale of How I Accidentally Doubled Our Server Load by Misusing GIN Indices]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-n+1-query-issue-i.html</guid>
   <pubDate>2026-04-19</pubDate>
   <description><![CDATA[Recently, we migrated our e-commerce platform from Hibernate to Spring Data JPA, but soon after, we encountered a mysterious N+1 query issue that significantly impacted performance. In this post, I'll share how I debugged and resolved the issue. You'll learn how to identify and fix N+1 query problems in your own Spring Data JPA applications.]]></description>
-</item><item>
-  <title><![CDATA[Debugging a 3AM Elasticsearch Cluster Failure that was Caused by a Misconfigured JVM Heap Size and how we Implemented a Custom Monitoring Solution using Prometheus and Grafana to Prevent it from Happening Again]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/debugging-a-3am-elasticsearch-cluster-fa.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-3am-elasticsearch-cluster-fa.html</guid>
-  <pubDate>2026-04-18</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of debugging a 3AM Elasticsearch cluster failure, caused by a misconfigured JVM heap size, and how we implemented a custom monitoring solution using Prometheus and Grafana to prevent it from happening again. You'll learn how to identify and fix similar issues in your own Elasticsearch cluster. We'll also cover the implementation of a custom monitoring solution to ensure the health and performance of your cluster.]]></description>
 </item>
 </channel>
 </rss>
