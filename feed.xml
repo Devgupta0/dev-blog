@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Case Study of Reducing Latency by 90% in a High-Traffic E-commerce Application]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-09</pubDate>
+  <description><![CDATA[In this post, I'll share a real-world case study of how I optimized database queries using PostgreSQL indexes, reducing latency by 90% in a high-traffic e-commerce application. You'll learn how to identify performance bottlenecks, create effective indexes, and monitor query performance. By the end of this post, you'll be equipped with the knowledge to significantly improve the performance of your own database-driven applications.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Partitioning: A 5x Performance Boost in Our High-Traffic E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pg_stat.html</guid>
   <pubDate>2026-04-20</pubDate>
   <description><![CDATA[In this post, I'll share a personal story of how I identified and resolved our largest production bottleneck using pg_stat_statements. You'll learn how to analyze database query performance, identify bottlenecks, and optimize queries for better performance. By the end of this post, you'll have a clear understanding of how to use pg_stat_statements to optimize your database queries and improve overall system performance.]]></description>
-</item><item>
-  <title><![CDATA[Debugging a Mysterious N+1 Query Issue in Our E-commerce Platform After Migrating from Hibernate to Spring Data JPA]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-n+1-query-issue-i.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-n+1-query-issue-i.html</guid>
-  <pubDate>2026-04-19</pubDate>
-  <description><![CDATA[Recently, we migrated our e-commerce platform from Hibernate to Spring Data JPA, but soon after, we encountered a mysterious N+1 query issue that significantly impacted performance. In this post, I'll share how I debugged and resolved the issue. You'll learn how to identify and fix N+1 query problems in your own Spring Data JPA applications.]]></description>
 </item>
 </channel>
 </rss>
