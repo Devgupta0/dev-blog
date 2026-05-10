@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Query Rewriting Saved Our API from a 500ms Latency Bottleneck]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-10</pubDate>
+  <description><![CDATA[In this post, I'll share my experience with optimizing database queries to reduce API latency. I'll cover how PostgreSQL indexes and query rewriting can help, and provide a step-by-step guide on how to implement these optimizations. By the end of this post, you'll know how to identify and fix common query performance issues.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Case Study of Reducing Latency by 90% in a High-Traffic E-commerce Application]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-index-h.html</guid>
   <pubDate>2026-04-21</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database queries with index hints after migrating our e-commerce platform from PostgreSQL to MySQL. You'll learn how to identify slow queries, create effective index hints, and improve the performance of your database. Whether you're a seasoned developer or just starting out, this post will provide you with valuable insights and practical tips to optimize your database queries.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with pg_stat_statements: A Postmortem of Our Largest Production Bottleneck]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pg_stat.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pg_stat.html</guid>
-  <pubDate>2026-04-20</pubDate>
-  <description><![CDATA[In this post, I'll share a personal story of how I identified and resolved our largest production bottleneck using pg_stat_statements. You'll learn how to analyze database query performance, identify bottlenecks, and optimize queries for better performance. By the end of this post, you'll have a clear understanding of how to use pg_stat_statements to optimize your database queries and improve overall system performance.]]></description>
 </item>
 </channel>
 </rss>
