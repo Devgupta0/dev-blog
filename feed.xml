@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: How I Reduced Our API Latency by 300% with a Single Query Rewrite]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-12</pubDate>
+  <description><![CDATA[In this post, I'll share a real-life experience of optimizing database queries with PostgreSQL indexes, which resulted in a 300% reduction in API latency. You'll learn how to identify performance bottlenecks, rewrite inefficient queries, and leverage indexes to improve query performance. By the end of this post, you'll have a solid understanding of how to optimize your database queries for better performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Histograms After Migrating from MySQL to PostgreSQL]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pgbounc.html</guid>
   <pubDate>2026-04-23</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PgBouncer and connection pooling after migrating our high traffic e-commerce platform from MySQL to PostgreSQL. I'll cover the challenges we faced, the solutions we implemented, and the results we achieved. You'll learn how to improve the performance and scalability of your PostgreSQL database.]]></description>
-</item><item>
-  <title><![CDATA[patroni.yaml]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</guid>
-  <pubDate>2026-04-22</pubDate>
-  <description><![CDATA[{]]></description>
 </item>
 </channel>
 </rss>
