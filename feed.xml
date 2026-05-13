@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Redis Cache after Migrating from MongoDB to a Relational Database]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-13</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries after migrating from MongoDB to a relational database. You'll learn how to use PostgreSQL indexes and Redis cache to improve query performance. I'll also provide code examples and tips for implementing these optimizations in your own applications.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: How I Reduced Our API Latency by 300% with a Single Query Rewrite]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-04-24</pubDate>
   <description><![CDATA[In this post, I'll share my experience with optimizing database queries using PostgreSQL indexes in a high-traffic e-commerce application. I'll cover the importance of indexing, how to create effective indexes, and the dangers of over-indexing. By the end of this post, you'll know how to strike the right balance between query performance and index maintenance.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PgBouncer and Connection Pooling After Migrating from MySQL to PostgreSQL on a High Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pgbounc.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pgbounc.html</guid>
-  <pubDate>2026-04-23</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PgBouncer and connection pooling after migrating our high traffic e-commerce platform from MySQL to PostgreSQL. I'll cover the challenges we faced, the solutions we implemented, and the results we achieved. You'll learn how to improve the performance and scalability of your PostgreSQL database.]]></description>
 </item>
 </channel>
 </rss>
