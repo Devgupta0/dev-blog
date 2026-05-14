@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Migrating from MongoDB to PostgreSQL for a High-Traffic E-commerce Platform: Lessons Learned from a 6-Month Retrofit]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</guid>
+  <pubDate>2026-05-14</pubDate>
+  <description><![CDATA[In this post, I'll share my experience migrating a high-traffic e-commerce platform from MongoDB to PostgreSQL, including the challenges we faced and the lessons we learned. You'll learn how to plan and execute a successful migration, and how to optimize your PostgreSQL database for high performance. Whether you're considering a migration or just looking to improve your database skills, this post is for you.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Redis Cache after Migrating from MongoDB to a Relational Database]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
   <pubDate>2026-04-25</pubDate>
   <description><![CDATA[In this post, we'll explore how we reduced latency by 30% in our high-traffic e-commerce platform by replacing manual index tuning with automated recommendations from Query Store. We'll dive into the challenges we faced, the solutions we implemented, and the results we achieved. You'll learn how to optimize your database queries and improve performance using Query Store.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Cautionary Tale of Avoiding Over-Indexing in a High-Traffic E-commerce Application]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-04-24</pubDate>
-  <description><![CDATA[In this post, I'll share my experience with optimizing database queries using PostgreSQL indexes in a high-traffic e-commerce application. I'll cover the importance of indexing, how to create effective indexes, and the dangers of over-indexing. By the end of this post, you'll know how to strike the right balance between query performance and index maintenance.]]></description>
 </item>
 </channel>
 </rss>

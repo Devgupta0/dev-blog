@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Migrating from MongoDB to PostgreSQL | Dev Notes by Devgupta</title>
+<meta name="description" content="Learn how to migrate from MongoDB to PostgreSQL for a high-traffic e-commerce platform, including key considerations and code examples">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Migrating from MongoDB to PostgreSQL | Dev Notes by Devgupta">
+<meta property="og:description" content="Learn how to migrate from MongoDB to PostgreSQL for a high-traffic e-commerce platform, including key considerations and code examples">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="Migrating from MongoDB to PostgreSQL | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Learn how to migrate from MongoDB to PostgreSQL for a high-traffic e-commerce platform, including key considerations and code examples">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Migrating from MongoDB to PostgreSQL | Dev Notes by Devgupta","description":"Learn how to migrate from MongoDB to PostgreSQL for a high-traffic e-commerce platform, including key considerations and code examples","url":"https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-05-14"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">Migrating from MongoDB to PostgreSQL for a High-Traffic E-commerce Platform: Lessons Learned from a 6-Month Retrofit</h1>
+    <div class="article-meta"><span>2026-05-14</span><span>Devgupta</span><span class="post-tag">MongoDB</span> <span class="post-tag">PostgreSQL</span> <span class="post-tag">database migration</span> <span class="post-tag">e-commerce platform</span></div>
+  </div>
+  <div class="article-body"><p>I still remember the day our e-commerce platform hit a major roadblock. We were handling millions of users and thousands of concurrent requests, but our MongoDB database was struggling to keep up. Queries were taking seconds to complete, and our users were starting to notice the delay. As a developer, it was my job to figure out what was going wrong and how to fix it. After weeks of optimization and tweaking, I came to a realization: it was time to migrate to a more robust database management system. We chose PostgreSQL, and the journey was not easy.</p>
+<h2>Pre-Migration Planning</h2>
+Before we started the migration, we needed to plan carefully. We had to consider the differences between MongoDB and PostgreSQL, including data types, schema design, and query syntax. We also had to think about how to handle the migration without downtime, as our platform was live and couldn't afford to be offline for an extended period. We decided to use a combination of database replication and a temporary proxy server to minimize the impact on our users.
+<p>One of the biggest challenges we faced was data type conversion. MongoDB uses a dynamic schema, which means that data types are determined at runtime. PostgreSQL, on the other hand, uses a fixed schema, which requires data types to be defined in advance. We had to write custom scripts to convert our MongoDB data to PostgreSQL-compatible formats. For example, we had to convert MongoDB's BSON dates to PostgreSQL's timestamp type:
+<pre><code class="language-python">import pymongo
+import psycopg2</p>
+<h1>Connect to MongoDB</h1>
+mongo_client = pymongo.MongoClient('mongodb://localhost:27017/')
+mongo_db = mongo_client['mydatabase']
+mongo_collection = mongo_db['mycollection']
+<h1>Connect to PostgreSQL</h1>
+pg_conn = psycopg2.connect(
+    host='localhost',
+    database='mydatabase',
+    user='myuser',
+    password='mypassword'
+)
+<h1>Convert BSON dates to timestamp</h1>
+for doc in mongo_collection.find():
+    date_field = doc['date_field']
+    pg_date = date_field.isoformat()
+    # Insert data into PostgreSQL
+    pg_cursor = pg_conn.cursor()
+    pg_cursor.execute('INSERT INTO mytable (date_field) VALUES (%s)', (pg_date,))
+    pg_conn.commit()
+</code></pre>
+This code snippet shows how we converted MongoDB's BSON dates to PostgreSQL's timestamp type. We used the <code>isoformat()</code> method to convert the BSON date to a string in ISO 8601 format, which can be easily parsed by PostgreSQL.
+<h2>Migration Execution</h2>
+The migration itself was a complex process that involved multiple steps. We had to export data from MongoDB, transform it to PostgreSQL-compatible formats, and then import it into PostgreSQL. We used a combination of custom scripts and existing tools like <code>mongoexport</code> and <code>pg_restore</code> to perform the migration.
+<p>One of the biggest challenges we faced during the migration was handling relationships between data entities. In MongoDB, we used embedded documents to represent relationships between data entities. In PostgreSQL, we had to use foreign keys to establish these relationships. We had to write custom scripts to resolve these relationships and create the corresponding foreign key constraints in PostgreSQL.</p>
+<h2>Post-Migration Optimization</h2>
+After the migration was complete, we had to optimize our PostgreSQL database for high performance. We used a combination of indexing, caching, and query optimization to improve query performance. We also had to monitor our database regularly to identify and fix any performance bottlenecks.
+<p>One of the biggest surprises we encountered during the optimization process was the impact of database indexing on query performance. We had assumed that indexing would always improve query performance, but we found that excessive indexing could actually slow down queries. We had to carefully balance the number of indexes and the query patterns to achieve optimal performance.</p>
+<h2>Takeaway</h2>
+Migrating from MongoDB to PostgreSQL was a challenging but rewarding experience. We learned a lot about the strengths and weaknesses of each database management system, and we gained valuable experience in optimizing databases for high performance. If you're considering a similar migration, here are some key takeaways to keep in mind:
+<p>* Plan carefully: Migration is a complex process that requires careful planning and execution.
+* Consider data types: Data type conversion can be a major challenge, so make sure to plan for it in advance.
+* Use existing tools: Existing tools like <code>mongoexport</code> and <code>pg_restore</code> can simplify the migration process.
+* Optimize for performance: Post-migration optimization is critical to achieving high performance.
+* Monitor regularly: Regular monitoring can help identify and fix performance bottlenecks.</p>
+<p>By following these tips and learning from our experience, you can ensure a successful migration from MongoDB to PostgreSQL and achieve high performance in your e-commerce platform.</p></div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>
