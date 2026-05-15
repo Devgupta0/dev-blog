@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Lessons Learned Story from Reducing Our API Latency by 75%]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-15</pubDate>
+  <description><![CDATA[In this post, we'll explore how PostgreSQL indexes can drastically improve database query performance, reducing API latency and enhancing overall user experience. I'll share a personal story of how our team tackled a similar issue, and provide actionable tips on implementing indexes effectively. By the end of this article, you'll have a solid understanding of how to optimize your database queries with PostgreSQL indexes.]]></description>
+</item><item>
   <title><![CDATA[Migrating from MongoDB to PostgreSQL for a High-Traffic E-commerce Platform: Lessons Learned from a 6-Month Retrofit]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</guid>
   <pubDate>2026-04-26</pubDate>
   <description><![CDATA[In this post, I'll share my experience optimizing database queries in a high-traffic e-commerce platform, reducing latency by 70%. You'll learn how to identify bottlenecks, leverage PostgreSQL indexes, implement connection pooling, and rewrite queries for better performance.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with Query Store: How We Reduced Latency by 30% in Our High-Traffic E-commerce Platform by Replacing Manual Index Tuning with Automated Recommendations]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
-  <pubDate>2026-04-25</pubDate>
-  <description><![CDATA[In this post, we'll explore how we reduced latency by 30% in our high-traffic e-commerce platform by replacing manual index tuning with automated recommendations from Query Store. We'll dive into the challenges we faced, the solutions we implemented, and the results we achieved. You'll learn how to optimize your database queries and improve performance using Query Store.]]></description>
 </item>
 </channel>
 </rss>
