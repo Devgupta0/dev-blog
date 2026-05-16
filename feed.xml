@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with Postgres Window Functions: How We Reduced Latency by 75% in Our High-Traffic Analytics Dashboard]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-16</pubDate>
+  <description><![CDATA[In this post, we'll explore how we used Postgres window functions to optimize database queries and reduce latency by 75% in our high-traffic analytics dashboard. We'll dive into the technical details and provide examples of how to apply these techniques to your own applications. By the end of this post, you'll have a solid understanding of how to leverage Postgres window functions to improve the performance of your database-driven applications.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Lessons Learned Story from Reducing Our API Latency by 75%]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-materia.html</guid>
   <pubDate>2026-04-27</pubDate>
   <description><![CDATA[In this post, we'll explore how materialized views can significantly reduce API latency in high-traffic e-commerce platforms. We'll dive into the details of our own experience with optimizing database queries and share a step-by-step guide on implementing materialized views. By the end of this post, you'll have a clear understanding of how to improve the performance of your own e-commerce platform.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries in a High-Traffic E-commerce Platform: A Tale of PostgreSQL Indexes, Connection Pooling, and Query Rewriting]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</guid>
-  <pubDate>2026-04-26</pubDate>
-  <description><![CDATA[In this post, I'll share my experience optimizing database queries in a high-traffic e-commerce platform, reducing latency by 70%. You'll learn how to identify bottlenecks, leverage PostgreSQL indexes, implement connection pooling, and rewrite queries for better performance.]]></description>
 </item>
 </channel>
 </rss>
