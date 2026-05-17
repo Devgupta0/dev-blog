@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Query Performance by Replacing ORM with a Custom SQL Generator in a High-Traffic E-commerce Application]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</guid>
+  <pubDate>2026-05-17</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database query performance in a high-traffic e-commerce application by replacing an Object-Relational Mapping (ORM) tool with a custom SQL generator. I'll discuss the challenges I faced, the solutions I implemented, and the results I achieved. By the end of this post, you'll learn how to identify performance bottlenecks in your own application and optimize database queries for better performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with Postgres Window Functions: How We Reduced Latency by 75% in Our High-Traffic Analytics Dashboard]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-kuber.html</guid>
   <pubDate>2026-04-28</pubDate>
   <description><![CDATA[In this post, I'll share my experience of migrating our legacy monolith to a Kubernetes-based microservices architecture using Istio and Envoy for service mesh management and observability. I'll cover the challenges we faced, the solutions we implemented, and the benefits we gained. You'll learn how to apply these lessons to your own migration journey.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with Materialized Views: How We Reduced Our API Latency by 75% in a High-Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-materia.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-materia.html</guid>
-  <pubDate>2026-04-27</pubDate>
-  <description><![CDATA[In this post, we'll explore how materialized views can significantly reduce API latency in high-traffic e-commerce platforms. We'll dive into the details of our own experience with optimizing database queries and share a step-by-step guide on implementing materialized views. By the end of this post, you'll have a clear understanding of how to improve the performance of your own e-commerce platform.]]></description>
 </item>
 </channel>
 </rss>
