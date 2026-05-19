@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes After Migrating from MySQL to PostgreSQL on a High Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-19</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes after migrating our e-commerce platform from MySQL to PostgreSQL. You'll learn how to identify slow queries, create effective indexes, and improve the overall performance of your database. By the end of this article, you'll have a solid understanding of how to optimize your PostgreSQL database for high traffic e-commerce platforms.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Query Planning After Migrating from MySQL to PostgreSQL on a High Traffic E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-index-h.html</guid>
   <pubDate>2026-04-30</pubDate>
   <description><![CDATA[I recently faced a surprise PostgreSQL upgrade that exposed a 5x performance regression in our most critical API endpoint. In this post, I'll share how I used index hints to optimize database queries and regain performance. You'll learn how to identify and fix similar issues in your own applications.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries in a High-Traffic E-commerce Platform: Migrating from MySQL to PostgreSQL with TimescaleDB for Analytical Workloads]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</guid>
-  <pubDate>2026-04-29</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database queries in a high-traffic e-commerce platform by migrating from MySQL to PostgreSQL with TimescaleDB. I'll cover the challenges we faced, the migration process, and the benefits we gained from using TimescaleDB for analytical workloads. You'll learn how to improve the performance and scalability of your database queries and make data-driven decisions with ease.]]></description>
 </item>
 </channel>
 </rss>
