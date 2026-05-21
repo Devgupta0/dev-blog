@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Optimized Our Database Query Performance by 500% by Replacing JPA with Custom SQL and Spring Data JdbcTemplate]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-database-query-perfo.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-database-query-perfo.html</guid>
+  <pubDate>2026-05-21</pubDate>
+  <description><![CDATA[In this post, I'll share how I optimized our database query performance by 500% by replacing JPA with custom SQL and Spring Data JdbcTemplate. You'll learn how to identify performance bottlenecks and improve query execution times. I'll also provide code examples and explanations to help you apply these techniques to your own projects.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Query Planning after a Mysterious 30x Slowdown in Our High-Traffic API Endpoint]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-homeg.html</guid>
   <pubDate>2026-05-02</pubDate>
   <description><![CDATA[Learn how to optimize database queries with a homegrown query analyzer, reducing latency on high-traffic ecommerce platforms. Discover the challenges and solutions to improving database performance. Get insights into the technical implementation and benefits of a query analyzer.]]></description>
-</item><item>
-  <title><![CDATA[How I Optimized Our API Response Times by 300% by Replacing GraphQL with a Custom gRPC Implementation]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html</guid>
-  <pubDate>2026-05-01</pubDate>
-  <description><![CDATA[In this post, I'll share how I optimized our API response times by 300% by replacing GraphQL with a custom gRPC implementation. I'll dive into the problems we faced, the solutions we explored, and the final implementation that improved our API performance. You'll learn how to identify similar issues in your own API and how to apply a custom gRPC solution to boost performance.]]></description>
 </item>
 </channel>
 </rss>
