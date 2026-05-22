@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimizing Database Queries with GraphQL | Dev Notes by Devgupta</title>
+<meta name="description" content="Learn how to optimize database queries with custom GraphQL resolvers after migrating from REST to Apollo Server in high-traffic e-commerce applications">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-custo.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optimizing Database Queries with GraphQL | Dev Notes by Devgupta">
+<meta property="og:description" content="Learn how to optimize database queries with custom GraphQL resolvers after migrating from REST to Apollo Server in high-traffic e-commerce applications">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-custo.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="Optimizing Database Queries with GraphQL | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Learn how to optimize database queries with custom GraphQL resolvers after migrating from REST to Apollo Server in high-traffic e-commerce applications">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Optimizing Database Queries with GraphQL | Dev Notes by Devgupta","description":"Learn how to optimize database queries with custom GraphQL resolvers after migrating from REST to Apollo Server in high-traffic e-commerce applications","url":"https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-custo.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-05-22"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">Optimizing Database Queries with a Custom GraphQL Resolver after Migrating from REST to Apollo Server in a High-Traffic E-commerce Application</h1>
+    <div class="article-meta"><span>2026-05-22</span><span>Devgupta</span><span class="post-tag">GraphQL</span> <span class="post-tag">Apollo Server</span> <span class="post-tag">Database Optimization</span> <span class="post-tag">E-commerce Application</span></div>
+  </div>
+  <div class="article-body"><p>I still remember the day we decided to migrate our high-traffic e-commerce application from a REST-based API to GraphQL using Apollo Server. It was a bold move, but we knew it was necessary to improve the performance and scalability of our application. As a developer, I was excited to dive into the world of GraphQL and explore its capabilities. However, I soon realized that optimizing database queries would be a major challenge.</p>
+<h2>The Problem with REST</h2>
+Our REST-based API was built using a traditional CRUD (Create, Read, Update, Delete) approach, where each endpoint would fetch a specific set of data from the database. As our application grew in complexity, the number of database queries increased exponentially, leading to performance issues and delayed response times. We knew that GraphQL would help us reduce the number of queries, but we didn't anticipate the complexity of optimizing database queries for our custom resolvers.
+<h2>Introduction to GraphQL and Apollo Server</h2>
+For those who are new to GraphQL, it's a query language for APIs that allows clients to specify exactly what data they need, reducing the amount of data transferred over the network. Apollo Server is a popular implementation of GraphQL that provides a set of tools and libraries to build scalable and performant GraphQL APIs. When we migrated to Apollo Server, we were impressed by its ease of use and flexibility. However, we soon realized that optimizing database queries would require a deeper understanding of GraphQL resolvers and their interaction with the database.
+<h2>Optimizing Database Queries with Custom Resolvers</h2>
+To optimize database queries, we needed to create custom resolvers that would fetch data from the database in an efficient manner. A resolver is a function that runs on the server to fetch the data for a specific field in a GraphQL query. By default, Apollo Server provides a set of built-in resolvers that can handle simple queries, but for complex queries, custom resolvers are necessary. We started by identifying the most frequently accessed fields in our GraphQL schema and creating custom resolvers for those fields.
+<pre><code class="language-javascript">const resolvers = {
+  Query: {
+    product: async (parent, { id }, context, info) =&gt; {
+      const product = await context.db.product.findOne({ where: { id } });
+      if (!product) {
+        throw new Error('Product not found');
+      }
+      return product;
+    },
+    products: async (parent, args, context, info) =&gt; {
+      const products = await context.db.product.findAll({
+        where: args.filter,
+        limit: args.limit,
+        offset: args.offset,
+      });
+      return products;
+    },
+  },
+};
+</code></pre>
+<p>In this example, we defined two custom resolvers: <code>product</code> and <code>products</code>. The <code>product</code> resolver fetches a single product by its <code>id</code>, while the <code>products</code> resolver fetches a list of products based on a filter, limit, and offset. By using custom resolvers, we were able to reduce the number of database queries and improve the performance of our GraphQL API.</p>
+<h2>Using DataLoader to Batch Queries</h2>
+Another optimization technique we used was batching queries using DataLoader. DataLoader is a library that allows you to batch multiple queries into a single query, reducing the number of database queries and improving performance. We used DataLoader to batch queries for related fields, such as fetching a product's reviews or recommendations.
+<pre><code class="language-javascript">const { DataLoader } = require('dataloader');
+<p>const batchLoadProducts = async (ids) =&gt; {
+  const products = await context.db.product.findAll({
+    where: { id: { $in: ids } },
+  });
+  return ids.map((id) =&gt; products.find((product) =&gt; product.id === id));
+};</p>
+<p>const dataLoader = new DataLoader(batchLoadProducts);</p>
+<p>const resolvers = {
+  Query: {
+    product: async (parent, { id }, context, info) =&gt; {
+      const product = await dataLoader.load(id);
+      if (!product) {
+        throw new Error('Product not found');
+      }
+      return product;
+    },
+  },
+};
+</code></pre></p>
+<p>In this example, we defined a <code>batchLoadProducts</code> function that fetches multiple products by their <code>id</code>. We then created a <code>DataLoader</code> instance and used it to batch queries for the <code>product</code> resolver. By using DataLoader, we were able to reduce the number of database queries and improve the performance of our GraphQL API.</p>
+<h2>Takeaway</h2>
+Optimizing database queries with custom GraphQL resolvers is a challenging task, but it's essential for building high-performance GraphQL APIs. By using custom resolvers, batching queries with DataLoader, and understanding how GraphQL resolvers interact with the database, we were able to improve the performance of our e-commerce application and reduce database query overhead. If you're building a GraphQL API, I hope this post has provided you with valuable insights and techniques to optimize your database queries and improve the performance of your application. Remember, optimization is an ongoing process, and it's essential to continuously monitor and optimize your database queries to ensure the best possible performance.</div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>
