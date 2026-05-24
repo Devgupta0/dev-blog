@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Partitioning After Migrating from MySQL]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-24</pubDate>
+  <description><![CDATA[In this post, I'll share my experience migrating a database from MySQL to PostgreSQL and how I optimized queries using partitioning. You'll learn how to improve query performance and scale your database for large datasets. I'll cover the challenges I faced, the solutions I found, and provide code examples to help you get started]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with SQLAlchemy Core after Migrating from Django ORM: A Cautionary Tale of Improved Performance and Steeper Learning Curves]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-sqlalch.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-sqlalch.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-05-05</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and partitioning after migrating from MongoDB to a relational database. You'll learn how to identify performance bottlenecks, create effective indexes, and implement partitioning to improve query performance. By the end of this post, you'll be able to apply these techniques to your own PostgreSQL database to achieve significant performance gains.]]></description>
-</item><item>
-  <title><![CDATA[How I replaced Apache Kafka with Amazon Kinesis to reduce our serverless data processing latency by 30%]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
-  <pubDate>2026-05-04</pubDate>
-  <description><![CDATA[Learn how to replace Apache Kafka with Amazon Kinesis to reduce serverless data processing latency. I'll share my personal experience and the technical details of the migration. By the end of this post, you'll know how to integrate Amazon Kinesis with your serverless application and improve its performance.]]></description>
 </item>
 </channel>
 </rss>
