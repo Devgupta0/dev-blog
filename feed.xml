@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Query Performance by 300%: Our Journey from ORM to Custom SQL with PostgreSQL Index Tuning and Connection Pooling]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</guid>
+  <pubDate>2026-05-27</pubDate>
+  <description><![CDATA[In this post, we'll share our journey of optimizing database query performance by 300% by transitioning from an Object-Relational Mapping (ORM) tool to custom SQL, leveraging PostgreSQL index tuning and connection pooling. We'll dive into the challenges we faced, the solutions we implemented, and the results we achieved. You'll learn how to identify performance bottlenecks, optimize database queries, and implement efficient connection pooling.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Deadlocks in a High-Concurrency Ecommerce Platform by Replacing MySQL Locking with PostgreSQL Advisory Locks]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-05-07</pubDate>
   <description><![CDATA[In this post, I'll share a personal story of how I accidentally doubled our server load by misusing GIN indices in PostgreSQL, and provide tips on how to optimize database queries using indexes. You'll learn how to identify and fix common indexing mistakes, and how to use PostgreSQL's built-in tools to analyze and improve query performance.]]></description>
-</item><item>
-  <title><![CDATA[Create a new Neptune cluster]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</guid>
-  <pubDate>2026-05-06</pubDate>
-  <description><![CDATA[{]]></description>
 </item>
 </channel>
 </rss>
