@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with Window Functions: A Case Study of Reducing Latency by 75% in Our High-Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-window-.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-window-.html</guid>
+  <pubDate>2026-05-28</pubDate>
+  <description><![CDATA[In this post, we'll explore how window functions can be used to optimize database queries, reducing latency and improving performance. We'll dive into a real-world case study of our high-traffic e-commerce platform, where we reduced latency by 75%. You'll learn how to apply these techniques to your own database optimization challenges.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Query Performance by 300%: Our Journey from ORM to Custom SQL with PostgreSQL Index Tuning and Connection Pooling]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-05-08</pubDate>
   <description><![CDATA[In this post, we'll explore how we optimized our database queries using PostgreSQL partitioning, resulting in a 5x performance boost. We'll dive into the challenges we faced, the solution we implemented, and the benefits we gained. You'll learn how to apply this technique to your own high-traffic e-commerce platform.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Cautionary Tale of How I Accidentally Doubled Our Server Load by Misusing GIN Indices]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-05-07</pubDate>
-  <description><![CDATA[In this post, I'll share a personal story of how I accidentally doubled our server load by misusing GIN indices in PostgreSQL, and provide tips on how to optimize database queries using indexes. You'll learn how to identify and fix common indexing mistakes, and how to use PostgreSQL's built-in tools to analyze and improve query performance.]]></description>
 </item>
 </channel>
 </rss>
