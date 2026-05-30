@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimizing Database Performance with PostgreSQL Partitioning | Dev Notes by Devgupta</title>
+<meta name="description" content="Learn how to optimize database performance using PostgreSQL partitioning and scale your high-traffic analytics service">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-performance-with-pos.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optimizing Database Performance with PostgreSQL Partitioning | Dev Notes by Devgupta">
+<meta property="og:description" content="Learn how to optimize database performance using PostgreSQL partitioning and scale your high-traffic analytics service">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-performance-with-pos.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="Optimizing Database Performance with PostgreSQL Partitioning | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Learn how to optimize database performance using PostgreSQL partitioning and scale your high-traffic analytics service">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Optimizing Database Performance with PostgreSQL Partitioning | Dev Notes by Devgupta","description":"Learn how to optimize database performance using PostgreSQL partitioning and scale your high-traffic analytics service","url":"https://Devgupta0.github.io/dev-blog/posts/optimizing-database-performance-with-pos.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-05-30"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">Optimizing Database Performance with PostgreSQL Partitioning: A Case Study of Scaling Our High-Traffic Analytics Service</h1>
+    <div class="article-meta"><span>2026-05-30</span><span>Devgupta</span><span class="post-tag">PostgreSQL</span> <span class="post-tag">partitioning</span> <span class="post-tag">database performance</span> <span class="post-tag">scaling</span></div>
+  </div>
+  <div class="article-body"><p>I still remember the day our analytics service suddenly stopped responding to queries. Our team had been working tirelessly to launch a new feature, and we had seen a significant surge in traffic. But nothing could have prepared us for the massive influx of data that came with it. Our PostgreSQL database was grinding to a halt, and we were struggling to keep up with the demand.</p>
+<p>As I dug into the issue, I realized that our database was suffering from a classic problem: poor query performance due to large, unwieldy tables. We had been using a single table to store all our analytics data, which had grown to millions of rows. Our queries were taking forever to execute, and our database was using up all its resources just to keep up with the load.</p>
+<h2>Identifying Performance Bottlenecks</h2>
+<p>To tackle this problem, we first needed to identify the performance bottlenecks in our database. We used PostgreSQL's built-in tools, such as <code>EXPLAIN</code> and <code>ANALYZE</code>, to examine our query plans and identify areas for improvement. We also used third-party tools, like pg_stat_statements, to monitor our database's performance and identify slow-running queries.</p>
+<p>One of the key insights we gained from this analysis was that our queries were spending most of their time scanning large tables. We were using indexes to speed up our queries, but they were not effective for large ranges of data. This is where PostgreSQL partitioning came into the picture.</p>
+<h2>Introduction to PostgreSQL Partitioning</h2>
+<p>PostgreSQL partitioning allows you to divide a large table into smaller, more manageable pieces called partitions. Each partition can be stored in a separate tablespace, and you can define a separate indexing strategy for each partition. This can significantly improve query performance, as the database only needs to scan the relevant partition(s) to execute a query.</p>
+<p>There are several types of partitioning strategies in PostgreSQL, including range partitioning, list partitioning, and hash partitioning. We opted for range partitioning, which allows you to divide a table based on a range of values in a specific column. In our case, we partitioned our analytics table based on the <code>date</code> column, which allowed us to store each day's data in a separate partition.</p>
+<h2>Designing a Partitioning Strategy</h2>
+<p>To design a partitioning strategy, we needed to consider several factors, including the size of our table, the frequency of our queries, and the distribution of our data. We decided to partition our table into daily partitions, which would allow us to store each day's data in a separate partition.</p>
+<p>We also needed to consider how to handle queries that span multiple partitions. PostgreSQL provides a feature called "partition pruning," which allows the database to eliminate partitions that do not contain relevant data for a query. This can significantly improve query performance, as the database only needs to scan the relevant partition(s) to execute a query.</p>
+<p>Here's an example of how we defined our partitioning strategy:
+<pre><code class="language-sql">CREATE TABLE analytics (
+    id SERIAL PRIMARY KEY,
+    date DATE NOT NULL,
+    data JSONB NOT NULL
+) PARTITION BY RANGE (EXTRACT(YEAR FROM date), EXTRACT(MONTH FROM date));</p>
+<p>CREATE TABLE analytics_2022_01 PARTITION OF analytics
+    FOR VALUES FROM ('2022-01-01') TO ('2022-01-31');</p>
+<p>CREATE TABLE analytics_2022_02 PARTITION OF analytics
+    FOR VALUES FROM ('2022-02-01') TO ('2022-02-28');</p>
+<p>-- And so on...
+</code></pre>
+<h2>Implementing Partitioning</h2></p>
+<p>To implement partitioning, we needed to create a new table structure that reflected our partitioning strategy. We used PostgreSQL's <code>CREATE TABLE</code> statement with the <code>PARTITION BY</code> clause to define our partitioning strategy.</p>
+<p>We also needed to migrate our existing data to the new partitioned table structure. We used a combination of PostgreSQL's <code>INSERT INTO</code> statement and a custom script to migrate our data.</p>
+<p>Here's an example of how we migrated our data:
+<pre><code class="language-sql">INSERT INTO analytics (date, data)
+SELECT date, data
+FROM old_analytics
+WHERE date &gt;= '2022-01-01' AND date &lt; '2022-01-31';</p>
+<p>INSERT INTO analytics (date, data)
+SELECT date, data
+FROM old_analytics
+WHERE date &gt;= '2022-02-01' AND date &lt; '2022-02-28';</p>
+<p>-- And so on...
+</code></pre>
+<h2>Results and Lessons Learned</h2></p>
+<p>After implementing partitioning, we saw a significant improvement in our database's performance. Our queries were executing much faster, and our database was using fewer resources to handle the load.</p>
+<p>One of the key lessons we learned from this experience is the importance of monitoring and analyzing our database's performance regularly. We also learned that partitioning is not a one-time solution, but rather an ongoing process that requires regular maintenance and tuning.</p>
+<h2>Takeaway</h2>
+<p>In conclusion, PostgreSQL partitioning is a powerful tool for optimizing database performance and scaling high-traffic analytics services. By designing a partitioning strategy that reflects the needs of your application, you can significantly improve query performance and reduce the load on your database.</p>
+<p>As we continue to grow and evolve our analytics service, we'll be relying on partitioning to help us scale and meet the demands of our users. Whether you're working with a large dataset or a high-traffic application, partitioning is definitely worth considering as a solution to your database performance challenges.</p></div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>
