@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Bitmap Scan: A Retrospective on Reducing Query Latency by 90% in Our High-Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-05-31</pubDate>
+  <description><![CDATA[In this post, we'll explore how I reduced query latency by 90% in our high-traffic e-commerce platform using PostgreSQL indexes and bitmap scan. We'll dive into the challenges I faced, the solutions I implemented, and the lessons I learned along the way. By the end of this post, you'll have a better understanding of how to optimize your database queries for improved performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Performance with PostgreSQL Partitioning: A Case Study of Scaling Our High-Traffic Analytics Service]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-performance-with-pos.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-performance-with-pos.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-05-11</pubDate>
   <description><![CDATA[In this post, I'll share my experience migrating a database from MySQL to PostgreSQL and how I optimized query performance using indexes and histograms. You'll learn how to identify slow queries, create effective indexes, and leverage histograms to improve query planning.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Query Rewriting Saved Our API from a 500ms Latency Bottleneck]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-05-10</pubDate>
-  <description><![CDATA[In this post, I'll share my experience with optimizing database queries to reduce API latency. I'll cover how PostgreSQL indexes and query rewriting can help, and provide a step-by-step guide on how to implement these optimizations. By the end of this post, you'll know how to identify and fix common query performance issues.]]></description>
 </item>
 </channel>
 </rss>
