@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Tale of Reducing Latency from 500ms to 10ms in a High-Traffic E-commerce Application]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-06-04</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries in a high-traffic e-commerce application using PostgreSQL indexes. You'll learn how to identify performance bottlenecks, create effective indexes, and significantly reduce query latency. By applying these techniques, I was able to reduce the average query latency from 500ms to 10ms, resulting in a much better user experience.]]></description>
+</item><item>
   <title><![CDATA[Create a connection pool with 10 connections]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-05-15</pubDate>
   <description><![CDATA[In this post, we'll explore how PostgreSQL indexes can drastically improve database query performance, reducing API latency and enhancing overall user experience. I'll share a personal story of how our team tackled a similar issue, and provide actionable tips on implementing indexes effectively. By the end of this article, you'll have a solid understanding of how to optimize your database queries with PostgreSQL indexes.]]></description>
-</item><item>
-  <title><![CDATA[Migrating from MongoDB to PostgreSQL for a High-Traffic E-commerce Platform: Lessons Learned from a 6-Month Retrofit]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</guid>
-  <pubDate>2026-05-14</pubDate>
-  <description><![CDATA[In this post, I'll share my experience migrating a high-traffic e-commerce platform from MongoDB to PostgreSQL, including the challenges we faced and the lessons we learned. You'll learn how to plan and execute a successful migration, and how to optimize your PostgreSQL database for high performance. Whether you're considering a migration or just looking to improve your database skills, this post is for you.]]></description>
 </item>
 </channel>
 </rss>
