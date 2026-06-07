@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How We Replaced Apache Kafka with Amazon Kinesis for Real-Time Data Processing and Reduced Our Infrastructure Costs by 30 Percent]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</guid>
+  <pubDate>2026-06-07</pubDate>
+  <description><![CDATA[In this post, we'll discuss how we replaced Apache Kafka with Amazon Kinesis for real-time data processing, the challenges we faced, and how we reduced our infrastructure costs by 30 percent. We'll also cover the benefits of using Amazon Kinesis and provide a step-by-step guide on how to integrate it with your application. Whether you're a developer or a DevOps engineer, you'll learn how to streamline your real-time data processing pipeline and reduce costs.]]></description>
+</item><item>
   <title><![CDATA[How I Optimized Our API Response Times by 300% by Replacing Elasticsearch with a Custom PostgreSQL Full-Text Search Index]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-05-18</pubDate>
   <description><![CDATA[In this post, I'll share my experience optimizing database queries with PostgreSQL indexes and query planning after migrating our high traffic e-commerce platform from MySQL to PostgreSQL. You'll learn how to identify performance bottlenecks, create effective indexes, and leverage query planning to improve database performance. By the end of this post, you'll have a solid understanding of how to optimize your PostgreSQL database for high traffic e-commerce applications.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Query Performance by Replacing ORM with a Custom SQL Generator in a High-Traffic E-commerce Application]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</guid>
-  <pubDate>2026-05-17</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database query performance in a high-traffic e-commerce application by replacing an Object-Relational Mapping (ORM) tool with a custom SQL generator. I'll discuss the challenges I faced, the solutions I implemented, and the results I achieved. By the end of this post, you'll learn how to identify performance bottlenecks in your own application and optimize database queries for better performance.]]></description>
 </item>
 </channel>
 </rss>
