@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with pg_stat_statements: A Post-Mortem Analysis of Our 30% Reduction in Query Latency]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pg_stat.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pg_stat.html</guid>
+  <pubDate>2026-06-09</pubDate>
+  <description><![CDATA[In this post, we'll dive into our experience with optimizing database queries using pg_stat_statements, a built-in PostgreSQL extension. We'll explore how we used it to identify and fix performance bottlenecks, resulting in a 30% reduction in query latency. You'll learn how to leverage pg_stat_statements to improve your own database performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Deadlocks in a High-Traffic E-commerce Platform by Migrating from MySQL to PostgreSQL with a Custom Connection Pooling Strategy]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-05-20</pubDate>
   <description><![CDATA[In this post, we'll dive into the process of identifying and resolving a mysterious 30x slowdown in our high-traffic API endpoint by leveraging PostgreSQL indexes and query planning. We'll explore the steps I took to identify the issue, and the solutions that ultimately resolved the problem. By the end of this post, you'll have a better understanding of how to optimize your database queries and prevent similar slowdowns in your own applications.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes After Migrating from MySQL to PostgreSQL on a High Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-05-19</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes after migrating our e-commerce platform from MySQL to PostgreSQL. You'll learn how to identify slow queries, create effective indexes, and improve the overall performance of your database. By the end of this article, you'll have a solid understanding of how to optimize your PostgreSQL database for high traffic e-commerce platforms.]]></description>
 </item>
 </channel>
 </rss>
