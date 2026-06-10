@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with Query Store in PostgreSQL After a Mysterious 30% CPU Spike on Our Production Servers]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
+  <pubDate>2026-06-10</pubDate>
+  <description><![CDATA[In this post, I'll share my experience with a mysterious 30% CPU spike on our production servers, and how I used PostgreSQL's Query Store to identify and optimize the problematic database queries. You'll learn how to leverage Query Store to improve your database performance and prevent similar issues. I'll also provide a step-by-step guide on how to set up and use Query Store to optimize your database queries.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with pg_stat_statements: A Post-Mortem Analysis of Our 30% Reduction in Query Latency]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pg_stat.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pg_stat.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-database-query-perfo.html</guid>
   <pubDate>2026-05-21</pubDate>
   <description><![CDATA[In this post, I'll share how I optimized our database query performance by 500% by replacing JPA with custom SQL and Spring Data JdbcTemplate. You'll learn how to identify performance bottlenecks and improve query execution times. I'll also provide code examples and explanations to help you apply these techniques to your own projects.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Query Planning after a Mysterious 30x Slowdown in Our High-Traffic API Endpoint]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-05-20</pubDate>
-  <description><![CDATA[In this post, we'll dive into the process of identifying and resolving a mysterious 30x slowdown in our high-traffic API endpoint by leveraging PostgreSQL indexes and query planning. We'll explore the steps I took to identify the issue, and the solutions that ultimately resolved the problem. By the end of this post, you'll have a better understanding of how to optimize your database queries and prevent similar slowdowns in your own applications.]]></description>
 </item>
 </channel>
 </rss>
