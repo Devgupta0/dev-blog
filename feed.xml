@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-06-11</pubDate>
+  <description><![CDATA[In this post, we'll explore how to optimize database queries using PostgreSQL indexes and partitioning, a technique that reduced our query time by 3000x on our high-traffic e-commerce platform. We'll dive into the details of how we implemented this solution and the lessons we learned along the way. By the end of this post, you'll have a solid understanding of how to apply these techniques to your own database optimization challenges.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with Query Store in PostgreSQL After a Mysterious 30% CPU Spike on Our Production Servers]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-custo.html</guid>
   <pubDate>2026-05-22</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database queries with custom GraphQL resolvers after migrating our high-traffic e-commerce application from REST to Apollo Server. I'll cover the challenges we faced, the solutions we implemented, and the benefits we achieved. You'll learn how to improve the performance of your GraphQL API and reduce database query overhead.]]></description>
-</item><item>
-  <title><![CDATA[How I Optimized Our Database Query Performance by 500% by Replacing JPA with Custom SQL and Spring Data JdbcTemplate]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-database-query-perfo.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-database-query-perfo.html</guid>
-  <pubDate>2026-05-21</pubDate>
-  <description><![CDATA[In this post, I'll share how I optimized our database query performance by 500% by replacing JPA with custom SQL and Spring Data JdbcTemplate. You'll learn how to identify performance bottlenecks and improve query execution times. I'll also provide code examples and explanations to help you apply these techniques to your own projects.]]></description>
 </item>
 </channel>
 </rss>
