@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Create a Kinesis producer]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
+  <pubDate>2026-06-12</pubDate>
+  <description><![CDATA[{]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-sqlalch.html</guid>
   <pubDate>2026-05-23</pubDate>
   <description><![CDATA[In this post, I'll share my experience of migrating from Django ORM to SQLAlchemy Core, the challenges I faced, and the lessons I learned. You'll learn how to optimize database queries, handle complex SQL operations, and improve overall performance. I'll also provide tips and best practices for a smoother transition.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with a Custom GraphQL Resolver after Migrating from REST to Apollo Server in a High-Traffic E-commerce Application]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-custo.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-custo.html</guid>
-  <pubDate>2026-05-22</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with custom GraphQL resolvers after migrating our high-traffic e-commerce application from REST to Apollo Server. I'll cover the challenges we faced, the solutions we implemented, and the benefits we achieved. You'll learn how to improve the performance of your GraphQL API and reduce database query overhead.]]></description>
 </item>
 </channel>
 </rss>
