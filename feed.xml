@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Replaced Our Legacy Mongodb Aggreg]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-legacy-mongodb-aggreg.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-legacy-mongodb-aggreg.html</guid>
+  <pubDate>2026-06-13</pubDate>
+  <description><![CDATA[{]]></description>
+</item><item>
   <title><![CDATA[Create a Kinesis producer]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-05-24</pubDate>
   <description><![CDATA[In this post, I'll share my experience migrating a database from MySQL to PostgreSQL and how I optimized queries using partitioning. You'll learn how to improve query performance and scale your database for large datasets. I'll cover the challenges I faced, the solutions I found, and provide code examples to help you get started]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with SQLAlchemy Core after Migrating from Django ORM: A Cautionary Tale of Improved Performance and Steeper Learning Curves]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-sqlalch.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-sqlalch.html</guid>
-  <pubDate>2026-05-23</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of migrating from Django ORM to SQLAlchemy Core, the challenges I faced, and the lessons I learned. You'll learn how to optimize database queries, handle complex SQL operations, and improve overall performance. I'll also provide tips and best practices for a smoother transition.]]></description>
 </item>
 </channel>
 </rss>
