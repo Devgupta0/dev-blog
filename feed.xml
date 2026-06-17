@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A 5x Performance Boost in Our High-Traffic E-commerce API]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-06-17</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes in our high-traffic e-commerce API, resulting in a 5x performance boost. You'll learn how to identify slow queries, create effective indexes, and monitor their impact on performance. By the end of this post, you'll be equipped to apply these techniques to your own database optimization challenges.]]></description>
+</item><item>
   <title><![CDATA[Migrating Our High-Volume Notification Service from RabbitMQ to Apache Kafka: Lessons Learned and Performance Gains]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-notification-s.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-notification-s.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-05-29</pubDate>
   <description><![CDATA[In this post, I'll share my experience of migrating from MySQL to PostgreSQL and how optimizing database queries with indexes and query planning led to a 5x reduction in API latency. I'll cover the challenges I faced, the solutions I implemented, and the lessons I learned along the way. By the end of this post, you'll have a solid understanding of how to optimize your database queries and improve the performance of your application]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with Window Functions: A Case Study of Reducing Latency by 75% in Our High-Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-window-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-window-.html</guid>
-  <pubDate>2026-05-28</pubDate>
-  <description><![CDATA[In this post, we'll explore how window functions can be used to optimize database queries, reducing latency and improving performance. We'll dive into a real-world case study of our high-traffic e-commerce platform, where we reduced latency by 75%. You'll learn how to apply these techniques to your own database optimization challenges.]]></description>
 </item>
 </channel>
 </rss>
