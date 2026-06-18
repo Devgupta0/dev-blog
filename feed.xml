@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After Migrating from MySQL to PostgreSQL in a High Traffic E-commerce Application]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-06-18</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and partitioning after migrating our high traffic e-commerce application from MySQL to PostgreSQL. You'll learn how to identify slow queries, create effective indexes, and implement partitioning to improve database performance. I'll also share some best practices and common pitfalls to avoid.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A 5x Performance Boost in Our High-Traffic E-commerce API]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-performance-with-pos.html</guid>
   <pubDate>2026-05-30</pubDate>
   <description><![CDATA[In this post, we'll explore how we used PostgreSQL partitioning to optimize our database performance and scale our high-traffic analytics service. You'll learn how to identify performance bottlenecks, design a partitioning strategy, and implement it in your own application. We'll also share some lessons learned and best practices for getting the most out of PostgreSQL partitioning.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Query Planning]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-05-29</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of migrating from MySQL to PostgreSQL and how optimizing database queries with indexes and query planning led to a 5x reduction in API latency. I'll cover the challenges I faced, the solutions I implemented, and the lessons I learned along the way. By the end of this post, you'll have a solid understanding of how to optimize your database queries and improve the performance of your application]]></description>
 </item>
 </channel>
 </rss>
