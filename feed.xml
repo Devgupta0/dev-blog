@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Replaced Apache Kafka with Amazon Kinesis to Handle 10x Increased Traffic on Our Real-Time Analytics Pipeline]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
+  <pubDate>2026-06-20</pubDate>
+  <description><![CDATA[I'll share my experience of replacing Apache Kafka with Amazon Kinesis to handle a 10x increase in traffic on our real-time analytics pipeline. You'll learn how to design and implement a scalable and efficient pipeline using Kinesis. From setup to deployment, I'll cover the key considerations and trade-offs]]></description>
+</item><item>
   <title><![CDATA[How I Migrated Our High-Volume API Gateway from NGINX to AWS API Gateway with Lambda Proxy Integration to Reduce 503 Errors by 90%]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-migrated-our-high-volume-api-gatew.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-migrated-our-high-volume-api-gatew.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</guid>
   <pubDate>2026-06-01</pubDate>
   <description><![CDATA[In this post, we'll share our journey of optimizing database deadlocks in a high-concurrency e-commerce platform. We'll discuss the challenges we faced, the solutions we tried, and the final outcome. You'll learn how to identify and resolve database deadlocks using MySQL 8.0 and RocksDB.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Bitmap Scan: A Retrospective on Reducing Query Latency by 90% in Our High-Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-05-31</pubDate>
-  <description><![CDATA[In this post, we'll explore how I reduced query latency by 90% in our high-traffic e-commerce platform using PostgreSQL indexes and bitmap scan. We'll dive into the challenges I faced, the solutions I implemented, and the lessons I learned along the way. By the end of this post, you'll have a better understanding of how to optimize your database queries for improved performance.]]></description>
 </item>
 </channel>
 </rss>
