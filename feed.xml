@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Cautionary Tale of a 30x Performance Improvement in Our High-Traffic Ecommerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-06-23</pubDate>
+  <description><![CDATA[Discover how I improved our ecommerce platform's performance by 30x using PostgreSQL indexes. Learn how to identify and optimize slow database queries, and get tips on index creation and maintenance. Whether you're a seasoned developer or just starting out, this post will show you how to take your database performance to the next level.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-06-04</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database queries in a high-traffic e-commerce application using PostgreSQL indexes. You'll learn how to identify performance bottlenecks, create effective indexes, and significantly reduce query latency. By applying these techniques, I was able to reduce the average query latency from 500ms to 10ms, resulting in a much better user experience.]]></description>
-</item><item>
-  <title><![CDATA[Create a connection pool with 10 connections]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
-  <pubDate>2026-06-03</pubDate>
-  <description><![CDATA[{]]></description>
 </item>
 </channel>
 </rss>
