@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Post Mortem of Our 30x Performance Improvement]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-06-25</pubDate>
+  <description><![CDATA[In this post, I'll share our experience of optimizing database queries with PostgreSQL indexes, which led to a 30x performance improvement. You'll learn how to identify slow queries, create effective indexes, and avoid common pitfalls. By the end of this article, you'll be equipped to tackle similar performance issues in your own PostgreSQL databases.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Post-Mortem of Our 30x Query Speedup After Migrating from MySQL]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html</guid>
   <pubDate>2026-06-06</pubDate>
   <description><![CDATA[In this post, I'll share my experience of replacing Elasticsearch with a custom PostgreSQL full-text search index, which resulted in a 300% optimization of our API response times. I'll walk you through the challenges I faced, the solutions I implemented, and the lessons I learned along the way. By the end of this post, you'll have a clear understanding of how to improve your API's performance using PostgreSQL's full-text search capabilities.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with Indexed Views in PostgreSQL Led to a 300% Improvement in Our API Response Times]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-indexed.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-indexed.html</guid>
-  <pubDate>2026-06-05</pubDate>
-  <description><![CDATA[Learn how to optimize database queries using indexed views in PostgreSQL, a technique that led to a 300% improvement in our API response times. We'll dive into the details of our implementation and share code snippets to help you apply this optimization in your own projects. From identifying performance bottlenecks to implementing materialized views, we'll cover it all.]]></description>
 </item>
 </channel>
 </rss>
