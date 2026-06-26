@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Migrating to Service-Oriented Architecture | Dev Notes by Devgupta</title>
+<meta name="description" content="Migrate legacy monolith to service-oriented architecture with gRPC and Kubernetes, lessons learned from a 6-month project">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Migrating to Service-Oriented Architecture | Dev Notes by Devgupta">
+<meta property="og:description" content="Migrate legacy monolith to service-oriented architecture with gRPC and Kubernetes, lessons learned from a 6-month project">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="Migrating to Service-Oriented Architecture | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Migrate legacy monolith to service-oriented architecture with gRPC and Kubernetes, lessons learned from a 6-month project">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Migrating to Service-Oriented Architecture | Dev Notes by Devgupta","description":"Migrate legacy monolith to service-oriented architecture with gRPC and Kubernetes, lessons learned from a 6-month project","url":"https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-06-26"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">Migrating Our Legacy Monolith to a Service-Oriented Architecture with gRPC and Kubernetes: A 6-Month Retrospective</h1>
+    <div class="article-meta"><span>2026-06-26</span><span>Devgupta</span><span class="post-tag">gRPC</span> <span class="post-tag">Kubernetes</span> <span class="post-tag">Service-Oriented Architecture</span> <span class="post-tag">Legacy Migration</span></div>
+  </div>
+  <div class="article-body"><p>I still remember the day our team decided to migrate our legacy monolith to a service-oriented architecture (SOA) using gRPC and Kubernetes. It was a daunting task, but we were excited to take on the challenge. Our monolith had been around for years, and it was starting to show its age. It was a complex, tightly-coupled system that was difficult to maintain and scale. We knew that migrating to an SOA would allow us to break down the system into smaller, independent services that could be developed, deployed, and scaled separately.</p>
+<h2>Background and Motivation</h2>
+Our legacy monolith was a Java-based application that handled everything from user authentication to order processing. It was a massive codebase with thousands of lines of code, and it was becoming increasingly difficult to manage. We were experiencing frequent outages, and it was taking us longer and longer to deploy new features. We knew that we needed to make a change, but we weren't sure where to start. After doing some research, we decided to explore the possibility of migrating to an SOA using gRPC and Kubernetes.
+<h2>Initial Challenges</h2>
+One of the biggest challenges we faced was figuring out how to break down our monolith into smaller services. We had to identify the different domains within our system and determine how to separate them into independent services. This was a difficult process, as our monolith was tightly coupled, and it was hard to determine where one domain ended and another began. We spent weeks discussing and debating how to break down the system, and we eventually came up with a plan to create separate services for user authentication, order processing, and inventory management.
+<h2>Implementing gRPC</h2>
+Once we had our services defined, we started implementing gRPC. We chose gRPC because it allowed us to define our service interfaces using Protocol Buffers, which made it easy to generate client and server code in multiple languages. We started by defining our service interfaces using Protocol Buffers, and then we generated the client and server code using the gRPC framework. Here's an example of what one of our service interfaces looked like:
+<pre><code class="language-proto">syntax = "proto3";
+<p>package authentication;</p>
+<p>service AuthenticationService {
+  rpc Login(LoginRequest) returns (LoginResponse) {}
+  rpc Register(RegisterRequest) returns (RegisterResponse) {}
+}</p>
+<p>message LoginRequest {
+  string username = 1;
+  string password = 2;
+}</p>
+<p>message LoginResponse {
+  string token = 1;
+}</p>
+<p>message RegisterRequest {
+  string username = 1;
+  string password = 2;
+  string email = 3;
+}</p>
+<p>message RegisterResponse {
+  string token = 1;
+}
+</code></pre>
+We then generated the client and server code using the gRPC framework, and we started implementing the business logic for our services.</p>
+<h2>Deploying to Kubernetes</h2>
+Once we had our services implemented, we started deploying them to Kubernetes. We chose Kubernetes because it provided a scalable and highly available platform for our services. We started by creating Docker images for each of our services, and then we defined Kubernetes deployments and services to manage them. Here's an example of what one of our Kubernetes deployments looked like:
+<pre><code class="language-yml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authentication-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: authentication-service
+  template:
+    metadata:
+      labels:
+        app: authentication-service
+    spec:
+      containers:
+      - name: authentication-service
+        image: authentication-service:latest
+        ports:
+        - containerPort: 50051
+</code></pre>
+We then applied this deployment to our Kubernetes cluster, and our service was up and running.
+<h2>Lessons Learned</h2>
+Looking back on our 6-month journey, there are several lessons that we learned. One of the biggest lessons was the importance of defining clear service interfaces. We spent a lot of time defining our service interfaces using Protocol Buffers, and it paid off in the end. Our services were able to communicate with each other seamlessly, and we were able to avoid a lot of the headaches that come with integrating different systems.
+<p>Another lesson we learned was the importance of monitoring and logging. We implemented monitoring and logging for each of our services, and it allowed us to quickly identify and debug issues. We used tools like Prometheus and Grafana to monitor our services, and we used tools like ELK to log and analyze our logs.</p>
+<h2>Takeaway</h2>
+Migrating our legacy monolith to an SOA using gRPC and Kubernetes was a challenging but rewarding experience. We learned a lot along the way, and we were able to create a scalable and highly available system that can handle large volumes of traffic. If you're considering migrating your own legacy monolith to an SOA, I would recommend taking the time to define clear service interfaces, implementing monitoring and logging, and choosing the right tools and technologies for your needs. With the right approach and the right tools, you can create a system that is scalable, highly available, and easy to maintain.</div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>

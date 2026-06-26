@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Migrating Our Legacy Monolith to a Service-Oriented Architecture with gRPC and Kubernetes: A 6-Month Retrospective]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html</guid>
+  <pubDate>2026-06-26</pubDate>
+  <description><![CDATA[Learn from our 6-month journey of migrating a legacy monolith to a service-oriented architecture using gRPC and Kubernetes. Discover the challenges we faced, the solutions we implemented, and the lessons we learned along the way. Get insights into the technical decisions we made and the trade-offs we encountered.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Post Mortem of Our 30x Performance Improvement]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</guid>
   <pubDate>2026-06-07</pubDate>
   <description><![CDATA[In this post, we'll discuss how we replaced Apache Kafka with Amazon Kinesis for real-time data processing, the challenges we faced, and how we reduced our infrastructure costs by 30 percent. We'll also cover the benefits of using Amazon Kinesis and provide a step-by-step guide on how to integrate it with your application. Whether you're a developer or a DevOps engineer, you'll learn how to streamline your real-time data processing pipeline and reduce costs.]]></description>
-</item><item>
-  <title><![CDATA[How I Optimized Our API Response Times by 300% by Replacing Elasticsearch with a Custom PostgreSQL Full-Text Search Index]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-api-response-times-b.html</guid>
-  <pubDate>2026-06-06</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of replacing Elasticsearch with a custom PostgreSQL full-text search index, which resulted in a 300% optimization of our API response times. I'll walk you through the challenges I faced, the solutions I implemented, and the lessons I learned along the way. By the end of this post, you'll have a clear understanding of how to improve your API's performance using PostgreSQL's full-text search capabilities.]]></description>
 </item>
 </channel>
 </rss>
