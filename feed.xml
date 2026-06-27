@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Replaced Apache Kafka with Amazon Kinesis to Improve Realtime Data Processing in Our Microservices Architecture]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
+  <pubDate>2026-06-27</pubDate>
+  <description><![CDATA[Learn how to replace Apache Kafka with Amazon Kinesis, a fully managed service for real-time data processing and analysis, and improve the scalability and reliability of your microservices architecture. I'll share my personal experience of making this switch and the benefits we've seen so far. We'll dive into the technical details of the migration process and explore the advantages of using Amazon Kinesis.]]></description>
+</item><item>
   <title><![CDATA[Migrating Our Legacy Monolith to a Service-Oriented Architecture with gRPC and Kubernetes: A 6-Month Retrospective]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</guid>
   <pubDate>2026-06-08</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database deadlocks in a high-traffic e-commerce platform by migrating from MySQL to PostgreSQL and implementing a custom connection pooling strategy. You'll learn how to identify and resolve deadlock issues, and how to design a connection pooling strategy that suits your needs. By the end of this post, you'll have a clear understanding of how to optimize database performance in high-traffic applications.]]></description>
-</item><item>
-  <title><![CDATA[How We Replaced Apache Kafka with Amazon Kinesis for Real-Time Data Processing and Reduced Our Infrastructure Costs by 30 Percent]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</guid>
-  <pubDate>2026-06-07</pubDate>
-  <description><![CDATA[In this post, we'll discuss how we replaced Apache Kafka with Amazon Kinesis for real-time data processing, the challenges we faced, and how we reduced our infrastructure costs by 30 percent. We'll also cover the benefits of using Amazon Kinesis and provide a step-by-step guide on how to integrate it with your application. Whether you're a developer or a DevOps engineer, you'll learn how to streamline your real-time data processing pipeline and reduce costs.]]></description>
 </item>
 </channel>
 </rss>
