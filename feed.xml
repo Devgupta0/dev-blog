@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Optimized Our Database Queries by 300% by Replacing JPA with Spring Data Jdbc and Custom SQL Indexing]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-database-queries-by-.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-database-queries-by-.html</guid>
+  <pubDate>2026-06-28</pubDate>
+  <description><![CDATA[Learn how to optimize database queries by 300% by replacing JPA with Spring Data Jdbc and custom SQL indexing. Discover the benefits of using Spring Data Jdbc and how to implement custom SQL indexing to improve query performance.]]></description>
+</item><item>
   <title><![CDATA[How I Replaced Apache Kafka with Amazon Kinesis to Improve Realtime Data Processing in Our Microservices Architecture]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-pg_stat.html</guid>
   <pubDate>2026-06-09</pubDate>
   <description><![CDATA[In this post, we'll dive into our experience with optimizing database queries using pg_stat_statements, a built-in PostgreSQL extension. We'll explore how we used it to identify and fix performance bottlenecks, resulting in a 30% reduction in query latency. You'll learn how to leverage pg_stat_statements to improve your own database performance.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Deadlocks in a High-Traffic E-commerce Platform by Migrating from MySQL to PostgreSQL with a Custom Connection Pooling Strategy]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-deadlocks-in-a-high-.html</guid>
-  <pubDate>2026-06-08</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database deadlocks in a high-traffic e-commerce platform by migrating from MySQL to PostgreSQL and implementing a custom connection pooling strategy. You'll learn how to identify and resolve deadlock issues, and how to design a connection pooling strategy that suits your needs. By the end of this post, you'll have a clear understanding of how to optimize database performance in high-traffic applications.]]></description>
 </item>
 </channel>
 </rss>
