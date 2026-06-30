@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: How I Reduced Our API Latency by 75% in a High-Traffic E-commerce Application]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-06-30</pubDate>
+  <description><![CDATA[Learn how to optimize database queries using PostgreSQL indexes, reducing API latency in high-traffic applications. Discover the steps to identify and resolve query performance issues, resulting in a significant improvement in overall system performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning after a 3000ms Latency Spike in Our E-commerce Application]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-06-11</pubDate>
   <description><![CDATA[In this post, we'll explore how to optimize database queries using PostgreSQL indexes and partitioning, a technique that reduced our query time by 3000x on our high-traffic e-commerce platform. We'll dive into the details of how we implemented this solution and the lessons we learned along the way. By the end of this post, you'll have a solid understanding of how to apply these techniques to your own database optimization challenges.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with Query Store in PostgreSQL After a Mysterious 30% CPU Spike on Our Production Servers]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
-  <pubDate>2026-06-10</pubDate>
-  <description><![CDATA[In this post, I'll share my experience with a mysterious 30% CPU spike on our production servers, and how I used PostgreSQL's Query Store to identify and optimize the problematic database queries. You'll learn how to leverage Query Store to improve your database performance and prevent similar issues. I'll also provide a step-by-step guide on how to set up and use Query Store to optimize your database queries.]]></description>
 </item>
 </channel>
 </rss>
