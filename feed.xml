@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Survived a 3-Day Database Outage by Implementing a Temporary Messaging Queue]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</guid>
+  <pubDate>2026-07-02</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of surviving a 3-day database outage by implementing a temporary messaging queue with Apache Kafka and Redis. You'll learn how to design and implement a messaging queue to save your real-time analytics pipeline. I'll also provide code snippets and examples to help you understand the process.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Post-Mortem of a 3000ms Query that Brought Down Our API]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -119,12 +125,6 @@
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-legacy-mongodb-aggreg.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-legacy-mongodb-aggreg.html</guid>
   <pubDate>2026-06-13</pubDate>
-  <description><![CDATA[{]]></description>
-</item><item>
-  <title><![CDATA[Create a Kinesis producer]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
-  <pubDate>2026-06-12</pubDate>
   <description><![CDATA[{]]></description>
 </item>
 </channel>
