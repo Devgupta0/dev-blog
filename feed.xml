@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Materialized Views After Migrating from MongoDB to a Relational Database]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-07-03</pubDate>
+  <description><![CDATA[After migrating from MongoDB to PostgreSQL, I encountered significant performance issues due to inefficient database queries. In this post, I'll share how I optimized database queries using PostgreSQL indexes and materialized views, resulting in a substantial improvement in query performance. You'll learn how to identify query bottlenecks, create effective indexes, and leverage materialized views to speed up your database queries.]]></description>
+</item><item>
   <title><![CDATA[How I Survived a 3-Day Database Outage by Implementing a Temporary Messaging Queue]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-indexed.html</guid>
   <pubDate>2026-06-14</pubDate>
   <description><![CDATA[In this post, we'll explore how indexed materialized views can help optimize database queries, reducing load average on high-traffic platforms. We'll dive into a real-world example and provide code snippets to illustrate the solution. By the end of this post, you'll have a solid understanding of how to implement indexed materialized views to improve your platform's performance.]]></description>
-</item><item>
-  <title><![CDATA[How I Replaced Our Legacy Mongodb Aggreg]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-legacy-mongodb-aggreg.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-legacy-mongodb-aggreg.html</guid>
-  <pubDate>2026-06-13</pubDate>
-  <description><![CDATA[{]]></description>
 </item>
 </channel>
 </rss>
