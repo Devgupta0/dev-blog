@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with Query Store: How I Reduced Average Response Time by 30% in Our High-Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
+  <pubDate>2026-07-04</pubDate>
+  <description><![CDATA[In this post, I'll share my experience with optimizing database queries using Query Store, a feature in SQL Server. I'll explain how I used it to reduce the average response time by 30% in our high-traffic e-commerce platform. You'll learn how to identify and optimize slow-running queries, and improve the overall performance of your database.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Materialized Views After Migrating from MongoDB to a Relational Database]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-06-15</pubDate>
   <description><![CDATA[I recently migrated a project from MongoDB to PostgreSQL and discovered the importance of optimizing database queries. In this post, I'll share my experience and provide tips on using PostgreSQL indexes and partitioning to improve query performance. You'll learn how to identify bottlenecks, create effective indexes, and implement partitioning to scale your database.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with Indexed Materialized Views: A Postmortem of our 30% Reduction in Load Average on a High-Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-indexed.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-indexed.html</guid>
-  <pubDate>2026-06-14</pubDate>
-  <description><![CDATA[In this post, we'll explore how indexed materialized views can help optimize database queries, reducing load average on high-traffic platforms. We'll dive into a real-world example and provide code snippets to illustrate the solution. By the end of this post, you'll have a solid understanding of how to implement indexed materialized views to improve your platform's performance.]]></description>
 </item>
 </channel>
 </rss>
