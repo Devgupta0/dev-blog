@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Replaced Apache Kafka with Amazon Kinesis for Real-Time Data Processing and Reduced Latency by 30% in Our E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
+  <pubDate>2026-07-05</pubDate>
+  <description><![CDATA[Learn how to replace Apache Kafka with Amazon Kinesis for real-time data processing, reducing latency and improving performance in e-commerce platforms. Discover the benefits and challenges of this migration, and get a step-by-step guide on how to integrate Amazon Kinesis into your application. Get ready to take your real-time data processing to the next level.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with Query Store: How I Reduced Average Response Time by 30% in Our High-Traffic E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-notification-s.html</guid>
   <pubDate>2026-06-16</pubDate>
   <description><![CDATA[In this post, I'll share our experience of migrating our high-volume notification service from RabbitMQ to Apache Kafka, the challenges we faced, and the lessons we learned. We'll dive into the technical details of the migration process and explore the performance gains we achieved. Whether you're considering a similar migration or just curious about the differences between RabbitMQ and Kafka, this post is for you.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning after Migrating from MongoDB to a Relational Database]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-06-15</pubDate>
-  <description><![CDATA[I recently migrated a project from MongoDB to PostgreSQL and discovered the importance of optimizing database queries. In this post, I'll share my experience and provide tips on using PostgreSQL indexes and partitioning to improve query performance. You'll learn how to identify bottlenecks, create effective indexes, and implement partitioning to scale your database.]]></description>
 </item>
 </channel>
 </rss>
