@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Histograms After a Surprise 500% Traffic Spike on Our E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-07-06</pubDate>
+  <description><![CDATA[Learn how to identify and optimize slow database queries, create effective indexes, and leverage histograms to improve query performance. Get ready to scale your e-commerce platform with confidence.]]></description>
+</item><item>
   <title><![CDATA[How I Replaced Apache Kafka with Amazon Kinesis for Real-Time Data Processing and Reduced Latency by 30% in Our E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-06-17</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes in our high-traffic e-commerce API, resulting in a 5x performance boost. You'll learn how to identify slow queries, create effective indexes, and monitor their impact on performance. By the end of this post, you'll be equipped to apply these techniques to your own database optimization challenges.]]></description>
-</item><item>
-  <title><![CDATA[Migrating Our High-Volume Notification Service from RabbitMQ to Apache Kafka: Lessons Learned and Performance Gains]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-notification-s.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-notification-s.html</guid>
-  <pubDate>2026-06-16</pubDate>
-  <description><![CDATA[In this post, I'll share our experience of migrating our high-volume notification service from RabbitMQ to Apache Kafka, the challenges we faced, and the lessons we learned. We'll dive into the technical details of the migration process and explore the performance gains we achieved. Whether you're considering a similar migration or just curious about the differences between RabbitMQ and Kafka, this post is for you.]]></description>
 </item>
 </channel>
 </rss>
