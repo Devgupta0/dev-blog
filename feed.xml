@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with Partial Indexes and Query Hints after Migrating from MySQL to PostgreSQL on a High-Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-partial.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-partial.html</guid>
+  <pubDate>2026-07-08</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries on a high-traffic e-commerce platform after migrating from MySQL to PostgreSQL. You'll learn how to use partial indexes and query hints to improve query performance. I'll also share some best practices and lessons learned from my own experience.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-migrated-our-high-volume-api-gatew.html</guid>
   <pubDate>2026-06-19</pubDate>
   <description><![CDATA[Learn how to migrate from NGINX to AWS API Gateway with Lambda Proxy Integration, reducing 503 errors by 90%. This post shares a personal story of overcoming API gateway limitations and provides a step-by-step guide to a successful migration.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After Migrating from MySQL to PostgreSQL in a High Traffic E-commerce Application]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-06-18</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and partitioning after migrating our high traffic e-commerce application from MySQL to PostgreSQL. You'll learn how to identify slow queries, create effective indexes, and implement partitioning to improve database performance. I'll also share some best practices and common pitfalls to avoid.]]></description>
 </item>
 </channel>
 </rss>
