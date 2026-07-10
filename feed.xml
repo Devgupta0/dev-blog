@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After a 3000x Performance Boost in Our Analytics Dashboard]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-07-10</pubDate>
+  <description><![CDATA[In this post, I'll share how we achieved a 3000x performance boost in our analytics dashboard by optimizing database queries with PostgreSQL indexes and partitioning. You'll learn how to identify performance bottlenecks, create effective indexes, and implement partitioning to scale your database. Whether you're a seasoned developer or just starting out, this post will provide you with practical tips and real-world examples to improve your database performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform by Migrating from MySQL to PostgreSQL with TimescaleDB]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-06-21</pubDate>
   <description><![CDATA[In this post, I'll share my experience optimizing database queries with PostgreSQL partitioning, reducing query latency by 90% in a high-traffic e-commerce application. You'll learn how to identify performance bottlenecks and apply partitioning to improve query performance. Through a real-world case study, you'll discover the benefits and best practices of PostgreSQL partitioning.]]></description>
-</item><item>
-  <title><![CDATA[How I Replaced Apache Kafka with Amazon Kinesis to Handle 10x Increased Traffic on Our Real-Time Analytics Pipeline]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
-  <pubDate>2026-06-20</pubDate>
-  <description><![CDATA[I'll share my experience of replacing Apache Kafka with Amazon Kinesis to handle a 10x increase in traffic on our real-time analytics pipeline. You'll learn how to design and implement a scalable and efficient pipeline using Kinesis. From setup to deployment, I'll cover the key considerations and trade-offs]]></description>
 </item>
 </channel>
 </rss>
