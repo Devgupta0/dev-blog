@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After a 3000% Traffic Spike on Our E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-07-11</pubDate>
+  <description><![CDATA[In this post, I'll share how we optimized our PostgreSQL database queries with indexes and partitioning after a 3000% traffic spike on our e-commerce platform, and the lessons we learned along the way. You'll learn how to identify performance bottlenecks, create effective indexes, and implement partitioning to improve query performance. By the end of this post, you'll have a solid understanding of how to optimize your PostgreSQL database for high-traffic applications.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After a 3000x Performance Boost in Our Analytics Dashboard]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
   <pubDate>2026-06-22</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database query performance in a high-traffic e-commerce platform by replacing Sequelize with TypeORM and leveraging PostgreSQL indexing techniques. You'll learn how to identify and fix performance bottlenecks, and how to implement efficient database querying using TypeORM. By the end of this post, you'll have a clear understanding of how to optimize your database queries for better performance.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Partitioning: A Case Study of Reducing Query Latency by 90% in a High-Traffic E-commerce Application]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-06-21</pubDate>
-  <description><![CDATA[In this post, I'll share my experience optimizing database queries with PostgreSQL partitioning, reducing query latency by 90% in a high-traffic e-commerce application. You'll learn how to identify performance bottlenecks and apply partitioning to improve query performance. Through a real-world case study, you'll discover the benefits and best practices of PostgreSQL partitioning.]]></description>
 </item>
 </channel>
 </rss>
