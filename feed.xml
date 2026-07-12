@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Migrating Our High-Volume Analytics Pipeline from Apache Kafka to Amazon Kinesis: A 6-Month Retrospective on Performance and Cost Savings]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-analytics-pipe.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-analytics-pipe.html</guid>
+  <pubDate>2026-07-12</pubDate>
+  <description><![CDATA[In this post, we'll share our 6-month experience migrating our high-volume analytics pipeline from Apache Kafka to Amazon Kinesis, discussing the challenges we faced, the benefits we've seen, and the lessons we've learned. We'll dive into the technical details of the migration process and provide insights into the performance and cost savings we've achieved. Whether you're considering a similar migration or just curious about our experience, this post is for you.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After a 3000% Traffic Spike on Our E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-06-23</pubDate>
   <description><![CDATA[Discover how I improved our ecommerce platform's performance by 30x using PostgreSQL indexes. Learn how to identify and optimize slow database queries, and get tips on index creation and maintenance. Whether you're a seasoned developer or just starting out, this post will show you how to take your database performance to the next level.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
-  <pubDate>2026-06-22</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database query performance in a high-traffic e-commerce platform by replacing Sequelize with TypeORM and leveraging PostgreSQL indexing techniques. You'll learn how to identify and fix performance bottlenecks, and how to implement efficient database querying using TypeORM. By the end of this post, you'll have a clear understanding of how to optimize your database queries for better performance.]]></description>
 </item>
 </channel>
 </rss>
