@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Query Performance by Migrating from JPA to jOOQ in a High-Traffic Spring Boot Application]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</guid>
+  <pubDate>2026-07-13</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database query performance in a high-traffic Spring Boot application by migrating from JPA to jOOQ. I'll cover the challenges I faced, the benefits of using jOOQ, and provide a step-by-step guide on how to integrate jOOQ into your Spring Boot application. By the end of this post, you'll learn how to improve the performance and scalability of your database-driven application.]]></description>
+</item><item>
   <title><![CDATA[Migrating Our High-Volume Analytics Pipeline from Apache Kafka to Amazon Kinesis: A 6-Month Retrospective on Performance and Cost Savings]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-analytics-pipe.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-analytics-pipe.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-06-24</pubDate>
   <description><![CDATA[Learn how to optimize database queries using PostgreSQL indexes, a key factor in our 30x query speedup after migrating from MySQL. We'll explore the challenges we faced, the solutions we implemented, and the lessons we learned along the way.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Cautionary Tale of a 30x Performance Improvement in Our High-Traffic Ecommerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-06-23</pubDate>
-  <description><![CDATA[Discover how I improved our ecommerce platform's performance by 30x using PostgreSQL indexes. Learn how to identify and optimize slow database queries, and get tips on index creation and maintenance. Whether you're a seasoned developer or just starting out, this post will show you how to take your database performance to the next level.]]></description>
 </item>
 </channel>
 </rss>
