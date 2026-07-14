@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning after Migrating from MongoDB to a Relational Database]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-07-14</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and partitioning after migrating from MongoDB to a relational database. You'll learn how to identify bottlenecks, create effective indexes, and implement partitioning to improve query performance and scalability.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Query Performance by Migrating from JPA to jOOQ in a High-Traffic Spring Boot Application]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-06-25</pubDate>
   <description><![CDATA[In this post, I'll share our experience of optimizing database queries with PostgreSQL indexes, which led to a 30x performance improvement. You'll learn how to identify slow queries, create effective indexes, and avoid common pitfalls. By the end of this article, you'll be equipped to tackle similar performance issues in your own PostgreSQL databases.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Post-Mortem of Our 30x Query Speedup After Migrating from MySQL]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-06-24</pubDate>
-  <description><![CDATA[Learn how to optimize database queries using PostgreSQL indexes, a key factor in our 30x query speedup after migrating from MySQL. We'll explore the challenges we faced, the solutions we implemented, and the lessons we learned along the way.]]></description>
 </item>
 </channel>
 </rss>
