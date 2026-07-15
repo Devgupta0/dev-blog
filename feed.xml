@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Migrating from MongoDB to PostgreSQL for Analytics: A 6-Month Retrospective on Performance and Data Integrity]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</guid>
+  <pubDate>2026-07-15</pubDate>
+  <description><![CDATA[In this post, I'll share my experience migrating our analytics database from MongoDB to PostgreSQL, including the challenges we faced and the benefits we've seen. We'll dive into the technical details of the migration process and explore how it's impacted our data integrity and performance. Whether you're considering a similar migration or just curious about the differences between these two databases, you'll find valuable insights here.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning after Migrating from MongoDB to a Relational Database]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html</guid>
   <pubDate>2026-06-26</pubDate>
   <description><![CDATA[Learn from our 6-month journey of migrating a legacy monolith to a service-oriented architecture using gRPC and Kubernetes. Discover the challenges we faced, the solutions we implemented, and the lessons we learned along the way. Get insights into the technical decisions we made and the trade-offs we encountered.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Post Mortem of Our 30x Performance Improvement]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-06-25</pubDate>
-  <description><![CDATA[In this post, I'll share our experience of optimizing database queries with PostgreSQL indexes, which led to a 30x performance improvement. You'll learn how to identify slow queries, create effective indexes, and avoid common pitfalls. By the end of this article, you'll be equipped to tackle similar performance issues in your own PostgreSQL databases.]]></description>
 </item>
 </channel>
 </rss>
