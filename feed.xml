@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How We Replaced Apache Kafka with Amazon Kinesis to Improve Realtime Data Processing in Our Nodejs Microservices Architecture]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</guid>
+  <pubDate>2026-07-16</pubDate>
+  <description><![CDATA[In this post, we'll explore how we replaced Apache Kafka with Amazon Kinesis to improve real-time data processing in our Node.js microservices architecture. We'll dive into the challenges we faced, the benefits of using Amazon Kinesis, and provide a step-by-step guide on how to integrate it with your Node.js application. By the end of this post, you'll have a clear understanding of how to leverage Amazon Kinesis to build scalable and efficient real-time data processing pipelines.]]></description>
+</item><item>
   <title><![CDATA[Migrating from MongoDB to PostgreSQL for Analytics: A 6-Month Retrospective on Performance and Data Integrity]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
   <pubDate>2026-06-27</pubDate>
   <description><![CDATA[Learn how to replace Apache Kafka with Amazon Kinesis, a fully managed service for real-time data processing and analysis, and improve the scalability and reliability of your microservices architecture. I'll share my personal experience of making this switch and the benefits we've seen so far. We'll dive into the technical details of the migration process and explore the advantages of using Amazon Kinesis.]]></description>
-</item><item>
-  <title><![CDATA[Migrating Our Legacy Monolith to a Service-Oriented Architecture with gRPC and Kubernetes: A 6-Month Retrospective]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html</guid>
-  <pubDate>2026-06-26</pubDate>
-  <description><![CDATA[Learn from our 6-month journey of migrating a legacy monolith to a service-oriented architecture using gRPC and Kubernetes. Discover the challenges we faced, the solutions we implemented, and the lessons we learned along the way. Get insights into the technical decisions we made and the trade-offs we encountered.]]></description>
 </item>
 </channel>
 </rss>
