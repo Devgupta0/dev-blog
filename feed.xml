@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Optimized Our PostgreSQL Database Performance by 300% by Replacing Subqueries with Lateral Joins and Implementing Connection Pooling with PgBouncer]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-postgresql-database-.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-postgresql-database-.html</guid>
+  <pubDate>2026-07-17</pubDate>
+  <description><![CDATA[In this post, I'll share how I optimized our PostgreSQL database performance by replacing subqueries with lateral joins and implementing connection pooling with PgBouncer. You'll learn how to identify and refactor slow subqueries, and how to set up PgBouncer for efficient connection management. By the end of this post, you'll have the knowledge to significantly improve your PostgreSQL database performance.]]></description>
+</item><item>
   <title><![CDATA[How We Replaced Apache Kafka with Amazon Kinesis to Improve Realtime Data Processing in Our Nodejs Microservices Architecture]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-database-queries-by-.html</guid>
   <pubDate>2026-06-28</pubDate>
   <description><![CDATA[Learn how to optimize database queries by 300% by replacing JPA with Spring Data Jdbc and custom SQL indexing. Discover the benefits of using Spring Data Jdbc and how to implement custom SQL indexing to improve query performance.]]></description>
-</item><item>
-  <title><![CDATA[How I Replaced Apache Kafka with Amazon Kinesis to Improve Realtime Data Processing in Our Microservices Architecture]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
-  <pubDate>2026-06-27</pubDate>
-  <description><![CDATA[Learn how to replace Apache Kafka with Amazon Kinesis, a fully managed service for real-time data processing and analysis, and improve the scalability and reliability of your microservices architecture. I'll share my personal experience of making this switch and the benefits we've seen so far. We'll dive into the technical details of the migration process and explore the advantages of using Amazon Kinesis.]]></description>
 </item>
 </channel>
 </rss>

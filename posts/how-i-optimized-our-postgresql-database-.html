@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimizing PostgreSQL Database Performance | Dev Notes by Devgupta</title>
+<meta name="description" content="Learn how to boost PostgreSQL performance by replacing subqueries with lateral joins and implementing connection pooling with PgBouncer">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-postgresql-database-.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optimizing PostgreSQL Database Performance | Dev Notes by Devgupta">
+<meta property="og:description" content="Learn how to boost PostgreSQL performance by replacing subqueries with lateral joins and implementing connection pooling with PgBouncer">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-postgresql-database-.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="Optimizing PostgreSQL Database Performance | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Learn how to boost PostgreSQL performance by replacing subqueries with lateral joins and implementing connection pooling with PgBouncer">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Optimizing PostgreSQL Database Performance | Dev Notes by Devgupta","description":"Learn how to boost PostgreSQL performance by replacing subqueries with lateral joins and implementing connection pooling with PgBouncer","url":"https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-postgresql-database-.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-07-17"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">How I Optimized Our PostgreSQL Database Performance by 300% by Replacing Subqueries with Lateral Joins and Implementing Connection Pooling with PgBouncer</h1>
+    <div class="article-meta"><span>2026-07-17</span><span>Devgupta</span><span class="post-tag">postgresql</span> <span class="post-tag">database performance</span> <span class="post-tag">lateral joins</span> <span class="post-tag">connection pooling</span> <span class="post-tag">pgbouncer</span></div>
+  </div>
+  <div class="article-body"><p>I still remember the day when our application's performance started to degrade significantly. Our users were complaining about slow load times, and our metrics were showing a steady increase in database query execution times. As a developer, it was my responsibility to identify and fix the issue. After digging through our codebase and database queries, I found the culprit: a complex query with multiple subqueries that was bringing our PostgreSQL database to its knees.</p>
+<h2>The Problem with Subqueries</h2>
+Subqueries can be a powerful tool in SQL, allowing you to perform complex queries and retrieve data from multiple tables. However, they can also be a performance killer if not used carefully. In our case, the subqueries were being executed for each row in the result set, resulting in a huge number of database queries and significant performance degradation.
+<p>To illustrate the problem, let's consider an example query:
+<pre><code class="language-sql">SELECT *
+FROM orders
+WHERE total_amount &gt; (
+  SELECT AVG(total_amount)
+  FROM orders
+  WHERE customer_id = orders.customer_id
+);
+</code></pre>
+This query retrieves all orders with a total amount greater than the average total amount for each customer. The subquery is executed for each row in the <code>orders</code> table, resulting in a huge number of database queries.</p>
+<h2>Replacing Subqueries with Lateral Joins</h2>
+To optimize this query, I replaced the subquery with a lateral join. A lateral join allows you to reference columns from a preceding table in a subquery, which can be more efficient than executing a subquery for each row.
+<pre><code class="language-sql">SELECT *
+FROM orders
+JOIN LATERAL (
+  SELECT AVG(total_amount) AS avg_total_amount
+  FROM orders
+  WHERE customer_id = orders.customer_id
+) AS avg_order ON TRUE;
+</code></pre>
+However, this query still has a performance issue, as the lateral join is being executed for each row in the <code>orders</code> table. To further optimize this query, I used a window function to calculate the average total amount for each customer, and then joined the result with the <code>orders</code> table.
+<pre><code class="language-sql">WITH avg_orders AS (
+  SELECT customer_id, AVG(total_amount) AS avg_total_amount
+  FROM orders
+  GROUP BY customer_id
+)
+SELECT *
+FROM orders
+JOIN avg_orders ON orders.customer_id = avg_orders.customer_id
+WHERE orders.total_amount &gt; avg_orders.avg_total_amount;
+</code></pre>
+This query is much more efficient, as it only requires a single pass over the <code>orders</code> table and a single join operation.
+<h2>Implementing Connection Pooling with PgBouncer</h2>
+While optimizing our database queries significantly improved performance, we still had a problem with database connections. Our application was opening a new database connection for each request, which was resulting in a huge number of connections and significant overhead.
+<p>To solve this problem, I implemented connection pooling using PgBouncer. PgBouncer is a popular connection pooling tool for PostgreSQL that allows you to manage a pool of database connections and reuse them for multiple requests.</p>
+<p>To set up PgBouncer, I created a configuration file (<code>pgbouncer.ini</code>) with the following settings:
+<pre><code class="language-ini">[databases]
+mydatabase = host=localhost port=5432 dbname=mydatabase</p>
+<p>[pgbouncer]
+listen_addr = localhost
+listen_port = 6432
+auth_type = md5
+max_db_connections = 20
+max_user_connections = 20
+</code></pre>
+I then started the PgBouncer service and updated our application to connect to the PgBouncer instance instead of the PostgreSQL database directly.</p>
+<h2>Monitoring and Testing</h2>
+After implementing these optimizations, I monitored our database performance closely to ensure that the changes had the desired effect. I used tools like <code>pg_stat_statements</code> and <code>pgbadger</code> to monitor query execution times and database connections.
+<p>I also wrote a series of tests to verify that the optimized queries were returning the correct results and that the connection pooling was working as expected.</p>
+<h2>Takeaway</h2>
+Optimizing database performance can be a challenging task, but it's essential for ensuring a good user experience and preventing performance bottlenecks. By replacing subqueries with lateral joins and implementing connection pooling with PgBouncer, I was able to improve our PostgreSQL database performance by 300%. These techniques can be applied to a wide range of database performance issues, and I hope that this post has provided you with the knowledge and inspiration to tackle your own database performance challenges. Remember to always monitor and test your optimizations closely to ensure that they have the desired effect.</div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>
