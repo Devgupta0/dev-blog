@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Query Performance with PostgreSQL Indexes and Partitioning after Migrating from MongoDB to a Relational Database]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-wi.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-wi.html</guid>
+  <pubDate>2026-07-18</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database query performance with PostgreSQL indexes and partitioning after migrating from MongoDB to a relational database. You'll learn how to identify performance bottlenecks, create effective indexes, and implement partitioning to improve query performance. By the end of this post, you'll have a clear understanding of how to optimize your PostgreSQL database for better performance.]]></description>
+</item><item>
   <title><![CDATA[How I Optimized Our PostgreSQL Database Performance by 300% by Replacing Subqueries with Lateral Joins and Implementing Connection Pooling with PgBouncer]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-postgresql-database-.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-postgresql-database-.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-06-29</pubDate>
   <description><![CDATA[Learn how to identify and fix slow database queries using PostgreSQL indexes and partitioning, after a recent 3000ms latency spike in our e-commerce application. We'll explore the steps I took to optimize our database and reduce query latency. Discover the power of efficient database optimization for a smoother user experience.]]></description>
-</item><item>
-  <title><![CDATA[How I Optimized Our Database Queries by 300% by Replacing JPA with Spring Data Jdbc and Custom SQL Indexing]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-database-queries-by-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-database-queries-by-.html</guid>
-  <pubDate>2026-06-28</pubDate>
-  <description><![CDATA[Learn how to optimize database queries by 300% by replacing JPA with Spring Data Jdbc and custom SQL indexing. Discover the benefits of using Spring Data Jdbc and how to implement custom SQL indexing to improve query performance.]]></description>
 </item>
 </channel>
 </rss>

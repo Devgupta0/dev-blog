@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimizing PostgreSQL Query Performance | Dev Notes by Devgupta</title>
+<meta name="description" content="Learn how to optimize PostgreSQL database query performance using indexes and partitioning after migrating from MongoDB">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-wi.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optimizing PostgreSQL Query Performance | Dev Notes by Devgupta">
+<meta property="og:description" content="Learn how to optimize PostgreSQL database query performance using indexes and partitioning after migrating from MongoDB">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-wi.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="Optimizing PostgreSQL Query Performance | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Learn how to optimize PostgreSQL database query performance using indexes and partitioning after migrating from MongoDB">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Optimizing PostgreSQL Query Performance | Dev Notes by Devgupta","description":"Learn how to optimize PostgreSQL database query performance using indexes and partitioning after migrating from MongoDB","url":"https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-wi.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-07-18"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">Optimizing Database Query Performance with PostgreSQL Indexes and Partitioning after Migrating from MongoDB to a Relational Database</h1>
+    <div class="article-meta"><span>2026-07-18</span><span>Devgupta</span><span class="post-tag">PostgreSQL</span> <span class="post-tag">MongoDB</span> <span class="post-tag">Database Optimization</span> <span class="post-tag">Indexes</span> <span class="post-tag">Partitioning</span></div>
+  </div>
+  <div class="article-body"><p>I still remember the day when our team decided to migrate our database from MongoDB to PostgreSQL. We were excited about the prospect of using a relational database, but we were also aware of the potential challenges that came with it. One of the biggest concerns was optimizing database query performance. As a developer, I had limited experience with PostgreSQL, and I knew that I had to learn quickly to ensure a smooth transition.</p>
+<h2>Introduction to PostgreSQL Indexes</h2>
+<p>After migrating our database, we started noticing performance issues with some of our queries. They were taking longer than expected to execute, and we were getting complaints from our users about slow load times. That's when I realized that I needed to learn about PostgreSQL indexes. Indexes are data structures that improve the speed of data retrieval by allowing the database to quickly locate and retrieve specific data. In PostgreSQL, you can create indexes on one or more columns of a table.</p>
+<p>To create an index in PostgreSQL, you can use the <code>CREATE INDEX</code> statement. For example, let's say we have a table called <code>users</code> with a column called <code>email</code>. We can create an index on the <code>email</code> column using the following code:
+<pre><code class="language-sql">CREATE INDEX idx_users_email ON users (email);
+</code></pre>
+This will create a B-tree index on the <code>email</code> column, which will improve the performance of queries that filter on this column.</p>
+<h2>Identifying Performance Bottlenecks</h2>
+<p>To optimize database query performance, you need to identify the performance bottlenecks. You can use tools like <code>EXPLAIN</code> and <code>ANALYZE</code> to analyze the execution plan of your queries. These tools will help you understand how the database is executing your queries and where the bottlenecks are.</p>
+<p>For example, let's say we have a query that retrieves all users with a specific email address. We can use <code>EXPLAIN</code> and <code>ANALYZE</code> to analyze the execution plan of this query:
+<pre><code class="language-sql">EXPLAIN (ANALYZE) SELECT * FROM users WHERE email = 'john.doe@example.com';
+</code></pre>
+This will give us a detailed report of the execution plan, including the time it took to execute each step of the query. By analyzing this report, we can identify the performance bottlenecks and optimize the query accordingly.</p>
+<h2>Implementing Partitioning</h2>
+<p>Another technique that can help improve query performance is partitioning. Partitioning involves dividing a large table into smaller, more manageable pieces called partitions. Each partition can be stored in a separate location, and the database can use this information to quickly locate and retrieve specific data.</p>
+<p>In PostgreSQL, you can implement partitioning using the <code>PARTITION BY</code> clause. For example, let's say we have a table called <code>orders</code> with a column called <code>order_date</code>. We can partition this table by <code>order_date</code> using the following code:
+<pre><code class="language-sql">CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    order_date DATE NOT NULL,
+    total DECIMAL(10, 2) NOT NULL
+) PARTITION BY RANGE (EXTRACT(YEAR FROM order_date));
+</code></pre>
+This will create a partitioned table that divides the data into separate partitions based on the year of the <code>order_date</code> column.</p>
+<h2>Creating Effective Indexes</h2>
+<p>Creating effective indexes is crucial for optimizing database query performance. An effective index is one that is used by the database to speed up query execution. To create an effective index, you need to consider the following factors:</p>
+<p>*   Column usage: Create indexes on columns that are frequently used in <code>WHERE</code>, <code>JOIN</code>, and <code>ORDER BY</code> clauses.
+*   Data distribution: Create indexes on columns with a high degree of uniqueness, as this will improve the selectivity of the index.
+*   Query patterns: Create indexes that match the query patterns used by your application.</p>
+<p>For example, let's say we have a query that retrieves all orders with a total value greater than $100. We can create an index on the <code>total</code> column using the following code:
+<pre><code class="language-sql">CREATE INDEX idx_orders_total ON orders (total);
+</code></pre>
+This will create a B-tree index on the <code>total</code> column, which will improve the performance of queries that filter on this column.</p>
+<h2>Maintaining Indexes</h2>
+<p>Maintaining indexes is essential for ensuring that they remain effective over time. As data is inserted, updated, or deleted, indexes can become fragmented, which can lead to decreased performance. To maintain indexes, you can use the <code>REINDEX</code> command to rebuild the index.</p>
+<p>For example, let's say we have an index called <code>idx_orders_total</code> that we want to rebuild. We can use the following code:
+<pre><code class="language-sql">REINDEX INDEX idx_orders_total;
+</code></pre>
+This will rebuild the index, which will help to maintain its effectiveness over time.</p>
+<h2>Takeaway</h2>
+<p>In conclusion, optimizing database query performance with PostgreSQL indexes and partitioning is a crucial step in ensuring the scalability and performance of your application. By identifying performance bottlenecks, creating effective indexes, and implementing partitioning, you can significantly improve the performance of your queries. Remember to maintain your indexes regularly to ensure they remain effective over time. With practice and experience, you'll become proficient in using PostgreSQL indexes and partitioning to optimize your database query performance.</p></div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>
