@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After a 30x Reduction in Query Time on Our High-Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-07-19</pubDate>
+  <description><![CDATA[In this post, I'll share our experience with optimizing database queries on our high-traffic e-commerce platform using PostgreSQL indexes and partitioning, which led to a 30x reduction in query time. You'll learn how to identify performance bottlenecks, create effective indexes, and implement partitioning to improve query performance. I'll also provide code examples and best practices to help you optimize your own database queries.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Query Performance with PostgreSQL Indexes and Partitioning after Migrating from MongoDB to a Relational Database]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-wi.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-wi.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-06-30</pubDate>
   <description><![CDATA[Learn how to optimize database queries using PostgreSQL indexes, reducing API latency in high-traffic applications. Discover the steps to identify and resolve query performance issues, resulting in a significant improvement in overall system performance.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning after a 3000ms Latency Spike in Our E-commerce Application]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-06-29</pubDate>
-  <description><![CDATA[Learn how to identify and fix slow database queries using PostgreSQL indexes and partitioning, after a recent 3000ms latency spike in our e-commerce application. We'll explore the steps I took to optimize our database and reduce query latency. Discover the power of efficient database optimization for a smoother user experience.]]></description>
 </item>
 </channel>
 </rss>
