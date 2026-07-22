@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Application by Migrating from MySQL to PostgreSQL with TimescaleDB]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
+  <pubDate>2026-07-22</pubDate>
+  <description><![CDATA[Learn how to optimize database query performance by migrating from MySQL to PostgreSQL with TimescaleDB. Improve your e-commerce application's performance and scalability. Discover the benefits of using PostgreSQL and TimescaleDB for your database needs.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries in a High-Traffic E-commerce Platform: A Tale of Replacing ORM with Raw SQL and Achieving 300% Performance Gain]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-07-03</pubDate>
   <description><![CDATA[After migrating from MongoDB to PostgreSQL, I encountered significant performance issues due to inefficient database queries. In this post, I'll share how I optimized database queries using PostgreSQL indexes and materialized views, resulting in a substantial improvement in query performance. You'll learn how to identify query bottlenecks, create effective indexes, and leverage materialized views to speed up your database queries.]]></description>
-</item><item>
-  <title><![CDATA[How I Survived a 3-Day Database Outage by Implementing a Temporary Messaging Queue]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-database-outage-b.html</guid>
-  <pubDate>2026-07-02</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of surviving a 3-day database outage by implementing a temporary messaging queue with Apache Kafka and Redis. You'll learn how to design and implement a messaging queue to save your real-time analytics pipeline. I'll also provide code snippets and examples to help you understand the process.]]></description>
 </item>
 </channel>
 </rss>
