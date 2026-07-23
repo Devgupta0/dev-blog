@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Partitioning: A 5x Performance Boost in Our High-Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-07-23</pubDate>
+  <description><![CDATA[Discover how we improved our database query performance by 5x using PostgreSQL partitioning. Learn how to apply this technique to your own high-traffic e-commerce platform and improve user experience. Get insights into our journey and the steps we took to achieve this significant boost.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Application by Migrating from MySQL to PostgreSQL with TimescaleDB]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
   <pubDate>2026-07-04</pubDate>
   <description><![CDATA[In this post, I'll share my experience with optimizing database queries using Query Store, a feature in SQL Server. I'll explain how I used it to reduce the average response time by 30% in our high-traffic e-commerce platform. You'll learn how to identify and optimize slow-running queries, and improve the overall performance of your database.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Materialized Views After Migrating from MongoDB to a Relational Database]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-07-03</pubDate>
-  <description><![CDATA[After migrating from MongoDB to PostgreSQL, I encountered significant performance issues due to inefficient database queries. In this post, I'll share how I optimized database queries using PostgreSQL indexes and materialized views, resulting in a substantial improvement in query performance. You'll learn how to identify query bottlenecks, create effective indexes, and leverage materialized views to speed up your database queries.]]></description>
 </item>
 </channel>
 </rss>
