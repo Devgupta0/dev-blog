@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform by Replacing ORM with a Custom SQL Builder]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
+  <pubDate>2026-07-24</pubDate>
+  <description><![CDATA[I'll share my experience of optimizing database query performance in a high-traffic e-commerce platform by replacing an Object-Relational Mapping (ORM) tool with a custom SQL builder. You'll learn how to identify performance bottlenecks, design a custom SQL builder, and integrate it with your existing application. By the end of this post, you'll be equipped with the knowledge to significantly improve the performance and scalability of your database-driven applications.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Partitioning: A 5x Performance Boost in Our High-Traffic E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
   <pubDate>2026-07-05</pubDate>
   <description><![CDATA[Learn how to replace Apache Kafka with Amazon Kinesis for real-time data processing, reducing latency and improving performance in e-commerce platforms. Discover the benefits and challenges of this migration, and get a step-by-step guide on how to integrate Amazon Kinesis into your application. Get ready to take your real-time data processing to the next level.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with Query Store: How I Reduced Average Response Time by 30% in Our High-Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-query-s.html</guid>
-  <pubDate>2026-07-04</pubDate>
-  <description><![CDATA[In this post, I'll share my experience with optimizing database queries using Query Store, a feature in SQL Server. I'll explain how I used it to reduce the average response time by 30% in our high-traffic e-commerce platform. You'll learn how to identify and optimize slow-running queries, and improve the overall performance of your database.]]></description>
 </item>
 </channel>
 </rss>
