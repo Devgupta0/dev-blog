@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Cautionary Tale of Accidental Transaction Locking in a High-Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-07-25</pubDate>
+  <description><![CDATA[In this post, I'll share a real-world example of how I optimized database queries using PostgreSQL indexes, and a cautionary tale of how I accidentally introduced transaction locking in a high-traffic e-commerce platform. You'll learn how to use indexes effectively and avoid common pitfalls. By the end of this post, you'll have a better understanding of how to optimize your database queries and improve the performance of your application.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Platform by Replacing ORM with a Custom SQL Builder]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-07-06</pubDate>
   <description><![CDATA[Learn how to identify and optimize slow database queries, create effective indexes, and leverage histograms to improve query performance. Get ready to scale your e-commerce platform with confidence.]]></description>
-</item><item>
-  <title><![CDATA[How I Replaced Apache Kafka with Amazon Kinesis for Real-Time Data Processing and Reduced Latency by 30% in Our E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
-  <pubDate>2026-07-05</pubDate>
-  <description><![CDATA[Learn how to replace Apache Kafka with Amazon Kinesis for real-time data processing, reducing latency and improving performance in e-commerce platforms. Discover the benefits and challenges of this migration, and get a step-by-step guide on how to integrate Amazon Kinesis into your application. Get ready to take your real-time data processing to the next level.]]></description>
 </item>
 </channel>
 </rss>
