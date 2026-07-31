@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with a Homemade Query Analyzer after PostgreSQL pg_stat_statements Proved Inadequate for Our High-Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-homem.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-homem.html</guid>
+  <pubDate>2026-07-31</pubDate>
+  <description><![CDATA[In this post, we'll explore how we built a homemade query analyzer to optimize database queries after PostgreSQL pg_stat_statements proved inadequate for our high-traffic e-commerce platform. We'll dive into the technical details and share a realistic code snippet to illustrate the solution. By the end of this post, you'll learn how to identify and optimize slow database queries using a custom query analyzer.]]></description>
+</item><item>
   <title><![CDATA[Migrating Our High-Traffic REST API from Node.js to Go: A 6-Month Retrospective]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-traffic-rest-api-from.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-traffic-rest-api-from.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-analytics-pipe.html</guid>
   <pubDate>2026-07-12</pubDate>
   <description><![CDATA[In this post, we'll share our 6-month experience migrating our high-volume analytics pipeline from Apache Kafka to Amazon Kinesis, discussing the challenges we faced, the benefits we've seen, and the lessons we've learned. We'll dive into the technical details of the migration process and provide insights into the performance and cost savings we've achieved. Whether you're considering a similar migration or just curious about our experience, this post is for you.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After a 3000% Traffic Spike on Our E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-07-11</pubDate>
-  <description><![CDATA[In this post, I'll share how we optimized our PostgreSQL database queries with indexes and partitioning after a 3000% traffic spike on our e-commerce platform, and the lessons we learned along the way. You'll learn how to identify performance bottlenecks, create effective indexes, and implement partitioning to improve query performance. By the end of this post, you'll have a solid understanding of how to optimize your PostgreSQL database for high-traffic applications.]]></description>
 </item>
 </channel>
 </rss>
