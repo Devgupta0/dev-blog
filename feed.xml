@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Materialized Views]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-08-01</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and materialized views after migrating our high traffic e-commerce application from MongoDB to a relational database. You'll learn how to identify performance bottlenecks, create effective indexes, and leverage materialized views to improve query performance. By the end of this post, you'll be able to apply these techniques to your own database optimization projects.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with a Homemade Query Analyzer after PostgreSQL pg_stat_statements Proved Inadequate for Our High-Traffic E-commerce Platform]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-homem.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-homem.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</guid>
   <pubDate>2026-07-13</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database query performance in a high-traffic Spring Boot application by migrating from JPA to jOOQ. I'll cover the challenges I faced, the benefits of using jOOQ, and provide a step-by-step guide on how to integrate jOOQ into your Spring Boot application. By the end of this post, you'll learn how to improve the performance and scalability of your database-driven application.]]></description>
-</item><item>
-  <title><![CDATA[Migrating Our High-Volume Analytics Pipeline from Apache Kafka to Amazon Kinesis: A 6-Month Retrospective on Performance and Cost Savings]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-analytics-pipe.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-volume-analytics-pipe.html</guid>
-  <pubDate>2026-07-12</pubDate>
-  <description><![CDATA[In this post, we'll share our 6-month experience migrating our high-volume analytics pipeline from Apache Kafka to Amazon Kinesis, discussing the challenges we faced, the benefits we've seen, and the lessons we've learned. We'll dive into the technical details of the migration process and provide insights into the performance and cost savings we've achieved. Whether you're considering a similar migration or just curious about our experience, this post is for you.]]></description>
 </item>
 </channel>
 </rss>

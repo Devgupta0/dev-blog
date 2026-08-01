@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://Devgupta0.github.io/dev-blog/</loc></url>
+  <url><loc>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</loc><lastmod>2026-08-01</lastmod></url>
   <url><loc>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-homem.html</loc><lastmod>2026-07-31</lastmod></url>
   <url><loc>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-traffic-rest-api-from.html</loc><lastmod>2026-07-30</lastmod></url>
   <url><loc>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-rabbitmq-with-apache-kafk.html</loc><lastmod>2026-07-29</lastmod></url>
