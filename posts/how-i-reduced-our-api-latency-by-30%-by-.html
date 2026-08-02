@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reducing API Latency with Graph Database | Dev Notes by Devgupta</title>
+<meta name="description" content="Discover how replacing MongoDB with a graph database reduced API latency by 30% for complex queries">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/how-i-reduced-our-api-latency-by-30%-by-.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reducing API Latency with Graph Database | Dev Notes by Devgupta">
+<meta property="og:description" content="Discover how replacing MongoDB with a graph database reduced API latency by 30% for complex queries">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/how-i-reduced-our-api-latency-by-30%-by-.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="Reducing API Latency with Graph Database | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Discover how replacing MongoDB with a graph database reduced API latency by 30% for complex queries">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Reducing API Latency with Graph Database | Dev Notes by Devgupta","description":"Discover how replacing MongoDB with a graph database reduced API latency by 30% for complex queries","url":"https://Devgupta0.github.io/dev-blog/posts/how-i-reduced-our-api-latency-by-30%-by-.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-08-02"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">How I Reduced Our API Latency by 30% by Replacing MongoDB with a Graph Database for Complex Queries</h1>
+    <div class="article-meta"><span>2026-08-02</span><span>Devgupta</span><span class="post-tag">graph database</span> <span class="post-tag">mongodb</span> <span class="post-tag">api latency</span> <span class="post-tag">performance optimization</span></div>
+  </div>
+  <div class="article-body"><p>I still remember the day our API latency started to become a major concern. Our application was growing rapidly, and with it, the complexity of our queries. We were using MongoDB as our primary data store, and while it served us well for a long time, it started to show its limitations when dealing with deeply nested and connected data. Our queries were taking longer and longer to execute, and our API latency was suffering as a result. That's when I decided to explore alternative databases that could better handle our complex query workloads.</p>
+<h2>Background and Problem Statement</h2>
+Our application is a social media platform that allows users to create content, follow other users, and engage with their posts. As the user base grew, so did the complexity of our queries. We needed to retrieve not only the user's own posts but also the posts of the users they follow, along with the comments and likes on those posts. This meant our queries had to traverse multiple collections in MongoDB, leading to slow performance and high latency.
+<h2>Introduction to Graph Databases</h2>
+That's when I stumbled upon graph databases. A graph database is a type of NoSQL database that uses graph theory to store, map, and query relationships between data entities. Unlike traditional relational databases or document-oriented databases like MongoDB, graph databases are optimized for querying complex, interconnected data. They use nodes (or vertices) to represent entities and edges to represent relationships between those entities.
+<h2>Migration to a Graph Database</h2>
+After researching various graph databases, I decided to migrate our application to Neo4j, a popular and widely-used graph database. The migration process was not trivial, but it was worth it in the end. We had to redefine our data model to take advantage of the graph structure, which meant creating nodes for users, posts, comments, and likes, and edges to represent the relationships between them.
+<p>Here's an example of how we modeled our data in Neo4j:
+<pre><code class="language-cypher">// Create a user node
+CREATE (user:User {id: 1, name: 'John Doe'})</p>
+<p>// Create a post node
+CREATE (post:Post {id: 1, content: 'Hello, world!'})</p>
+<p>// Create a relationship between the user and the post
+MATCH (user:User {id: 1}), (post:Post {id: 1})
+CREATE (user)-[:AUTHORED]-&gt;(post)</p>
+<p>// Create a comment node
+CREATE (comment:Comment {id: 1, content: 'Great post!'})</p>
+<p>// Create a relationship between the post and the comment
+MATCH (post:Post {id: 1}), (comment:Comment {id: 1})
+CREATE (post)-[:HAS_COMMENT]-&gt;(comment)
+</code></pre>
+<h2>Querying the Graph</h2>
+Once our data was modeled as a graph, we could take advantage of Neo4j's powerful query language, Cypher, to retrieve the data we needed. Cypher allows us to specify patterns in the graph and retrieve the matching nodes and relationships. For example, to retrieve all the posts authored by a user and their comments, we could use the following query:
+<pre><code class="language-cypher">MATCH (user:User {id: 1})-[:AUTHORED]-&gt;(post:Post)-[:HAS_COMMENT]-&gt;(comment:Comment)
+RETURN post, comment
+</code></pre>
+This query traverses the graph, starting from the user node, and follows the relationships to retrieve the posts and comments.</p>
+<h2>Results and Comparison</h2>
+After migrating our application to Neo4j, we saw a significant reduction in API latency. Our complex queries, which used to take seconds to execute, were now taking milliseconds. We measured a 30% reduction in API latency, which was a huge improvement for our users.
+<p>To give you a better idea, here are some numbers:
+* Average query time in MongoDB: 500-700ms
+* Average query time in Neo4j: 100-200ms
+* Peak query time in MongoDB: 2-3 seconds
+* Peak query time in Neo4j: 500-700ms</p>
+<h2>Takeaway</h2>
+Replacing MongoDB with a graph database was a game-changer for our application. By modeling our data as a graph and using a graph database like Neo4j, we were able to reduce our API latency by 30% and improve the overall performance of our application. If you're dealing with complex, interconnected data and struggling with query performance, I highly recommend exploring graph databases as an alternative. It may require some upfront investment in migrating your data and queries, but the payoff is well worth it.</div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>

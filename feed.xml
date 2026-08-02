@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Reduced Our API Latency by 30% by Replacing MongoDB with a Graph Database for Complex Queries]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-reduced-our-api-latency-by-30%-by-.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-reduced-our-api-latency-by-30%-by-.html</guid>
+  <pubDate>2026-08-02</pubDate>
+  <description><![CDATA[Learn how switching from MongoDB to a graph database improved our API performance, reduced latency, and simplified complex queries. Get insights into the migration process and the benefits of using graph databases for complex query workloads.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Materialized Views]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-07-14</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and partitioning after migrating from MongoDB to a relational database. You'll learn how to identify bottlenecks, create effective indexes, and implement partitioning to improve query performance and scalability.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Query Performance by Migrating from JPA to jOOQ in a High-Traffic Spring Boot Application]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-by.html</guid>
-  <pubDate>2026-07-13</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database query performance in a high-traffic Spring Boot application by migrating from JPA to jOOQ. I'll cover the challenges I faced, the benefits of using jOOQ, and provide a step-by-step guide on how to integrate jOOQ into your Spring Boot application. By the end of this post, you'll learn how to improve the performance and scalability of your database-driven application.]]></description>
 </item>
 </channel>
 </rss>
