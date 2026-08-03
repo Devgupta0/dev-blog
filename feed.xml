@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Debugging a Mysterious 10% Increase in Average Query Latency After Migrating Our PostgreSQL Database to AWS Aurora]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-10%-increase-in-a.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-10%-increase-in-a.html</guid>
+  <pubDate>2026-08-03</pubDate>
+  <description><![CDATA[I recently migrated our PostgreSQL database to AWS Aurora and noticed a 10% increase in average query latency. In this post, I'll share how I debugged the issue and found the root cause. You'll learn how to identify and troubleshoot database performance problems using various tools and techniques.]]></description>
+</item><item>
   <title><![CDATA[How I Reduced Our API Latency by 30% by Replacing MongoDB with a Graph Database for Complex Queries]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-reduced-our-api-latency-by-30%-by-.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-reduced-our-api-latency-by-30%-by-.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</guid>
   <pubDate>2026-07-15</pubDate>
   <description><![CDATA[In this post, I'll share my experience migrating our analytics database from MongoDB to PostgreSQL, including the challenges we faced and the benefits we've seen. We'll dive into the technical details of the migration process and explore how it's impacted our data integrity and performance. Whether you're considering a similar migration or just curious about the differences between these two databases, you'll find valuable insights here.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning after Migrating from MongoDB to a Relational Database]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-07-14</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and partitioning after migrating from MongoDB to a relational database. You'll learn how to identify bottlenecks, create effective indexes, and implement partitioning to improve query performance and scalability.]]></description>
 </item>
 </channel>
 </rss>
