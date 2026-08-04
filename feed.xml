@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I survived a 3-day MySQL replication lag by switching to a semi-synchronous replication topology with Galera Cluster and GTIDs]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-mysql-replication.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-mysql-replication.html</guid>
+  <pubDate>2026-08-04</pubDate>
+  <description><![CDATA[Discover how to resolve MySQL replication lag by switching to a semi-synchronous replication topology with Galera Cluster and GTIDs. Learn from a real-world experience and get hands-on with the solution. This post provides a step-by-step guide to implementing the solution and overcoming the challenges of MySQL replication lag.]]></description>
+</item><item>
   <title><![CDATA[Debugging a Mysterious 10% Increase in Average Query Latency After Migrating Our PostgreSQL Database to AWS Aurora]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-10%-increase-in-a.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-10%-increase-in-a.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</guid>
   <pubDate>2026-07-16</pubDate>
   <description><![CDATA[In this post, we'll explore how we replaced Apache Kafka with Amazon Kinesis to improve real-time data processing in our Node.js microservices architecture. We'll dive into the challenges we faced, the benefits of using Amazon Kinesis, and provide a step-by-step guide on how to integrate it with your Node.js application. By the end of this post, you'll have a clear understanding of how to leverage Amazon Kinesis to build scalable and efficient real-time data processing pipelines.]]></description>
-</item><item>
-  <title><![CDATA[Migrating from MongoDB to PostgreSQL for Analytics: A 6-Month Retrospective on Performance and Data Integrity]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-from-mongodb-to-postgresql-for.html</guid>
-  <pubDate>2026-07-15</pubDate>
-  <description><![CDATA[In this post, I'll share my experience migrating our analytics database from MongoDB to PostgreSQL, including the challenges we faced and the benefits we've seen. We'll dive into the technical details of the migration process and explore how it's impacted our data integrity and performance. Whether you're considering a similar migration or just curious about the differences between these two databases, you'll find valuable insights here.]]></description>
 </item>
 </channel>
 </rss>
