@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Replaced Our Monolithic MySQL Database with a PostgreSQL and TimescaleDB Hybrid]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</guid>
+  <pubDate>2026-08-05</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of replacing a monolithic MySQL database with a PostgreSQL and TimescaleDB hybrid to solve scaling issues with high-volume time-series data in our IoT application. You'll learn how to design and implement a scalable database architecture for IoT applications. I'll also share some tips and best practices for migrating from MySQL to PostgreSQL and TimescaleDB.]]></description>
+</item><item>
   <title><![CDATA[How I survived a 3-day MySQL replication lag by switching to a semi-synchronous replication topology with Galera Cluster and GTIDs]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-mysql-replication.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-mysql-replication.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-postgresql-database-.html</guid>
   <pubDate>2026-07-17</pubDate>
   <description><![CDATA[In this post, I'll share how I optimized our PostgreSQL database performance by replacing subqueries with lateral joins and implementing connection pooling with PgBouncer. You'll learn how to identify and refactor slow subqueries, and how to set up PgBouncer for efficient connection management. By the end of this post, you'll have the knowledge to significantly improve your PostgreSQL database performance.]]></description>
-</item><item>
-  <title><![CDATA[How We Replaced Apache Kafka with Amazon Kinesis to Improve Realtime Data Processing in Our Nodejs Microservices Architecture]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</guid>
-  <pubDate>2026-07-16</pubDate>
-  <description><![CDATA[In this post, we'll explore how we replaced Apache Kafka with Amazon Kinesis to improve real-time data processing in our Node.js microservices architecture. We'll dive into the challenges we faced, the benefits of using Amazon Kinesis, and provide a step-by-step guide on how to integrate it with your Node.js application. By the end of this post, you'll have a clear understanding of how to leverage Amazon Kinesis to build scalable and efficient real-time data processing pipelines.]]></description>
 </item>
 </channel>
 </rss>
