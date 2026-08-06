@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries With Postgre]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-08-06</pubDate>
+  <description><![CDATA[{]]></description>
+</item><item>
   <title><![CDATA[How I Replaced Our Monolithic MySQL Database with a PostgreSQL and TimescaleDB Hybrid]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-wi.html</guid>
   <pubDate>2026-07-18</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database query performance with PostgreSQL indexes and partitioning after migrating from MongoDB to a relational database. You'll learn how to identify performance bottlenecks, create effective indexes, and implement partitioning to improve query performance. By the end of this post, you'll have a clear understanding of how to optimize your PostgreSQL database for better performance.]]></description>
-</item><item>
-  <title><![CDATA[How I Optimized Our PostgreSQL Database Performance by 300% by Replacing Subqueries with Lateral Joins and Implementing Connection Pooling with PgBouncer]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-postgresql-database-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-optimized-our-postgresql-database-.html</guid>
-  <pubDate>2026-07-17</pubDate>
-  <description><![CDATA[In this post, I'll share how I optimized our PostgreSQL database performance by replacing subqueries with lateral joins and implementing connection pooling with PgBouncer. You'll learn how to identify and refactor slow subqueries, and how to set up PgBouncer for efficient connection management. By the end of this post, you'll have the knowledge to significantly improve your PostgreSQL database performance.]]></description>
 </item>
 </channel>
 </rss>
