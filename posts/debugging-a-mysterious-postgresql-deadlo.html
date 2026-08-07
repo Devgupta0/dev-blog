@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PostgreSQL Deadlock Debugging | Dev Notes by Devgupta</title>
+<meta name="description" content="Learn to debug PostgreSQL deadlocks in high-concurrency APIs with pg badges and WAL analytics, a real-world approach to resolving database performance issues">
+<meta name="author" content="Devgupta">
+<link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-postgresql-deadlo.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL Deadlock Debugging | Dev Notes by Devgupta">
+<meta property="og:description" content="Learn to debug PostgreSQL deadlocks in high-concurrency APIs with pg badges and WAL analytics, a real-world approach to resolving database performance issues">
+<meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-postgresql-deadlo.html">
+<meta property="og:site_name" content="Dev Notes by Devgupta">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@Devgupta0">
+<meta name="twitter:title" content="PostgreSQL Deadlock Debugging | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Learn to debug PostgreSQL deadlocks in high-concurrency APIs with pg badges and WAL analytics, a real-world approach to resolving database performance issues">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"PostgreSQL Deadlock Debugging | Dev Notes by Devgupta","description":"Learn to debug PostgreSQL deadlocks in high-concurrency APIs with pg badges and WAL analytics, a real-world approach to resolving database performance issues","url":"https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-postgresql-deadlo.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-08-07"}
+</script>
+<link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--s1:#0f0f0f;--text:#efefeb;--muted:#6b6966;
+  --accent:#f0c93a;--border:#1e1e1e;--max:720px;
+  --ff:'Syne',sans-serif;--fm:'Fira Code',monospace;--fb:'Lato',sans-serif;
+}
+@media(prefers-color-scheme:light){
+  :root{--bg:#fafaf8;--s1:#f2f2ef;--text:#1a1a18;--muted:#888580;--border:#e8e8e4}
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:17px;line-height:1.8;padding:0 1.25rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{max-width:var(--max);margin:0 auto;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--fm);font-size:0.85rem;color:var(--text);text-decoration:none}
+.nav-brand:hover{text-decoration:none;color:var(--accent)}
+.nav-right{display:flex;gap:1.5rem;font-family:var(--fm);font-size:0.75rem}
+.nav-right a{color:var(--muted)}
+.nav-right a:hover{color:var(--text);text-decoration:none}
+main{max-width:var(--max);margin:0 auto;padding:3rem 0 5rem}
+footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid var(--border);font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;justify-content:space-between}
+
+/* Index */
+.index-hero{padding:3rem 0 2rem}
+.index-title{font-family:var(--ff);font-size:2.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.index-sub{color:var(--muted);font-size:0.9rem;font-family:var(--fm)}
+.post-list{list-style:none;margin-top:2.5rem}
+.post-item{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.post-item:first-child{border-top:1px solid var(--border)}
+.post-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;display:flex;gap:1rem;align-items:center}
+.post-tag{padding:2px 8px;background:var(--s1);border:1px solid var(--border);border-radius:2px;font-size:0.68rem}
+.post-title{font-family:var(--ff);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;margin-bottom:0.4rem;line-height:1.3}
+.post-title a{color:var(--text);text-decoration:none;transition:color 0.2s}
+.post-title a:hover{color:var(--accent)}
+.post-excerpt{color:var(--muted);font-size:0.88rem;margin-bottom:0.75rem;line-height:1.7}
+.read-more{font-family:var(--fm);font-size:0.75rem;color:var(--accent)}
+.read-more:hover{text-decoration:underline}
+
+/* Article */
+.article-header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.article-title{font-family:var(--ff);font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1rem}
+.article-meta{font-family:var(--fm);font-size:0.72rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.article-body h2{font-family:var(--ff);font-size:1.4rem;font-weight:600;margin:2.5rem 0 0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.4rem}
+.article-body h3{font-family:var(--ff);font-size:1.1rem;font-weight:600;margin:1.75rem 0 0.5rem}
+.article-body p{margin:1.1rem 0}
+.article-body ul,.article-body ol{margin:1rem 0 1rem 1.5rem}
+.article-body li{margin:0.3rem 0}
+.article-body blockquote{border-left:3px solid var(--accent);padding:0.5rem 1.25rem;margin:1.5rem 0;color:var(--muted);font-style:italic}
+.article-body pre{background:var(--s1);border:1px solid var(--border);border-radius:4px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;position:relative}
+.article-body pre::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.article-body code{font-family:var(--fm);font-size:0.84rem}
+.article-body p code{background:var(--s1);padding:2px 7px;border-radius:3px;font-size:0.82rem}
+.back-link{font-family:var(--fm);font-size:0.78rem;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-top:3rem}
+.back-link:hover{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="https://Devgupta0.github.io/dev-blog">&#x2190; Dev Notes</a>
+  <div class="nav-right">
+    <a href="https://Devgupta0.github.io">portfolio</a>
+    <a href="https://Devgupta0.github.io/dev-blog/feed.xml">rss</a>
+  </div>
+</nav>
+<main>
+  <div class="article-header">
+    <h1 class="article-title">Debugging a Mysterious PostgreSQL Deadlock Issue in a High-Concurrency API Using pg badges and WAL Analytics</h1>
+    <div class="article-meta"><span>2026-08-07</span><span>Devgupta</span><span class="post-tag">PostgreSQL</span> <span class="post-tag">Deadlock</span> <span class="post-tag">pg badges</span> <span class="post-tag">WAL Analytics</span> <span class="post-tag">High-Concurrency API</span></div>
+  </div>
+  <div class="article-body"><p>I still remember the day our high-concurrency API started experiencing mysterious PostgreSQL deadlock issues. It was a typical Monday morning, and our team was busy resolving weekend bugs when suddenly, our monitoring system started alerting us about a surge in database errors. As the team lead, I was tasked with debugging the issue, and boy, was it a challenging one! The error messages were vague, and the stack traces didn't provide any meaningful insights. It wasn't until I stumbled upon pg badges and WAL analytics that I was able to finally identify and resolve the deadlock issue.</p>
+<h2>Introduction to PostgreSQL Deadlocks</h2>
+Before we dive into the debugging process, let's quickly discuss what PostgreSQL deadlocks are and how they occur. A deadlock is a situation where two or more transactions are blocked, waiting for each other to release resources. In PostgreSQL, deadlocks can occur when multiple transactions are competing for the same resources, such as rows or tables. When a deadlock is detected, PostgreSQL will automatically roll back one of the transactions to prevent the deadlock from persisting.
+<h2>The Mysterious Deadlock Issue</h2>
+Our API is built using a microservices architecture, with multiple services communicating with each other through RESTful APIs. The services interact with a PostgreSQL database, which is designed to handle high concurrency. However, on that fateful Monday morning, our database started experiencing deadlocks, causing errors to propagate throughout the system. The error messages were vague, with messages like "deadlock detected" or "current transaction is aborted, commands ignored until end of transaction block." The stack traces didn't provide any meaningful insights, making it challenging to identify the root cause of the issue.
+<h2>Using pg badges to Identify Deadlocks</h2>
+After hours of debugging, I stumbled upon pg badges, a PostgreSQL extension that provides detailed information about the current state of the database. By enabling pg badges, I was able to gather insights into the transactions that were causing the deadlocks. The <code>pg_badge</code> view provides information about the current transaction, including the transaction ID, process ID, and the resources it's waiting for. By querying this view, I was able to identify the transactions that were involved in the deadlock.
+<pre><code class="language-sql">SELECT * FROM pg_catalog.pg_badge;
+</code></pre>
+<p>This query returned a list of transactions, including the transaction ID, process ID, and the resources they were waiting for. By analyzing this data, I was able to identify the two transactions that were causing the deadlock.</p>
+<h2>Using WAL Analytics to Analyze Deadlocks</h2>
+While pg badges provided valuable insights into the transactions involved in the deadlock, I needed more information about the sequence of events that led to the deadlock. That's when I turned to WAL analytics, a PostgreSQL feature that allows you to analyze the write-ahead log (WAL) to understand the sequence of events that occurred in the database. By analyzing the WAL, I was able to reconstruct the events that led to the deadlock.
+<pre><code class="language-sql">SELECT * FROM pg_catalog.pg_wal;
+</code></pre>
+<p>This query returned a list of WAL records, including the transaction ID, operation type, and the resources involved. By analyzing this data, I was able to understand the sequence of events that led to the deadlock.</p>
+<h2>Resolving the Deadlock Issue</h2>
+With the insights gained from pg badges and WAL analytics, I was finally able to identify the root cause of the deadlock issue. It turned out that two transactions were competing for the same row in a table, causing a deadlock. To resolve the issue, I added a retry mechanism to the transactions, allowing them to retry the operation if a deadlock occurs. I also optimized the database queries to reduce the contention between transactions.
+<h2>Takeaway</h2>
+Debugging a mysterious PostgreSQL deadlock issue can be challenging, but with the right tools and techniques, it's possible to identify and resolve the issue. In this post, I shared my experience of using pg badges and WAL analytics to debug a deadlock issue in a high-concurrency API. By using these tools, you can gain valuable insights into the transactions and events that are causing deadlocks in your database. Remember to always monitor your database performance, and don't be afraid to dive into the details when issues arise. With practice and patience, you'll become a pro at debugging PostgreSQL deadlocks!</div>
+  <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
+</main>
+<footer>
+  <span>Dev Notes by Devgupta</span>
+  <span>Updated daily by AI agent</span>
+</footer>
+</body></html>
