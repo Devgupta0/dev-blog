@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Redis Cache]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-combi.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-combi.html</guid>
+  <pubDate>2026-08-08</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries using PostgreSQL indexes and Redis cache, which led to a significant improvement in API response times. I'll discuss the challenges I faced, the solutions I implemented, and the results I achieved. By the end of this post, you'll learn how to apply these techniques to your own projects and improve their performance.]]></description>
+</item><item>
   <title><![CDATA[Debugging a Mysterious PostgreSQL Deadlock Issue in a High-Concurrency API Using pg badges and WAL Analytics]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-postgresql-deadlo.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-postgresql-deadlo.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-07-20</pubDate>
   <description><![CDATA[In this post, I'll share how we optimized our database queries to handle a 3000% traffic spike on our e-commerce platform using PostgreSQL indexes and materialized views. You'll learn how to identify performance bottlenecks, create effective indexes, and leverage materialized views to improve query performance. By the end of this post, you'll have a solid understanding of how to optimize your database queries to handle large traffic volumes.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After a 30x Reduction in Query Time on Our High-Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-07-19</pubDate>
-  <description><![CDATA[In this post, I'll share our experience with optimizing database queries on our high-traffic e-commerce platform using PostgreSQL indexes and partitioning, which led to a 30x reduction in query time. You'll learn how to identify performance bottlenecks, create effective indexes, and implement partitioning to improve query performance. I'll also provide code examples and best practices to help you optimize your own database queries.]]></description>
 </item>
 </channel>
 </rss>
