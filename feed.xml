@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Performance with PostgreSQL Partitioning: A Case Study of Reducing Query Latency by 90% in a High-Traffic E-commerce Platform]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-performance-with-pos.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-performance-with-pos.html</guid>
+  <pubDate>2026-08-09</pubDate>
+  <description><![CDATA[In this post, I'll share a real-world example of how I optimized database performance using PostgreSQL partitioning, reducing query latency by 90% in a high-traffic e-commerce platform. You'll learn how to identify the need for partitioning, design an effective partitioning strategy, and implement it in your own database. Whether you're a seasoned developer or just starting out, this post will provide you with practical tips and insights to improve your database performance.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Redis Cache]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-combi.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-combi.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-in-a-high-tr.html</guid>
   <pubDate>2026-07-21</pubDate>
   <description><![CDATA[Discover how I optimized database queries in our e-commerce platform by replacing ORM with raw SQL, leading to a significant performance boost. Learn from my experience and apply it to your own projects to achieve substantial performance gains. This post dives into the details of my journey, the challenges I faced, and the solutions I implemented.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Materialized Views After a 3000% Traffic Spike on Our E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-07-20</pubDate>
-  <description><![CDATA[In this post, I'll share how we optimized our database queries to handle a 3000% traffic spike on our e-commerce platform using PostgreSQL indexes and materialized views. You'll learn how to identify performance bottlenecks, create effective indexes, and leverage materialized views to improve query performance. By the end of this post, you'll have a solid understanding of how to optimize your database queries to handle large traffic volumes.]]></description>
 </item>
 </channel>
 </rss>
