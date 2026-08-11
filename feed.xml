@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How We Replaced Apache Kafka with Amazon Kinesis to Reduce Latency by 30% in Our Realtime Analytics Pipeline]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</guid>
+  <pubDate>2026-08-11</pubDate>
+  <description><![CDATA[Learn how we improved our analytics pipeline by replacing Apache Kafka with Amazon Kinesis, reducing latency by 30% and increasing throughput. We'll dive into the technical details of the migration and share code examples to help you make a similar transition. Our team's experience with the migration process and the benefits of using a fully managed service like Amazon Kinesis.]]></description>
+</item><item>
   <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Tale of Reducing Latency from 500ms to 10ms in a High-Traffic E-commerce Application]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-07-23</pubDate>
   <description><![CDATA[Discover how we improved our database query performance by 5x using PostgreSQL partitioning. Learn how to apply this technique to your own high-traffic e-commerce platform and improve user experience. Get insights into our journey and the steps we took to achieve this significant boost.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Query Performance in a High-Traffic E-commerce Application by Migrating from MySQL to PostgreSQL with TimescaleDB]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
-  <pubDate>2026-07-22</pubDate>
-  <description><![CDATA[Learn how to optimize database query performance by migrating from MySQL to PostgreSQL with TimescaleDB. Improve your e-commerce application's performance and scalability. Discover the benefits of using PostgreSQL and TimescaleDB for your database needs.]]></description>
 </item>
 </channel>
 </rss>
