@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Window Functions: A Case Study of Reducing Our Average Response Time by 30%]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-08-12</pubDate>
+  <description><![CDATA[In this post, we'll explore how we used PostgreSQL window functions to optimize our database queries, reducing our average response time by 30%. We'll dive into the details of our case study, including the problems we faced, the solutions we implemented, and the results we achieved. By the end of this post, you'll have a solid understanding of how to apply window functions to your own query optimization challenges.]]></description>
+</item><item>
   <title><![CDATA[How We Replaced Apache Kafka with Amazon Kinesis to Reduce Latency by 30% in Our Realtime Analytics Pipeline]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-we-replaced-apache-kafka-with-amazon.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-query-performance-in.html</guid>
   <pubDate>2026-07-24</pubDate>
   <description><![CDATA[I'll share my experience of optimizing database query performance in a high-traffic e-commerce platform by replacing an Object-Relational Mapping (ORM) tool with a custom SQL builder. You'll learn how to identify performance bottlenecks, design a custom SQL builder, and integrate it with your existing application. By the end of this post, you'll be equipped with the knowledge to significantly improve the performance and scalability of your database-driven applications.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Partitioning: A 5x Performance Boost in Our High-Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-07-23</pubDate>
-  <description><![CDATA[Discover how we improved our database query performance by 5x using PostgreSQL partitioning. Learn how to apply this technique to your own high-traffic e-commerce platform and improve user experience. Get insights into our journey and the steps we took to achieve this significant boost.]]></description>
 </item>
 </channel>
 </rss>
