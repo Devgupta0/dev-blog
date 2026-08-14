@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Query Planner Hints]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
+  <pubDate>2026-08-14</pubDate>
+  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and query planner hints after a 3000ms query brought down our Nodejs API. You'll learn how to identify slow queries, create effective indexes, and use query planner hints to improve query performance. By the end of this post, you'll be equipped with the skills to optimize your own database queries and prevent similar issues in your application.]]></description>
+</item><item>
   <title><![CDATA[How I Replaced Our Monolithic MySQL Database with a Distributed Cassandra Cluster to Handle 10x Traffic Growth]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-20x-increase-in-m.html</guid>
   <pubDate>2026-07-26</pubDate>
   <description><![CDATA[I'll share how I debugged a mysterious 20x increase in MySQL connection overhead, using a combination of Prometheus, tcpdump, and good old-fashioned detective work. You'll learn how to identify and solve similar issues in your own applications. From monitoring metrics to packet capture analysis, I'll walk you through the entire process.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes: A Cautionary Tale of Accidental Transaction Locking in a High-Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-07-25</pubDate>
-  <description><![CDATA[In this post, I'll share a real-world example of how I optimized database queries using PostgreSQL indexes, and a cautionary tale of how I accidentally introduced transaction locking in a high-traffic e-commerce platform. You'll learn how to use indexes effectively and avoid common pitfalls. By the end of this post, you'll have a better understanding of how to optimize your database queries and improve the performance of your application.]]></description>
 </item>
 </channel>
 </rss>
