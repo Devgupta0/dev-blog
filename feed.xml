@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Replaced Apache Kafka with Amazon Kinesis to Improve Our Realtime Analytics Pipeline Performance by 30%]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
+  <pubDate>2026-08-16</pubDate>
+  <description><![CDATA[Learn how to replace Apache Kafka with Amazon Kinesis, a fully managed service that can improve your realtime analytics pipeline performance. I'll share my personal experience, including the challenges I faced and the solutions I implemented. By the end of this post, you'll have a clear understanding of how to make the switch and improve your pipeline's performance by up to 30%.]]></description>
+</item><item>
   <title><![CDATA[Migrating our Legacy Monolith to a Service Mesh with Istio and Envoy: A Year of Trials and Tribulations]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-legacy-monolith-to-a-servi.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-from-apache-kafka-to-amazon-ms.html</guid>
   <pubDate>2026-07-28</pubDate>
   <description><![CDATA[In this post, I'll share our team's experience migrating from Apache Kafka to Amazon MSK, and how it reduced latency and improved throughput in our realtime analytics pipeline. We'll dive into the technical details of the migration process and explore the benefits of using a managed Kafka service. By the end of this post, you'll have a clear understanding of how to make a similar migration and improve your own pipeline's performance.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Partitioning After a 3000x Query Speedup on Our High-Traffic E-commerce Platform]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-07-27</pubDate>
-  <description><![CDATA[Learn how to optimize database queries with PostgreSQL indexes and partitioning, a crucial technique for improving performance on high-traffic platforms. Discover how we achieved a 3000x query speedup and apply these strategies to your own projects. Get insights into real-world database optimization techniques.]]></description>
 </item>
 </channel>
 </rss>
