@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Tamed Stale Closures in React Hooks and Saved My App from Random Bugs]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
+  <pubDate>2026-11-12</pubDate>
+  <description><![CDATA[In this post I walk through the dreaded stale‑closure bug I ran into while building a real‑time dashboard, explain why it happens, and share concrete strategies—like functional updates and useRef—to keep your hooks fresh.]]></description>
+</item><item>
   <title><![CDATA[How I Replaced Apache Kafka with Amazon Kinesis to Improve Our Realtime Analytics Pipeline Performance by 30%]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-rabbitmq-with-apache-kafk.html</guid>
   <pubDate>2026-07-29</pubDate>
   <description><![CDATA[{]]></description>
-</item><item>
-  <title><![CDATA[Migrating from Apache Kafka to Amazon MSK: A Tale of Reduced Latency and Improved Throughput in Our Realtime Analytics Pipeline]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/migrating-from-apache-kafka-to-amazon-ms.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-from-apache-kafka-to-amazon-ms.html</guid>
-  <pubDate>2026-07-28</pubDate>
-  <description><![CDATA[In this post, I'll share our team's experience migrating from Apache Kafka to Amazon MSK, and how it reduced latency and improved throughput in our realtime analytics pipeline. We'll dive into the technical details of the migration process and explore the benefits of using a managed Kafka service. By the end of this post, you'll have a clear understanding of how to make a similar migration and improve your own pipeline's performance.]]></description>
 </item>
 </channel>
 </rss>
