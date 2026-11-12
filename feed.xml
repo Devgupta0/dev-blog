@@ -7,11 +7,11 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
-  <title><![CDATA[How I Stopped My Node.js App From Leaking Memory with Event Emitters]]></title>
+  <title><![CDATA[Why Empty Strings Matter: Handling '' in JavaScript Applications]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
   <pubDate>2026-11-12</pubDate>
-  <description><![CDATA[In this post I walk through the subtle ways EventEmitters can cause memory bloat, how to spot the warning signs, and the exact steps I used to clean up listeners in a production service.]]></description>
+  <description><![CDATA[In this post I walk through the quirks of empty strings in JavaScript, share a real‑world bug I chased, and give you a checklist for safe string handling.]]></description>
 </item><item>
   <title><![CDATA[How I Replaced Apache Kafka with Amazon Kinesis to Improve Our Realtime Analytics Pipeline Performance by 30%]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-apache-kafka-with-amazon-.html</link>

@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Memory Leaks & Event Emitters in Node.js | Dev Notes by Devgupta</title>
-<meta name="description" content="Learn how to detect and fix memory leaks caused by misused EventEmitters in Node.js. A practical guide with real‑world code examples.">
+<title>Empty Strings in JavaScript | Dev Notes by Devgupta</title>
+<meta name="description" content="Learn why empty strings can bite you in JavaScript, how to detect them reliably, and best practices for sanitizing user input.">
 <meta name="author" content="Devgupta">
 <link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Memory Leaks & Event Emitters in Node.js | Dev Notes by Devgupta">
-<meta property="og:description" content="Learn how to detect and fix memory leaks caused by misused EventEmitters in Node.js. A practical guide with real‑world code examples.">
+<meta property="og:title" content="Empty Strings in JavaScript | Dev Notes by Devgupta">
+<meta property="og:description" content="Learn why empty strings can bite you in JavaScript, how to detect them reliably, and best practices for sanitizing user input.">
 <meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/.html">
 <meta property="og:site_name" content="Dev Notes by Devgupta">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@Devgupta0">
-<meta name="twitter:title" content="Memory Leaks & Event Emitters in Node.js | Dev Notes by Devgupta">
-<meta name="twitter:description" content="Learn how to detect and fix memory leaks caused by misused EventEmitters in Node.js. A practical guide with real‑world code examples.">
+<meta name="twitter:title" content="Empty Strings in JavaScript | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Learn why empty strings can bite you in JavaScript, how to detect them reliably, and best practices for sanitizing user input.">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","headline":"Memory Leaks & Event Emitters in Node.js | Dev Notes by Devgupta","description":"Learn how to detect and fix memory leaks caused by misused EventEmitters in Node.js. A practical guide with real‑world code examples.","url":"https://Devgupta0.github.io/dev-blog/posts/.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-11-12"}
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Empty Strings in JavaScript | Dev Notes by Devgupta","description":"Learn why empty strings can bite you in JavaScript, how to detect them reliably, and best practices for sanitizing user input.","url":"https://Devgupta0.github.io/dev-blog/posts/.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-11-12"}
 </script>
 <link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
@@ -87,112 +87,125 @@ footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid va
 </nav>
 <main>
   <div class="article-header">
-    <h1 class="article-title">How I Stopped My Node.js App From Leaking Memory with Event Emitters</h1>
-    <div class="article-meta"><span>2026-11-12</span><span>Devgupta</span><span class="post-tag">nodejs</span> <span class="post-tag">memory-leak</span> <span class="post-tag">eventemitters</span> <span class="post-tag">performance</span></div>
+    <h1 class="article-title">Why Empty Strings Matter: Handling '' in JavaScript Applications</h1>
+    <div class="article-meta"><span>2026-11-12</span><span>Devgupta</span><span class="post-tag">javascript</span> <span class="post-tag">strings</span> <span class="post-tag">best-practices</span></div>
   </div>
-  <div class="article-body"><p>---</p>
-<p>When I first rolled out a new real‑time notification service for our SaaS product, the metrics looked great: sub‑millisecond latency, zero downtime, and a happy engineering team. A few weeks later, the same service started crashing with <code>FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory</code>. My initial instinct was to increase the container memory limit, but the root cause was far more insidious—it was a <strong>memory leak caused by stray EventEmitter listeners</strong>.</p>
-<h2>The Anatomy of an EventEmitter Leak</h2>
-<p>Node’s <code>EventEmitter</code> is a powerful abstraction for decoupling components. You can emit events from one part of your code and let any number of listeners react. The catch? <strong>Listeners are never automatically removed</strong>. If you keep adding listeners without cleaning them up, you’ll eventually saturate the heap.</p>
-<p>Typical warning signs:</p>
-<ul><li>The process logs <code>MaxListenersExceededWarning</code> (default is 10 listeners per event).</li>
-<li>Heap snapshots show an ever‑growing number of <code>EventEmitter</code> objects.</li>
-<li>GC pauses start to increase noticeably.</li>
-</ul>
-In my case, the warning appeared only intermittently because the listeners were being attached inside a request handler that ran for each WebSocket connection. Over time, each new connection added a fresh listener to a global emitter that was never torn down when the socket closed.
-<h2>Reproducing the Leak Locally</h2>
-<p>Before diving into the production logs, I built a minimal reproduction to confirm the hypothesis:</p>
-<pre><code class="language-js">// leak-demo.js
-const { EventEmitter } = require('events');
-const http = require('http');
-<p>const globalBus = new EventEmitter();</p>
-<p>function handleRequest(req, res) {
-  // Each request adds a new listener for the 'ping' event
-  globalBus.on('ping', () =&gt; {
-    console.log(<code>Ping received from ${req.socket.remoteAddress}</code>);
-  });</p>
-<p>// Simulate a response
-  res.end('OK');
-}</p>
-<p>http.createServer(handleRequest).listen(3000);
-console.log('Server listening on :3000');
-</code></pre></p>
-<p>Running this script and hammering it with <code>ab -n 10000 -c 100 http://localhost:3000/</code> quickly blew the heap. The console printed <code>MaxListenersExceededWarning</code> after the 11th request, confirming that listeners were stacking up per request.</p>
-<h2>Strategies to Prevent Leaks</h2>
-<h3>1. Scope Listeners to Their Lifecycle</h3>
-<p>Instead of attaching listeners to a global emitter, bind them to objects that have a clear lifecycle (e.g., a WebSocket connection object). When the object is disposed, remove its listeners.</p>
-<pre><code class="language-js">// websocket-service.js
-const { EventEmitter } = require('events');
-<p>class Client extends EventEmitter {
-  constructor(ws) {
-    super();
-    this.ws = ws;</p>
-<p>// Listen for a custom event that only this client cares about
-    this.on('notify', this.sendNotification);
-    
-    ws.on('close', () =&gt; this.cleanup());
+  <div class="article-body"><p>When I first started writing a small Node‑API for a client‑side form, I assumed an empty string (<code>""</code>) was the same as “no value”. Fast forward a week, the API started returning 500 errors for seemingly valid submissions. The culprit? An empty string sneaking past my validation logic and breaking a downstream SQL query. This post is the story of that bug, why empty strings are a hidden gotcha in JavaScript, and a set of practical patterns you can copy‑paste into your own codebase.</p>
+<h2>The subtle difference between <code>null</code>, <code>undefined</code>, and <code>""</code></h2>
+<p>JavaScript’s loosely typed nature gives us three “nothing” values that look similar but behave very differently:</p>
+<p>| Value        | Type      | Truthiness | Typical source |
+|--------------|-----------|------------|----------------|
+| <code>null</code>       | object    | falsy      | Explicit “no value” |
+| <code>undefined</code>  | undefined | falsy      | Missing property / uninitialized variable |
+| <code>""</code> (empty) | string    | falsy      | User typed nothing, trimmed input, or default param |</p>
+<p>All three coerce to <code>false</code> in a boolean context, but they’re not interchangeable. For example:</p>
+<pre><code class="language-js">if (value) {
+  // This block runs for any non‑empty string, non‑zero number, non‑null object, etc.
+}
+</code></pre>
+<p>If <code>value</code> is <code>""</code>, the <code>if</code> guard fails—exactly like <code>null</code> or <code>undefined</code>. The problem appears when you <em>expect</em> a string and later call string methods without confirming the value really is a string.</p>
+<h2>Real‑world bug: Empty string vs. missing field</h2>
+<h3>The scenario</h3>
+<p>Our front‑end used a simple <code><input></code> for a “promo code”. The back‑end API expected either a valid promo code <strong>or</strong> nothing at all. The validation middleware looked like this:</p>
+<pre><code class="language-js">function validatePromo(req, res, next) {
+  const { promo } = req.body;
+<p>// We thought this would catch both null and empty strings
+  if (!promo) {
+    return next(); // No promo, fine
   }</p>
-<p>sendNotification(payload) {
-    this.ws.send(JSON.stringify(payload));
-  }</p>
-<p>cleanup() {
-    // Remove all listeners attached to this instance
-    this.removeAllListeners();
-    console.log('Client cleaned up');
-  }
+<p>// Otherwise, look it up in the DB
+  db.findPromo(promo)
+    .then(p =&gt; {
+      if (!p) throw new Error('Invalid promo');
+      req.promo = p;
+      next();
+    })
+    .catch(err =&gt; res.status(400).json({ error: err.message }));
 }
 </code></pre></p>
-<p>By making each client its own emitter, the <code>cleanup</code> method guarantees that no stray listeners linger after the socket disconnects.</p>
-<h3>2. Use <code>once</code> When Appropriate</h3>
-<p>If a listener only needs to react a single time, register it with <code>once</code>. Node will automatically deregister after the first invocation.</p>
-<pre><code class="language-js">globalBus.once('init', () =&gt; {
-  console.log('Initialization complete');
-});
-</code></pre>
-<h3>3. Explicitly Remove Listeners</h3>
-<p>When you really need to detach a listener, keep a reference to the handler function so you can call <code>removeListener</code> (or <code>off</code> in newer Node versions).</p>
-<pre><code class="language-js">function onData(data) {
-  console.log('Data:', data);
+<p>The user left the field blank, the browser sent <code>promo: ""</code>. The <code>!promo</code> guard evaluated to <code>true</code>, so the request passed through. No problem yet.</p>
+<p>But a few days later a marketing partner added a <strong>default</strong> promo code to the UI that was an empty string (they thought “empty = no promo”). The front‑end started sending <code>promo: ""</code> <strong>and</strong> a hidden field <code>promoSource: "partner"</code>.</p>
+<p>Our middleware still considered <code>!promo</code> true, but downstream code assumed <code>req.promo</code> would be defined <em>if</em> <code>promoSource</code> existed:</p>
+<pre><code class="language-js">if (req.body.promoSource &amp;&amp; !req.promo) {
+  // Oops – we try to concatenate a non‑existent object later
+  log.error('Missing promo object for source', req.body.promoSource);
 }
-<p>// Attach
-globalBus.on('data', onData);</p>
-<p>// Later, when the consumer is done
-globalBus.off('data', onData);
-</code></pre></p>
-<h3>4. Monitor Listener Count Programmatically</h3>
-<p>Node exposes <code>emitter.listenerCount(eventName)</code>. Hook this into health checks to alert you before hitting the warning threshold.</p>
-<pre><code class="language-js">setInterval(() =&gt; {
-  const count = globalBus.listenerCount('ping');
-  if (count &gt; 8) {
-    console.warn(<code>High listener count for 'ping': ${count}</code>);
-  }
-}, 30_000);
 </code></pre>
-<h2>Refactoring the Real‑World Service</h2>
-<p>Armed with these patterns, I refactored the notification service:</p>
-<ol><li><strong>Created a per‑connection emitter</strong> (<code>Client</code> class) that wrapped each WebSocket.</li>
-<li><strong>Moved all global listeners</strong> that only needed to act on a specific client to that client’s instance.</li>
-<li><strong>Added a health‑check interval</strong> that logs listener counts for critical events.</li>
-<li><strong>Set <code>maxListeners</code> to a sane value</strong> (<code>globalBus.setMaxListeners(20)</code>) to surface abnormal spikes early.</li>
+<p>When the logger attempted to stringify <code>req.promo</code>, Node threw <code>TypeError: Cannot read property 'code' of undefined</code>. The 500 error surfaced in production.</p>
+<h3>The root cause</h3>
+<p>The root cause was <strong>treating an empty string as “no promo”</strong> while other parts of the code treated <em>any</em> presence of <code>promoSource</code> as a signal that a promo <strong>must</strong> exist. The mismatch between <code>null</code>/<code>undefined</code> and <code>""</code> caused the bug.</p>
+<h2>Detecting an empty string reliably</h2>
+<h3>1. Use <code>=== ""</code> for strict emptiness</h3>
+<p>If you need to differentiate an empty string from <code>null</code> or <code>undefined</code>, compare directly:</p>
+<pre><code class="language-js">if (value === "") {
+  // It's an empty string, not null/undefined
+}
+</code></pre>
+<h3>2. Combine type‑check with length</h3>
+<p>A more defensive pattern:</p>
+<pre><code class="language-js">function isNonEmptyString(val) {
+  return typeof val === "string" &amp;&amp; val.length &gt; 0;
+}
+</code></pre>
+<p>Now <code>isNonEmptyString(null)</code> → <code>false</code>, <code>isNonEmptyString(undefined)</code> → <code>false</code>, <code>isNonEmptyString("")</code> → <code>false</code>.</p>
+<h3>3. Normalise inputs early</h3>
+<p>A common technique is to coerce <code>null</code>/<code>undefined</code> into an empty string <em>once</em> at the boundary of your system:</p>
+<pre><code class="language-js">function normalizeString(input) {
+  return input == null ? "" : String(input);
+}
+</code></pre>
+<p>Then downstream code can safely call string methods without guard clauses, because you’ve guaranteed a string type (though it may still be empty).</p>
+<h2>Sanitising user input: Trim, default, and validate</h2>
+<p>User‑entered text often contains leading/trailing whitespace that makes an empty string look “non‑empty”. Always trim:</p>
+<pre><code class="language-js">function cleanInput(raw) {
+  const trimmed = raw == null ? "" : String(raw).trim();
+  return trimmed; // now "" truly means “nothing typed”
+}
+</code></pre>
+<p>If your business logic treats “no value” differently from an empty string, decide on a <strong>canonical representation</strong> (usually <code>null</code>) and convert early:</p>
+<pre><code class="language-js">function emptyToNull(str) {
+  return str === "" ? null : str;
+}
+</code></pre>
+<h2>Defensive coding checklist</h2>
+<ol><li><strong>Never rely on truthiness alone</strong> for string presence. Use a helper like <code>isNonEmptyString</code>.</li>
+<li><strong>Normalize at the API boundary</strong> – turn <code>null</code>/<code>undefined</code> into <code>""</code> or <code>null</code> consistently.</li>
+<li><strong>Trim whitespace</strong> before validation.</li>
+<li><strong>Document expectations</strong> in TypeScript or JSDoc so teammates know whether a field may be empty.</li>
+<li><strong>Write unit tests</strong> for edge cases: <code>null</code>, <code>undefined</code>, <code>""</code>, <code>"   "</code>, and valid strings.</li>
 </ol>
-After deploying the changes, heap usage stabilized, and the <code>MaxListenersExceededWarning</code> vanished. The service now runs comfortably within its 256 MiB memory limit.
-<h2>Tools for Hunting Down Leaks</h2>
-<ul><li><strong><code>node --inspect</code> + Chrome DevTools</strong> – Take heap snapshots and filter by <code>EventEmitter</code>.</li>
-<li><strong><code>clinic.js</code></strong> – The <code>clinic heapprofile</code> command visualizes memory growth over time.</li>
-<li><strong><code>process.memoryUsage()</code></strong> – Log RSS, heapTotal, and heapUsed at regular intervals to spot trends.</li>
-</ul>
-<h2>Lessons Learned</h2>
-<ul><li><strong>Never trust “it works for now”.</strong> EventEmitter warnings are easy to ignore because they’re just console messages, but they’re often the first sign of a leak.</li>
-<li><strong>Tie resources to lifecycles.</strong> If you spin up a listener, you must also spin down that listener when the owning object is done.</li>
-<li><strong>Automate detection.</strong> A simple <code>setInterval</code> that checks <code>listenerCount</code> can save you hours of debugging later.</li>
-</ul>
-<h2>Takeaway</h2>
-<ul><li><strong>Listeners are not garbage‑collected automatically</strong> – you must remove them explicitly or bind them to objects that get disposed.</li>
-<li><strong>Scope listeners to the entity that owns them</strong> (e.g., a WebSocket client) and clean up in its <code>close</code>/<code>destroy</code> callback.</li>
-<li><strong>Use <code>once</code>, <code>off</code>, and <code>removeAllListeners</code></strong> strategically to keep the emitter’s internal list tidy.</li>
-<li><strong>Instrument your app</strong> to surface listener counts and heap growth before they become fatal.</li>
-</ul>
-By treating EventEmitters like any other resource—acquire, use, release—you’ll keep your Node.js services lean, performant, and free of those dreaded “heap out of memory” crashes. Happy coding!</div>
+<h2>Example: A robust validation middleware</h2>
+<p>Below is a compact version of the promo‑code validator that avoids the earlier pitfall:</p>
+<pre><code class="language-js">// utils.js
+export function isNonEmptyString(val) {
+  return typeof val === "string" &amp;&amp; val.trim().length &gt; 0;
+}
+<p>// promoMiddleware.js
+import { isNonEmptyString } from "./utils.js";</p>
+<p>export async function validatePromo(req, res, next) {
+  const rawPromo = req.body.promo; // could be undefined, null, or ""</p>
+<p>// Normalise &amp; trim
+  const promo = typeof rawPromo === "string" ? rawPromo.trim() : "";</p>
+<p>if (!isNonEmptyString(promo)) {
+    // No promo supplied – explicitly set null for downstream clarity
+    req.promo = null;
+    return next();
+  }</p>
+<p>try {
+    const promoRecord = await db.findPromo(promo);
+    if (!promoRecord) {
+      return res.status(400).json({ error: "Invalid promo code" });
+    }
+    req.promo = promoRecord;
+    next();
+  } catch (err) {
+    console.error("Promo validation error:", err);
+    res.status(500).json({ error: "Server error while validating promo" });
+  }
+}
+</code></pre></p>
+<p>Key takeaways from the snippet:</p>
+<p>* <strong>Explicit normalisation</strong> (`promo = ...</p></div>
   <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
 </main>
 <footer>
