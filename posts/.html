@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taming Stale Closures in React Hooks | Dev Notes by Devgupta</title>
-<meta name="description" content="Learn how to detect and fix stale closures in React hooks with practical examples, debugging tips, and patterns to keep your components predictable.">
+<title>Memory Leaks & Event Emitters in Node.js | Dev Notes by Devgupta</title>
+<meta name="description" content="Learn how to detect and fix memory leaks caused by misused EventEmitters in Node.js. A practical guide with real‑world code examples.">
 <meta name="author" content="Devgupta">
 <link rel="canonical" href="https://Devgupta0.github.io/dev-blog/posts/.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Taming Stale Closures in React Hooks | Dev Notes by Devgupta">
-<meta property="og:description" content="Learn how to detect and fix stale closures in React hooks with practical examples, debugging tips, and patterns to keep your components predictable.">
+<meta property="og:title" content="Memory Leaks & Event Emitters in Node.js | Dev Notes by Devgupta">
+<meta property="og:description" content="Learn how to detect and fix memory leaks caused by misused EventEmitters in Node.js. A practical guide with real‑world code examples.">
 <meta property="og:url" content="https://Devgupta0.github.io/dev-blog/posts/.html">
 <meta property="og:site_name" content="Dev Notes by Devgupta">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@Devgupta0">
-<meta name="twitter:title" content="Taming Stale Closures in React Hooks | Dev Notes by Devgupta">
-<meta name="twitter:description" content="Learn how to detect and fix stale closures in React hooks with practical examples, debugging tips, and patterns to keep your components predictable.">
+<meta name="twitter:title" content="Memory Leaks & Event Emitters in Node.js | Dev Notes by Devgupta">
+<meta name="twitter:description" content="Learn how to detect and fix memory leaks caused by misused EventEmitters in Node.js. A practical guide with real‑world code examples.">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","headline":"Taming Stale Closures in React Hooks | Dev Notes by Devgupta","description":"Learn how to detect and fix stale closures in React hooks with practical examples, debugging tips, and patterns to keep your components predictable.","url":"https://Devgupta0.github.io/dev-blog/posts/.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-11-12"}
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Memory Leaks & Event Emitters in Node.js | Dev Notes by Devgupta","description":"Learn how to detect and fix memory leaks caused by misused EventEmitters in Node.js. A practical guide with real‑world code examples.","url":"https://Devgupta0.github.io/dev-blog/posts/.html","author":{"@type":"Person","name":"Devgupta"},"datePublished":"2026-11-12"}
 </script>
 <link rel="alternate" type="application/rss+xml" title="Dev Notes by Devgupta" href="https://Devgupta0.github.io/dev-blog/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Fira+Code:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
@@ -87,117 +87,112 @@ footer{max-width:var(--max);margin:0 auto;padding:2rem 0;border-top:1px solid va
 </nav>
 <main>
   <div class="article-header">
-    <h1 class="article-title">How I Tamed Stale Closures in React Hooks and Saved My App from Random Bugs</h1>
-    <div class="article-meta"><span>2026-11-12</span><span>Devgupta</span><span class="post-tag">react</span> <span class="post-tag">hooks</span> <span class="post-tag">javascript</span> <span class="post-tag">debugging</span></div>
+    <h1 class="article-title">How I Stopped My Node.js App From Leaking Memory with Event Emitters</h1>
+    <div class="article-meta"><span>2026-11-12</span><span>Devgupta</span><span class="post-tag">nodejs</span> <span class="post-tag">memory-leak</span> <span class="post-tag">eventemitters</span> <span class="post-tag">performance</span></div>
   </div>
   <div class="article-body"><p>---</p>
-<p>When I first shipped the real‑time analytics dashboard for our SaaS product, I thought the hardest part was wiring up the WebSocket. Little did I know that the real nightmare would be a <em>random</em> UI freeze that only showed up in production. After hours of chasing logs and sprinkling <code>console.log</code>s everywhere, I discovered the culprit: a stale closure hidden deep inside a <code>useEffect</code> hook.</p>
-<p>If you’ve ever felt the same frustration—where a state update seems to be ignored or a callback keeps using an old value—this post is for you. I’ll break down why stale closures happen, how to reliably spot them, and a handful of patterns that keep your hooks from becoming time‑travelling time machines.</p>
-<h2>The Anatomy of a Stale Closure</h2>
-<p>First, a quick refresher. In JavaScript, functions capture the variables that were in scope when they were created. When you create a callback inside a React hook, that callback “closes over” the current state and props. If the component re‑renders, a <em>new</em> version of that callback is created, but any asynchronous work that still references the old callback will keep using the old values.</p>
-<pre><code class="language-js">function Counter() {
-  const [count, setCount] = useState(0);
-<p>// This effect runs once, but the callback captures the <em>initial</em> count (0)
-  useEffect(() =&gt; {
-    const id = setInterval(() =&gt; {
-      console.log('Current count:', count); // always logs 0
-    }, 1000);
-    return () =&gt; clearInterval(id);
-  }, []); // empty deps → runs only on mount</p>
-<p>return &lt;button onClick={() =&gt; setCount(c =&gt; c + 1)}&gt;+{count}&lt;/button&gt;;
+<p>When I first rolled out a new real‑time notification service for our SaaS product, the metrics looked great: sub‑millisecond latency, zero downtime, and a happy engineering team. A few weeks later, the same service started crashing with <code>FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory</code>. My initial instinct was to increase the container memory limit, but the root cause was far more insidious—it was a <strong>memory leak caused by stray EventEmitter listeners</strong>.</p>
+<h2>The Anatomy of an EventEmitter Leak</h2>
+<p>Node’s <code>EventEmitter</code> is a powerful abstraction for decoupling components. You can emit events from one part of your code and let any number of listeners react. The catch? <strong>Listeners are never automatically removed</strong>. If you keep adding listeners without cleaning them up, you’ll eventually saturate the heap.</p>
+<p>Typical warning signs:</p>
+<ul><li>The process logs <code>MaxListenersExceededWarning</code> (default is 10 listeners per event).</li>
+<li>Heap snapshots show an ever‑growing number of <code>EventEmitter</code> objects.</li>
+<li>GC pauses start to increase noticeably.</li>
+</ul>
+In my case, the warning appeared only intermittently because the listeners were being attached inside a request handler that ran for each WebSocket connection. Over time, each new connection added a fresh listener to a global emitter that was never torn down when the socket closed.
+<h2>Reproducing the Leak Locally</h2>
+<p>Before diving into the production logs, I built a minimal reproduction to confirm the hypothesis:</p>
+<pre><code class="language-js">// leak-demo.js
+const { EventEmitter } = require('events');
+const http = require('http');
+<p>const globalBus = new EventEmitter();</p>
+<p>function handleRequest(req, res) {
+  // Each request adds a new listener for the 'ping' event
+  globalBus.on('ping', () =&gt; {
+    console.log(<code>Ping received from ${req.socket.remoteAddress}</code>);
+  });</p>
+<p>// Simulate a response
+  res.end('OK');
+}</p>
+<p>http.createServer(handleRequest).listen(3000);
+console.log('Server listening on :3000');
+</code></pre></p>
+<p>Running this script and hammering it with <code>ab -n 10000 -c 100 http://localhost:3000/</code> quickly blew the heap. The console printed <code>MaxListenersExceededWarning</code> after the 11th request, confirming that listeners were stacking up per request.</p>
+<h2>Strategies to Prevent Leaks</h2>
+<h3>1. Scope Listeners to Their Lifecycle</h3>
+<p>Instead of attaching listeners to a global emitter, bind them to objects that have a clear lifecycle (e.g., a WebSocket connection object). When the object is disposed, remove its listeners.</p>
+<pre><code class="language-js">// websocket-service.js
+const { EventEmitter } = require('events');
+<p>class Client extends EventEmitter {
+  constructor(ws) {
+    super();
+    this.ws = ws;</p>
+<p>// Listen for a custom event that only this client cares about
+    this.on('notify', this.sendNotification);
+    
+    ws.on('close', () =&gt; this.cleanup());
+  }</p>
+<p>sendNotification(payload) {
+    this.ws.send(JSON.stringify(payload));
+  }</p>
+<p>cleanup() {
+    // Remove all listeners attached to this instance
+    this.removeAllListeners();
+    console.log('Client cleaned up');
+  }
 }
 </code></pre></p>
-<p>In the snippet above the <code>setInterval</code> callback never sees the updated <code>count</code>. The closure is <em>stale</em> because the effect’s dependency array tells React not to recreate the interval when <code>count</code> changes.</p>
-<h2>My First Encounter: The Dashboard Freeze</h2>
-<p>The dashboard was pulling live metrics via a WebSocket and displaying them in a chart. I used a <code>useEffect</code> to subscribe to the socket:</p>
-<pre><code class="language-js">useEffect(() =&gt; {
-  const unsubscribe = socket.on('metric', (payload) =&gt; {
-    setMetrics(prev =&gt; [...prev, payload]);
-  });
-<p>return unsubscribe;
-}, []); // &lt;- I thought “socket never changes, so empty deps are fine”
-</code></pre></p>
-<p>Everything looked fine in development, but after a few hours of real traffic, the chart would stop updating for a specific user. The UI was still responsive, but the new data never made it to the state. When I inspected the component with React DevTools, I saw that <code>setMetrics</code> was being called, yet <code>metrics</code> never grew.</p>
-<p>The key clue was the <strong>network tab</strong>: the socket kept sending messages. The problem was that the callback passed to <code>socket.on</code> had captured the <em>initial</em> version of <code>metrics</code>. Each incoming payload tried to append to that stale array, essentially always producing the same single‑element array.</p>
-<h2>Fix #1: Add the Right Dependencies</h2>
-<p>The simplest fix is to list everything the effect uses in its dependency array. In the example above, we need to include <code>setMetrics</code> (which is stable) and, crucially, any values that the callback reads directly. Since we’re using the functional form of <code>setMetrics</code>, we can avoid pulling <code>metrics</code> into the deps:</p>
-<pre><code class="language-js">useEffect(() =&gt; {
-  const unsubscribe = socket.on('metric', (payload) =&gt; {
-    // functional update guarantees we get the latest state
-    setMetrics(prev =&gt; [...prev, payload]);
-  });
-<p>return unsubscribe;
-}, []); // functional updater means we don’t need metrics in deps
-</code></pre></p>
-<p>The functional updater pattern (<code>prev => …</code>) is a lifesaver because it guarantees the callback works with the freshest state, regardless of when it runs.</p>
-<h2>Fix #2: Use <code>useRef</code> for Stable Mutable Values</h2>
-<p>Sometimes you need to read a <em>current</em> value inside a callback that isn’t part of the render flow—like a flag that tells you whether the component is still mounted. <code>useRef</code> gives you a mutable container that persists across renders without triggering re‑renders.</p>
-<pre><code class="language-js">function useMountedFlag() {
-  const mounted = useRef(false);
-  useEffect(() =&gt; {
-    mounted.current = true;
-    return () =&gt; {
-      mounted.current = false;
-    };
-  }, []);
-  return mounted;
-}
-<p>// Usage inside a component
-function LiveFeed() {
-  const mountedRef = useMountedFlag();</p>
-<p>useEffect(() =&gt; {
-    const id = setInterval(() =&gt; {
-      if (mountedRef.current) {
-        fetchNewData().then(setData);
-      }
-    }, 2000);
-    return () =&gt; clearInterval(id);
-  }, []); // safe: we read only mountedRef.current
-}
-</code></pre></p>
-<p>The ref never changes, so the interval callback always sees the latest <code>mountedRef.current</code> value. This pattern is perfect when you need a “mutable snapshot” that survives re‑renders.</p>
-<h2>Fix #3: Memoize Callbacks with <code>useCallback</code></h2>
-<p>If you have a child component that receives a callback prop, you may inadvertently cause it to re‑render on every parent render because the parent creates a <em>new</em> function each time. <code>useCallback</code> memoizes the function reference based on a dependency list, preventing unnecessary re‑renders and also keeping the closure fresh.</p>
-<pre><code class="language-js">const handleClick = useCallback(() =&gt; {
-  // This callback will be recreated only when <code>selectedId</code> changes
-  setSelectedId(id =&gt; id + 1);
-}, [selectedId]); // &lt;- include everything the callback uses
-</code></pre>
-<p>When the child component uses <code>React.memo</code>, it will now skip re‑renders unless <code>selectedId</code> actually changes.</p>
-<h2>Debugging Stale Closures: My Checklist</h2>
-<ol><li><strong>Console Log the Captured Value</strong> – Add a <code>console.log</code> inside the callback to see which version of the variable it sees.</li>
-<li><strong>Check Dependency Arrays</strong> – Ensure all non‑stable values (state, props, functions) are listed.</li>
-<li><strong>Prefer Functional Updates</strong> – When updating state based on the previous state, use the functional form to avoid pulling the old value into the closure.</li>
-<li><strong>Leverage <code>useRef</code> for Mutables</strong> – For flags or timers that don’t need to trigger renders.</li>
-<li><strong>Run a Linter</strong> – ESLint’s <code>react-hooks/exhaustive-deps</code> rule will warn you about missing dependencies.</li>
-</ol>
-<h2>A Real‑World Refactor: From Bug to Pattern Library</h2>
-<p>After fixing the dashboard, I turned the solution into a tiny internal library called <code>useStableCallback</code>. It abstracts the pattern of wrapping a callback with a ref so you can safely pass it to any async API without worrying about deps.</p>
-<pre><code class="language-js">import { useRef, useEffect, useCallback } from 'react';
-<p>/**
- * Returns a stable callback that always has access to the latest <code>fn</code>.
- */
-export function useStableCallback(fn) {
-  const fnRef = useRef(fn);
-  useEffect(() =&gt; {
-    fnRef.current = fn;
-  }, [fn]);</p>
-<p>return useCallback((...args) =&gt; fnRef.current?.(...args), []);
-}
-</code></pre></p>
-<p>Now I can do:</p>
-<pre><code class="language-js">const onMessage = useStableCallback((msg) =&gt; {
-  setMessages(prev =&gt; [...prev, msg]);
+<p>By making each client its own emitter, the <code>cleanup</code> method guarantees that no stray listeners linger after the socket disconnects.</p>
+<h3>2. Use <code>once</code> When Appropriate</h3>
+<p>If a listener only needs to react a single time, register it with <code>once</code>. Node will automatically deregister after the first invocation.</p>
+<pre><code class="language-js">globalBus.once('init', () =&gt; {
+  console.log('Initialization complete');
 });
-<p>useEffect(() =&gt; {
-  const off = socket.on('msg', onMessage);
-  return off;
-}, []); // clean and safe
+</code></pre>
+<h3>3. Explicitly Remove Listeners</h3>
+<p>When you really need to detach a listener, keep a reference to the handler function so you can call <code>removeListener</code> (or <code>off</code> in newer Node versions).</p>
+<pre><code class="language-js">function onData(data) {
+  console.log('Data:', data);
+}
+<p>// Attach
+globalBus.on('data', onData);</p>
+<p>// Later, when the consumer is done
+globalBus.off('data', onData);
 </code></pre></p>
-<p>The library saved me from repeating the same <code>useRef</code> boilerplate and made the intent crystal clear to teammates.</p>
-<h2>Performance Considerations</h2>
-<p>Adding extra refs and callbacks isn’t free. Each <code>useRef</code> allocation is cheap, but over‑using <code>useCallback</code> can lead to unnecessary memoization overhead. The rule of thumb: <strong>only memoize when you see a measurable benefit</strong>, such as preventing expensive child renders or avoiding a stale‑closure bug.</p>
-<h2>When Not to</h2></div>
+<h3>4. Monitor Listener Count Programmatically</h3>
+<p>Node exposes <code>emitter.listenerCount(eventName)</code>. Hook this into health checks to alert you before hitting the warning threshold.</p>
+<pre><code class="language-js">setInterval(() =&gt; {
+  const count = globalBus.listenerCount('ping');
+  if (count &gt; 8) {
+    console.warn(<code>High listener count for 'ping': ${count}</code>);
+  }
+}, 30_000);
+</code></pre>
+<h2>Refactoring the Real‑World Service</h2>
+<p>Armed with these patterns, I refactored the notification service:</p>
+<ol><li><strong>Created a per‑connection emitter</strong> (<code>Client</code> class) that wrapped each WebSocket.</li>
+<li><strong>Moved all global listeners</strong> that only needed to act on a specific client to that client’s instance.</li>
+<li><strong>Added a health‑check interval</strong> that logs listener counts for critical events.</li>
+<li><strong>Set <code>maxListeners</code> to a sane value</strong> (<code>globalBus.setMaxListeners(20)</code>) to surface abnormal spikes early.</li>
+</ol>
+After deploying the changes, heap usage stabilized, and the <code>MaxListenersExceededWarning</code> vanished. The service now runs comfortably within its 256 MiB memory limit.
+<h2>Tools for Hunting Down Leaks</h2>
+<ul><li><strong><code>node --inspect</code> + Chrome DevTools</strong> – Take heap snapshots and filter by <code>EventEmitter</code>.</li>
+<li><strong><code>clinic.js</code></strong> – The <code>clinic heapprofile</code> command visualizes memory growth over time.</li>
+<li><strong><code>process.memoryUsage()</code></strong> – Log RSS, heapTotal, and heapUsed at regular intervals to spot trends.</li>
+</ul>
+<h2>Lessons Learned</h2>
+<ul><li><strong>Never trust “it works for now”.</strong> EventEmitter warnings are easy to ignore because they’re just console messages, but they’re often the first sign of a leak.</li>
+<li><strong>Tie resources to lifecycles.</strong> If you spin up a listener, you must also spin down that listener when the owning object is done.</li>
+<li><strong>Automate detection.</strong> A simple <code>setInterval</code> that checks <code>listenerCount</code> can save you hours of debugging later.</li>
+</ul>
+<h2>Takeaway</h2>
+<ul><li><strong>Listeners are not garbage‑collected automatically</strong> – you must remove them explicitly or bind them to objects that get disposed.</li>
+<li><strong>Scope listeners to the entity that owns them</strong> (e.g., a WebSocket client) and clean up in its <code>close</code>/<code>destroy</code> callback.</li>
+<li><strong>Use <code>once</code>, <code>off</code>, and <code>removeAllListeners</code></strong> strategically to keep the emitter’s internal list tidy.</li>
+<li><strong>Instrument your app</strong> to surface listener counts and heap growth before they become fatal.</li>
+</ul>
+By treating EventEmitters like any other resource—acquire, use, release—you’ll keep your Node.js services lean, performant, and free of those dreaded “heap out of memory” crashes. Happy coding!</div>
   <a class="back-link" href="https://Devgupta0.github.io/dev-blog">← All posts</a>
 </main>
 <footer>
