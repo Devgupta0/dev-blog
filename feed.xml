@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Why Empty Strings Bite JavaScript Developers (and How to Tame Them)]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
+  <pubDate>2026-11-13</pubDate>
+  <description><![CDATA[I’ll walk through a real bug I ran into when an API returned an empty string, show why JavaScript’s truthiness tricks can mislead you, and share patterns to keep empty values in check.]]></description>
+</item><item>
   <title><![CDATA[Why Empty Strings Matter: Handling '' in JavaScript Applications]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/migrating-our-high-traffic-rest-api-from.html</guid>
   <pubDate>2026-07-30</pubDate>
   <description><![CDATA[In this post, we'll discuss our 6-month journey of migrating our high-traffic REST API from Node.js to Go, highlighting the benefits and challenges we faced. We'll dive into the details of performance improvements, memory usage reduction, and team adoption. You'll learn how to apply these lessons to your own projects and make informed decisions about your technology stack.]]></description>
-</item><item>
-  <title><![CDATA[How I Replaced Rabbitmq With Apache Kafk]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-rabbitmq-with-apache-kafk.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-rabbitmq-with-apache-kafk.html</guid>
-  <pubDate>2026-07-29</pubDate>
-  <description><![CDATA[{]]></description>
 </item>
 </channel>
 </rss>
