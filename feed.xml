@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
+  <pubDate>2026-11-16</pubDate>
+  <description><![CDATA[I’m happy to draft the blog post for you, but I need a little more detail to make sure it hits the mark. Could you let me know the specific topic or technology you’d like the post to cover (e.g., “opt]]></description>
+</item><item>
   <title><![CDATA[How I Tamed a Sneaky Memory Leak in a Node.js Microservice]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-reduced-our-api-latency-by-30%-by-.html</guid>
   <pubDate>2026-08-02</pubDate>
   <description><![CDATA[Learn how switching from MongoDB to a graph database improved our API performance, reduced latency, and simplified complex queries. Get insights into the migration process and the benefits of using graph databases for complex query workloads.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Indexes and Materialized Views]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-08-01</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of optimizing database queries with PostgreSQL indexes and materialized views after migrating our high traffic e-commerce application from MongoDB to a relational database. You'll learn how to identify performance bottlenecks, create effective indexes, and leverage materialized views to improve query performance. By the end of this post, you'll be able to apply these techniques to your own database optimization projects.]]></description>
 </item>
 </channel>
 </rss>
