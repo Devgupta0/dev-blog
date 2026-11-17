@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Finally Stopped My Node.js App from Eating All My RAM]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
+  <pubDate>2026-11-17</pubDate>
+  <description><![CDATA[I walked through a real production nightmare where a simple API started hogging memory. In this post I share the steps I took to reproduce the leak, the tools that helped me pinpoint it, and the code changes that finally fixed it.]]></description>
+</item><item>
   <title><![CDATA[]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-10%-increase-in-a.html</guid>
   <pubDate>2026-08-03</pubDate>
   <description><![CDATA[I recently migrated our PostgreSQL database to AWS Aurora and noticed a 10% increase in average query latency. In this post, I'll share how I debugged the issue and found the root cause. You'll learn how to identify and troubleshoot database performance problems using various tools and techniques.]]></description>
-</item><item>
-  <title><![CDATA[How I Reduced Our API Latency by 30% by Replacing MongoDB with a Graph Database for Complex Queries]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-reduced-our-api-latency-by-30%-by-.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-reduced-our-api-latency-by-30%-by-.html</guid>
-  <pubDate>2026-08-02</pubDate>
-  <description><![CDATA[Learn how switching from MongoDB to a graph database improved our API performance, reduced latency, and simplified complex queries. Get insights into the migration process and the benefits of using graph databases for complex query workloads.]]></description>
 </item>
 </channel>
 </rss>
