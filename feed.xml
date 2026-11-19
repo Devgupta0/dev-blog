@@ -7,11 +7,11 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
-  <title><![CDATA[Taming Flaky Tests in CI: A Real‑World Walkthrough]]></title>
+  <title><![CDATA[How I Stopped a Silent Memory Leak in a Node.js Service]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
   <pubDate>2026-11-19</pubDate>
-  <description><![CDATA[Flaky tests can sabotage your CI pipeline. In this post I share how I tracked down a stubborn intermittent failure, the tools I used, and a repeatable process to keep your test suite reliable.]]></description>
+  <description><![CDATA[In this post I walk through the steps I took to discover a hidden memory leak in a Node.js service, the tools I used, and the code changes that finally sealed the leak.]]></description>
 </item><item>
   <title><![CDATA[]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
