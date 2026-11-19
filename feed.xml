@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Taming Flaky Tests in CI: A Real‑World Walkthrough]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
+  <pubDate>2026-11-19</pubDate>
+  <description><![CDATA[Flaky tests can sabotage your CI pipeline. In this post I share how I tracked down a stubborn intermittent failure, the tools I used, and a repeatable process to keep your test suite reliable.]]></description>
+</item><item>
   <title><![CDATA[]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</guid>
   <pubDate>2026-08-05</pubDate>
   <description><![CDATA[In this post, I'll share my experience of replacing a monolithic MySQL database with a PostgreSQL and TimescaleDB hybrid to solve scaling issues with high-volume time-series data in our IoT application. You'll learn how to design and implement a scalable database architecture for IoT applications. I'll also share some tips and best practices for migrating from MySQL to PostgreSQL and TimescaleDB.]]></description>
-</item><item>
-  <title><![CDATA[How I survived a 3-day MySQL replication lag by switching to a semi-synchronous replication topology with Galera Cluster and GTIDs]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-mysql-replication.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-survived-a-3-day-mysql-replication.html</guid>
-  <pubDate>2026-08-04</pubDate>
-  <description><![CDATA[Discover how to resolve MySQL replication lag by switching to a semi-synchronous replication topology with Galera Cluster and GTIDs. Learn from a real-world experience and get hands-on with the solution. This post provides a step-by-step guide to implementing the solution and overcoming the challenges of MySQL replication lag.]]></description>
 </item>
 </channel>
 </rss>
