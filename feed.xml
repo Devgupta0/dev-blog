@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Why My Async Error Handling Was a Disaster—and How I Fixed It]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
+  <pubDate>2026-11-20</pubDate>
+  <description><![CDATA[I walked through a nightmare debugging session caused by uncaught promise rejections. In this post I break down what went wrong, show a clean error‑handling pattern, and share tips to keep your async code sane.]]></description>
+</item><item>
   <title><![CDATA[How I Stopped a Silent Memory Leak in a Node.js Service]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
   <pubDate>2026-08-06</pubDate>
   <description><![CDATA[{]]></description>
-</item><item>
-  <title><![CDATA[How I Replaced Our Monolithic MySQL Database with a PostgreSQL and TimescaleDB Hybrid]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</guid>
-  <pubDate>2026-08-05</pubDate>
-  <description><![CDATA[In this post, I'll share my experience of replacing a monolithic MySQL database with a PostgreSQL and TimescaleDB hybrid to solve scaling issues with high-volume time-series data in our IoT application. You'll learn how to design and implement a scalable database architecture for IoT applications. I'll also share some tips and best practices for migrating from MySQL to PostgreSQL and TimescaleDB.]]></description>
 </item>
 </channel>
 </rss>
