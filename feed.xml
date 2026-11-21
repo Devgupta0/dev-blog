@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Taming Memory Leaks in Node.js: A Hands‑On Debugging Journey]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
+  <pubDate>2026-11-21</pubDate>
+  <description><![CDATA[In this post I walk through the steps I used to track down a stubborn memory leak in a production‑grade Node.js service. You’ll get a quick intro to heap snapshots, the Chrome DevTools timeline, and a reusable pattern for fixing leaks.]]></description>
+</item><item>
   <title><![CDATA[Why My Async Error Handling Was a Disaster—and How I Fixed It]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-postgresql-deadlo.html</guid>
   <pubDate>2026-08-07</pubDate>
   <description><![CDATA[In this post, I'll share a real-world experience of debugging a mysterious PostgreSQL deadlock issue in a high-concurrency API. You'll learn how to use pg badges and WAL analytics to identify and resolve deadlocks. By the end of this post, you'll have a step-by-step guide on how to debug PostgreSQL deadlocks like a pro.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries With Postgre]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-08-06</pubDate>
-  <description><![CDATA[{]]></description>
 </item>
 </channel>
 </rss>
