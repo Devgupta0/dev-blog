@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[Taming the Async/Await Spaghetti: A Real‑World Refactor Story]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
+  <pubDate>2026-11-22</pubDate>
+  <description><![CDATA[I share the exact steps I took to transform a chaotic async/await codebase into a readable, maintainable flow. Expect concrete patterns, a live code snippet, and a takeaway you can apply tomorrow.]]></description>
+</item><item>
   <title><![CDATA[Taming Memory Leaks in Node.js: A Hands‑On Debugging Journey]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-a-combi.html</guid>
   <pubDate>2026-08-08</pubDate>
   <description><![CDATA[In this post, I'll share my experience of optimizing database queries using PostgreSQL indexes and Redis cache, which led to a significant improvement in API response times. I'll discuss the challenges I faced, the solutions I implemented, and the results I achieved. By the end of this post, you'll learn how to apply these techniques to your own projects and improve their performance.]]></description>
-</item><item>
-  <title><![CDATA[Debugging a Mysterious PostgreSQL Deadlock Issue in a High-Concurrency API Using pg badges and WAL Analytics]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-postgresql-deadlo.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/debugging-a-mysterious-postgresql-deadlo.html</guid>
-  <pubDate>2026-08-07</pubDate>
-  <description><![CDATA[In this post, I'll share a real-world experience of debugging a mysterious PostgreSQL deadlock issue in a high-concurrency API. You'll learn how to use pg badges and WAL analytics to identify and resolve deadlocks. By the end of this post, you'll have a step-by-step guide on how to debug PostgreSQL deadlocks like a pro.]]></description>
 </item>
 </channel>
 </rss>
