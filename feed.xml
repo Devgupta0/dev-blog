@@ -7,6 +7,12 @@
   <language>en-us</language>
   <atom:link href="https://Devgupta0.github.io/dev-blog/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
+  <title><![CDATA[How I Finally Tamed Intermittent Race Conditions in a Go Microservice]]></title>
+  <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
+  <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
+  <pubDate>2026-11-27</pubDate>
+  <description><![CDATA[In this post I walk through the nightmare of a flaky Go microservice, how I uncovered a hidden race condition, and the step‑by‑step fixes that made the service rock‑solid.]]></description>
+</item><item>
   <title><![CDATA[Taming API Rate Limits in Node.js: A Practical Guide with Axios]]></title>
   <link>https://Devgupta0.github.io/dev-blog/posts/.html</link>
   <guid>https://Devgupta0.github.io/dev-blog/posts/.html</guid>
@@ -120,12 +126,6 @@
   <guid>https://Devgupta0.github.io/dev-blog/posts/how-i-replaced-our-monolithic-mysql-data.html</guid>
   <pubDate>2026-08-13</pubDate>
   <description><![CDATA[In this post, I'll share my experience of replacing our monolithic MySQL database with a distributed Cassandra cluster to handle a 10x increase in traffic. I'll cover the challenges I faced, the solutions I implemented, and the lessons I learned along the way. You'll learn how to design and implement a scalable database architecture using Cassandra.]]></description>
-</item><item>
-  <title><![CDATA[Optimizing Database Queries with PostgreSQL Window Functions: A Case Study of Reducing Our Average Response Time by 30%]]></title>
-  <link>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</link>
-  <guid>https://Devgupta0.github.io/dev-blog/posts/optimizing-database-queries-with-postgre.html</guid>
-  <pubDate>2026-08-12</pubDate>
-  <description><![CDATA[In this post, we'll explore how we used PostgreSQL window functions to optimize our database queries, reducing our average response time by 30%. We'll dive into the details of our case study, including the problems we faced, the solutions we implemented, and the results we achieved. By the end of this post, you'll have a solid understanding of how to apply window functions to your own query optimization challenges.]]></description>
 </item>
 </channel>
 </rss>
